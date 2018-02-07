@@ -2,6 +2,12 @@
 
 <!-- Descrição curta sobre o porquê, o como e o quando dea sua demanda -->
 
+## Requisitos
+- [ ] Requisito A
+- [ ] Requisito B
+- [ ] Requisito C
+- [ ] &c.
+
 ## Priorização
 
 <!-- Números seguindo a sequência de Fibonacci
