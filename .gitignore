@@ -78,3 +78,6 @@ typings/
 
 # dotenv environment variables file
 .env
+
+# CSS files (since we're using Sass)
+src/**/*.css
