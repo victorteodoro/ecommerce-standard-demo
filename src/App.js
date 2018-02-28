@@ -1,21 +1,29 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
+// General imports from libs
+import React from "react";
+import { map, addIndex } from "ramda";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+// Import routes
+import routes from "./routerConfig";
+
+// Import styles
 import "./App.css";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const mapIndexed = addIndex(map);
+
+const routing = (route, index) => (
+  <Route
+    key={index}
+    path={route.path}
+    exact={route.exact}
+    render={route.render}
+  />
+);
+
+const App = () => (
+  <Router>
+    <div>{mapIndexed(routing, routes)}</div>
+  </Router>
+);
 
 export default App;

@@ -1,0 +1,21 @@
+.productArea {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-area: productArea;
+
+  @media (max-width: 700px) {
+    grid-template-columns: minmax(min-content, 1fr);
+    grid-template-rows: auto;
+  }
+
+  @media (min-width: 700px) and (max-width: 900px) {
+    grid-template-columns: repeat(2, minmax(min-content, 1fr));
+    grid-template-rows: auto;
+  }
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(3, minmax(min-content, 1fr));
+    grid-template-rows: auto;
+  }
+}
