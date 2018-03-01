@@ -1,0 +1,53 @@
+// FONT VARIABLES
+$font-primary: "Questrial", sans-serif;
+$font-display: "Work Sans", sans-serif;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: $font-primary;
+  font-weight: 700;
+  color: $color-cream;
+  background-color: $color-cream;
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+.container {
+  // Basic settings
+  display: grid;
+  grid-row-gap: 2rem;
+  height: 100vh;
+  width: 100%;  
+
+  // Screen-width specific config
+  @media screen and (min-width: 600px) {
+    grid-template-rows: repeat(4, max-content);
+    grid-template-columns: 1fr repeat(4, minmax(min-content, 25rem)) 1fr;
+    grid-template-areas:
+      "header header header header header header"
+      ". carrousel carrousel carrousel carrousel ."
+      ". productArea productArea productArea productArea ."
+      "footer footer footer footer footer footer";
+  }
+
+  @media screen and (max-width: 600px) {
+    grid-template-rows: repeat(4, min-content);
+    grid-template-areas:
+      "header"
+      "carrousel"
+      "productArea"
+      "footer";
+  }
+}

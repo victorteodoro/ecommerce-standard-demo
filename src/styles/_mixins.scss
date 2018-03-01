@@ -1,0 +1,23 @@
+@mixin centerElement {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin textShadowSlight {
+  color: $color-white;
+  text-shadow: 0 0.1rem 0.1rem rgba($color-black, 0.2);
+}
+
+@mixin redGradientBackground {
+  background-image: linear-gradient(to right bottom, $color-red400, $color-red900);
+}
+
+@mixin purpleGradientBackground {
+  background-image: linear-gradient(to right bottom, $color-purple400, $color-purple900);
+}
+
+@mixin creamGradientBackground {
+  background-image: linear-gradient(to right bottom, $color-grey200, $color-cream);
+}
