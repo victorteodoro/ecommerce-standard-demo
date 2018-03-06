@@ -84,4 +84,4 @@ src/**/*.css
 
 # Don't consider Emacs files
 \#*#
-**/*~
+*~
