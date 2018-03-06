@@ -1,6 +1,8 @@
 .cartProducts {
   grid-area: cartProducts;
-
+  grid-row: 2 / 3;
+  grid-column: 2 / 6;
+  
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: min-content repeat(auto-fill, minmax(min-content, 1fr));

@@ -1,5 +1,8 @@
 .purchaseSummary {
   grid-area: purchaseSummary;
+  grid-row: 3 / 4;
+  grid-column: 2 / 6;
+  
   grid-template-columns: repeat(2, minmax(min-content, 1fr));
   display: grid;
   align-items: center;
