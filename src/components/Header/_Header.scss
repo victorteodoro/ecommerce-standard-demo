@@ -1,6 +1,8 @@
 .header {
   background-image: linear-gradient(to right bottom, $color-red400, $color-red900);
   grid-area: header;
+  grid-row: 1 / 2;
+  grid-column: 1 / 7;
   position: sticky; // See link
   z-index: 1000;
   top: 0;

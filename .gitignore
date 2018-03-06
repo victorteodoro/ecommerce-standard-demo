@@ -81,3 +81,7 @@ typings/
 
 # CSS files (since we're using Sass)
 src/**/*.css
+
+# Don't consider Emacs files
+\#*#
+**/*~

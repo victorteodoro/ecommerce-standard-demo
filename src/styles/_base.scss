@@ -35,11 +35,11 @@ body {
   @media screen and (min-width: 600px) {
     grid-template-rows: repeat(4, max-content);
     grid-template-columns: 1fr repeat(4, minmax(min-content, 25rem)) 1fr;
-    grid-template-areas:
-      "header header header header header header"
-      ". carrousel carrousel carrousel carrousel ."
-      ". productArea productArea productArea productArea ."
-      "footer footer footer footer footer footer";
+    /* grid-template-areas: */
+    /*   "header header header header header header" */
+    /*   ". carrousel carrousel carrousel carrousel ." */
+    /*   ". productArea productArea productArea productArea ." */
+    /*   "footer footer footer footer footer footer"; */
   }
 
   @media screen and (max-width: 600px) {
