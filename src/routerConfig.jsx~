@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Footer, ProductArea, Carousel } from "./components/";
+import { Header, Footer, PurchaseSummary, CartProducts } from "./components/";
 
 const routes = [
   {
@@ -8,8 +8,8 @@ const routes = [
     render: () => (
       <div className="container">
         <Header />
-        <Carousel />
-        <ProductArea />
+        <CartProducts />
+        <PurchaseSummary />
         <Footer />
       </div>
     )

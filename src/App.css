@@ -246,7 +246,9 @@ body {
   display: grid;
   align-items: center;
   justify-items: center;
-  grid-area: productArea; }
+  grid-area: productArea;
+  grid-row: 3 / 4;
+  grid-column: 2 / 6; }
   @media (max-width: 700px) {
     .productArea {
       grid-template-columns: minmax(min-content, 1fr);
@@ -347,7 +349,9 @@ body {
     grid-template-columns: repeat(2, 1fr); }
 
 .carrousel {
-  grid-area: carrousel; }
+  grid-area: carrousel;
+  grid-row: 2 / 3;
+  grid-column: 2 / 6; }
   @media screen and (max-width: 600px) {
     .carrousel {
       height: 20rem;
