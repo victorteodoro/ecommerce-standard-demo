@@ -1,5 +1,11 @@
 import React from 'react';
-import { Header, Footer, PurchaseSummary, CartProducts } from "./components/";
+import {
+  Header,
+  Footer,
+  CartProducts,
+  PurchaseSummary,
+  PurchaseAndShippingSummary
+} from "./components/";
 
 const routes = [
   {
@@ -8,8 +14,7 @@ const routes = [
     render: () => (
       <div className="container">
         <Header />
-        <CartProducts />
-        <PurchaseSummary />
+        <PurchaseAndShippingSummary />
         <Footer />
       </div>
     )

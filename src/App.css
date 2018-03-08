@@ -544,3 +544,27 @@ img {
       align-items: center; }
       .purchaseSummaryDetails .productCostDetail .productCost {
         justify-self: end; }
+
+.purchaseAndShippingSummary {
+  grid-row: 2 / 3;
+  grid-column: 2 / 6;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(min-content, 1fr));
+  grid-template-rows: minmax(min-content, 1fr);
+  background-color: #00897b;
+  height: 30rem;
+  width: 100%; }
+
+.purchaseSummary {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  background-color: #000;
+  height: 30rem;
+  width: 100%; }
+
+.shippingDetails {
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+  background-color: #4a148c;
+  height: 30rem;
+  width: 100%; }

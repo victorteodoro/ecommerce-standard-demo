@@ -1,0 +1,16 @@
+.purchaseAndShippingSummary {
+  // Global grid positioning
+  grid-row: 2 / 3;
+  grid-column: 2 / 6;
+
+  // Set the inner grid
+  display: grid;
+  grid-template-columns: repeat(2, minmax(min-content, 1fr));
+  grid-template-rows: minmax(min-content, 1fr);
+
+
+  // For protoyping
+  background-color: $color-red600;
+  height: 30rem;
+  width: 100%;
+}
