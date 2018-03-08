@@ -3,7 +3,7 @@ import React from 'react';
 
 
 const PurchaseSummary = () => (
-  <div className="purchaseSummary">
+  <div className="purchaseSummaryCheckout">
   </div>
 );
 
