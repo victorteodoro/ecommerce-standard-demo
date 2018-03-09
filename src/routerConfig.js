@@ -4,7 +4,8 @@ import {
   Footer,
   CartProducts,
   PurchaseSummary,
-  PurchaseAndShippingSummary
+  PurchaseAndShippingSummary,
+  PaymentDetails
 } from "./components/";
 
 const routes = [
@@ -15,6 +16,7 @@ const routes = [
       <div className="container">
         <Header />
         <PurchaseAndShippingSummary />
+        <PaymentDetails />
         <Footer />
       </div>
     )
