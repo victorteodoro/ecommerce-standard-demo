@@ -121,7 +121,7 @@ class PaymentDetails extends React.Component {
           <div className="paymentCard">
             &nbsp;
             <PaymentCard
-               bank={this.state.cardBrand || "itau"}
+               bank={this.state.cardBrand || "santander"}
                model="normal"
                type="black"
                brand={this.state.cardBrand}
