@@ -21,3 +21,12 @@
 @mixin creamGradientBackground {
   background-image: linear-gradient(to right bottom, $color-grey200, $color-cream);
 }
+
+@mixin firstColumn {
+  grid-column: 1 / 2;
+}
+
+@mixin secondColumn {
+  grid-column: 2 / 3;
+  justify-self: end;
+}

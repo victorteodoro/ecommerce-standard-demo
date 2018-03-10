@@ -24,7 +24,7 @@ body {
   line-height: 1.6;
 }
 
-.container {
+.generalContainer {
   // Basic settings
   display: grid;
   grid-row-gap: 2rem;
@@ -33,7 +33,7 @@ body {
 
   // Screen-width specific config
   @media screen and (min-width: 600px) {
-    grid-template-rows: repeat(4, max-content);
+    grid-template-rows: repeat(3, min-content) minmax(min-content, 1fr);
     grid-template-columns: 1fr repeat(4, minmax(min-content, 25rem)) 1fr;
     /* grid-template-areas: */
     /*   "header header header header header header" */

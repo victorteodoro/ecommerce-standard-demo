@@ -1,13 +1,13 @@
 // General imports from libs
-import React from "react";
-import { map, addIndex } from "ramda";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React from 'react';
+import { map, addIndex } from 'ramda';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 // Import routes
-import routes from "./routerConfig";
+import routes from './routerConfig';
 
 // Import styles
-import "./App.css";
+import './App.css';
 
 const mapIndexed = addIndex(map);
 

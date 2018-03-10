@@ -1,0 +1,29 @@
+.shippingDetails {
+  // Position in outer grid
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+
+  // Styling
+  padding: 1.3rem;
+  width: 100%;
+
+  // Set position in outer grid according to screen size
+  @media screen and (min-width: 700px) {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+
+    border-left: 1px dashed $color-red900;
+  }
+
+  @media screen and (max-width: 700px) {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+
+    border-top: 1px dashed $color-red900;
+  }
+
+  .shippingDetailsTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+}
