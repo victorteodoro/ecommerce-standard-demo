@@ -13,7 +13,7 @@ const routes = [
     path: "/",
     exact: true,
     render: () => (
-      <div className="container">
+      <div className="generalContainer">
         <Header />
         <PurchaseAndShippingSummary />
         <PaymentDetails />
