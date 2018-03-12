@@ -2,6 +2,11 @@
   grid-column: 2 / 6;
   grid-row: 3 / 4;
 
+  @media screen and (max-width: 600px) {
+    grid-row: 3 / 4;
+    grid-column: 1 / 5;
+  }
+
   // Set the inner flex-box
   display: flex;
   flex-direction: column;

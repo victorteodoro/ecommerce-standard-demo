@@ -2,8 +2,8 @@ import React from 'react';
 import {
   Header,
   Footer,
-  CartProducts,
-  PurchaseSummary,
+  // CartProducts,
+  // PurchaseSummary,
   PurchaseAndShippingSummary,
   PaymentDetails
 } from "./components/";
