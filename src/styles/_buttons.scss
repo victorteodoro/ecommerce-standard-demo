@@ -1,17 +1,19 @@
 .btn {
+  color: $color-red700;
   font-family: $font-display;
-  font-weight: 500;
-  margin: 2rem .2rem;
-  padding: .6rem;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  box-shadow: 0 2px 2px rgba($color-black, 0.3);
+  font-size: 1.4rem;
+  font-weight: 400;
+  padding: .5rem;
+  border: 1px solid $color-red700;
+  border-radius: 1rem;
+  box-shadow: 0 1px 1px rgba($color-black, 0.3);
   transition: all .1s;
 
+  width: 80%;
+
   &:hover {
-    @include creamGradientBackground();
-    color: $color-red700;
-    border: 1px solid $color-red700;    
+    color: $color-cream;
+    background-color: $color-red700;    
   }
 
   &:active {

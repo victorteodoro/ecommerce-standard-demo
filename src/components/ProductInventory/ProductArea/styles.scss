@@ -1,11 +1,6 @@
 @import "../../../styles/colors";
-@import "../ProductCard/styles.scss";
 
 .productArea {
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  grid-area: productArea;
   grid-row: 3 / 4;
   grid-column: 2 / 6;
 
@@ -13,6 +8,10 @@
     grid-row: 3 / 4;
     grid-column: 1 / 5;
   }
+
+  display: grid;
+  align-items: center;
+  justify-items: center;
   
   @media (max-width: 700px) {
     grid-template-columns: minmax(min-content, 1fr);
@@ -26,6 +25,8 @@
 
   @media (min-width: 900px) {
     grid-template-columns: repeat(3, minmax(min-content, 1fr));
-    grid-template-rows: auto;
+    grid-template-rows: min-content;
   }
 }
+
+@import "../ProductCard/styles.scss";

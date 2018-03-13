@@ -3,32 +3,33 @@ import React from 'react';
 
 // Import styles
 import styles from './styles.css';
+console.log(styles);
 
 const PurchaseSummary = () => (
-  <section styles={styles.purchaseSummary}>
-    <div styles={styles.purchaseSummaryActions}>
-      <button className="btn btnRed">
-        Continuar comprando
+  <section className={styles.purchaseSummary}>
+    <div className={styles.purchaseSummaryActions}>
+      <button className={`${styles.btn} ${styles.btnWhite}`}>
+        Continuar compra
       </button>
-      <button className="btn btnRed">
+      <button className={`${styles.btn} ${styles.btnWhite}`}>
         Finalizar compra
       </button>
     </div>
-    <div styles={styles.purchaseSummaryDetails}>
-      <div styles={styles.productCostDetail}>
-        <p styles={styles.productName}>1. Smartphone Motorola G5S</p>
-        <p styles={styles.productCost}>R$ 960,00</p>
+    <div className={styles.purchaseSummaryDetails}>
+      <div className={styles.productCostDetail}>
+        <p className={styles.productName}>1. Smartphone Motorola G5S</p>
+        <p className={styles.productCost}>R$ 960,00</p>
       </div>
-      <div styles={styles.productCostDetail}>
+      <div className={styles.productCostDetail}>
 
       </div>
-      <div styles={styles.productCostDetail}>
+      <div className={styles.productCostDetail}>
 
       </div>
-      <div styles={styles.productShippingCost}>
+      <div className={styles.productShippingCost}>
 
       </div>
-      <div styles={styles.productTotalCost}>
+      <div className={styles.productTotalCost}>
 
       </div>
     </div>
