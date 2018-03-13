@@ -5,8 +5,10 @@ import React from 'react';
 import PurchaseSummary from '../PurchaseSummary/';
 import ShippingDetails from '../ShippingDetails/';
 
+import styles from './styles.css';
+
 const PurchaseAndShippingSummary = () => (
-  <div className="purchaseAndShippingSummary">
+  <div className={styles.purchaseAndShippingSummary}>
     <PurchaseSummary />
     <ShippingDetails />
   </div>

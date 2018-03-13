@@ -5,8 +5,11 @@ import {
   FormControl
 } from 'react-bootstrap';
 
+// Import styles
+import styles from './styles.css';
+
 const CardForm = props => (
-  <form className="cardForm">
+  <form className={styles.cardForm}>
     <FormGroup validationState={props.validationState()}>
       <ControlLabel>Número do cartão</ControlLabel>
       <FormControl
@@ -38,7 +41,7 @@ const CardForm = props => (
 
     <FormGroup
        validationState={props.validationState()}
-       className="expiryMonth"
+       className={styles.expiryMonth}
        >
       <ControlLabel>Mês</ControlLabel>
       <FormControl
@@ -54,7 +57,7 @@ const CardForm = props => (
 
     <FormGroup
        validationState={props.validationState()}
-       className="expiryYear"
+       className={styles.expiryYear}
        >
       <ControlLabel>Ano</ControlLabel>
       <FormControl
@@ -70,7 +73,7 @@ const CardForm = props => (
 
     <FormGroup
        validationState={props.validationState()}
-       className="CVV"
+       className={styles.CVV}
        >
       <ControlLabel>CVV</ControlLabel>
       <FormControl

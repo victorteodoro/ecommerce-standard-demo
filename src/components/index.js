@@ -1,5 +1,5 @@
-import Header from './Header/Header';
-import Footer from './Footer/Footer';
+import Header from './Header/';
+import Footer from './Footer/';
 import { ProductArea, Carousel } from './ProductInventory/';
 import { CartProducts, PurchaseSummary } from './Cart/';
 import { PurchaseAndShippingSummary, PaymentDetails } from './Checkout/';

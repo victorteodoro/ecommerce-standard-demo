@@ -1,3 +1,5 @@
+@import "../../styles/colors";
+
 .header {
   background-image: linear-gradient(to right bottom, $color-red400, $color-red900);
   grid-area: header;

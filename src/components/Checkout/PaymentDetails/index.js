@@ -105,24 +105,24 @@ class PaymentDetails extends React.Component {
   
   render() {    
     return(
-      <Tabs styles={style.paymentDetailsTabs}>
-        <TabList styles={style.paymentMethodTabList}>
-          <Tab className="credit">
+      <Tabs className={style.paymentDetailsTabs}>
+        <TabList className={style.paymentMethodTabList}>
+          <Tab className={style.credit}>
             <i className="far fa-credit-card fa-3x"></i>
             Crédito
           </Tab>
-          <Tab styles={style.boleto}>
+          <Tab className={style.boleto}>
             <i className="fa fa-barcode fa-3x"></i>
             Boleto
           </Tab>
-          <Tab styles={style.debit}>
+          <Tab className={style.debit}>
             <i className="fas fa-credit-card fa-3x"></i>
             Débito
           </Tab>
         </TabList>
 
-        <TabPanel styles={style.credictCardForm}>
-          <div styles={style.paymentCard}>
+        <TabPanel className={style.credictCardForm}>
+          <div className={style.paymentCard}>
             &nbsp;
             <PaymentCard
                bank={this.state.cardBrand || "santander"}
@@ -151,10 +151,10 @@ class PaymentDetails extends React.Component {
                />
           </div>
         </TabPanel>
-        <TabPanel styles={style.boletoForm}>
+        <TabPanel className={style.boletoForm}>
           <div>Formulário do boleto</div>
         </TabPanel>
-        <TabPanel styles={style.debitCardForm}>
+        <TabPanel className={style.debitCardForm}>
           <div>Formulário do cartão de débito</div>
         </TabPanel>
       </Tabs>

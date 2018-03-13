@@ -1,24 +1,15 @@
 import React from 'react';
 import {
-  Header,
-  Footer,
-  // CartProducts,
-  // PurchaseSummary,
-  PurchaseAndShippingSummary,
-  PaymentDetails
-} from "./components/";
+  CheckoutScreen
+} from './containers/';
+
 
 const routes = [
   {
     path: "/",
     exact: true,
     render: () => (
-      <div className="generalContainer">
-        <Header />
-        <PurchaseAndShippingSummary />
-        <PaymentDetails />
-        <Footer />
-      </div>
+      <CheckoutScreen />
     )
   }
 ];

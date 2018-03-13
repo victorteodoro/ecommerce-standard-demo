@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 // Import routes
 import routes from './routerConfig';
 
-// Import styles
 import './App.css';
 
 const mapIndexed = addIndex(map);
