@@ -16,7 +16,11 @@ import {
   split
 } from 'ramda';
 
+// Import components
 import CardForm from '../CardForm/';
+
+// Import styles
+import style from './styles.css';
 
 const lookup = lookupFunction();
 
@@ -101,24 +105,24 @@ class PaymentDetails extends React.Component {
   
   render() {    
     return(
-      <Tabs className="paymentDetailsTabs">
-        <TabList className="paymentMethodTabList">
+      <Tabs styles={style.paymentDetailsTabs}>
+        <TabList styles={style.paymentMethodTabList}>
           <Tab className="credit">
             <i className="far fa-credit-card fa-3x"></i>
             Crédito
           </Tab>
-          <Tab className="boleto">
+          <Tab styles={style.boleto}>
             <i className="fa fa-barcode fa-3x"></i>
             Boleto
           </Tab>
-          <Tab className="debit">
+          <Tab styles={style.debit}>
             <i className="fas fa-credit-card fa-3x"></i>
             Débito
           </Tab>
         </TabList>
 
-        <TabPanel className="credictCardForm">
-          <div className="paymentCard">
+        <TabPanel styles={style.credictCardForm}>
+          <div styles={style.paymentCard}>
             &nbsp;
             <PaymentCard
                bank={this.state.cardBrand || "santander"}
@@ -147,10 +151,10 @@ class PaymentDetails extends React.Component {
                />
           </div>
         </TabPanel>
-        <TabPanel className="boletoForm">
+        <TabPanel styles={style.boletoForm}>
           <div>Formulário do boleto</div>
         </TabPanel>
-        <TabPanel className="debitCardForm">
+        <TabPanel styles={style.debitCardForm}>
           <div>Formulário do cartão de débito</div>
         </TabPanel>
       </Tabs>
