@@ -1,16 +1,16 @@
-Como construir novas demos
+How to contribute (new demos or upgrades)
 ================================
 
 ### Branch naming scheme
 When naming your new branches, follow this structure:
 
 ```
-branch-type/branch-meaninful-description
+branch-type/branch-meaningful-description
 ```
 
 Where the types can be:
 
-- **refactor:** to refactor stuff without changinf the functionality
+- **refactor:** to refactor stuff without changing the functionality
 - **feature:** to add new features (screens, payment types, etc)
 - **doc:** to add documentation of any kind
 - **fix:** to add bug fixes
