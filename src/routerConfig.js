@@ -2,7 +2,8 @@ import React from 'react';
 import {
   CheckoutScreen,
   CartScreen,
-  InventoryScreen
+  InventoryScreen,
+  SignatureScreen
 } from './containers/';
 
 
@@ -19,6 +20,13 @@ const routes = [
     exact: true,
     render: () => (
       <CartScreen />
+    )
+  },
+  {
+    path: "/signature/",
+    exact: true,
+    render: () => (
+      <SignatureScreen />
     )
   },
   {
