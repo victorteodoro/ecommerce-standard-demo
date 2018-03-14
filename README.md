@@ -1,9 +1,11 @@
+
+
 <img 
 	src="./risotto.png"
-	style="width: 60px; height: 60px;">
-
-Risotto
-==================================
+	width="60" height="60"
+	align="left"> 
+	
+## Risotto
 
 This is the bundle of web demos of Stone Co.'s Solutions team. In them we simulate the websites of some our customers to show how our payment solutions can integrate better into their scenarios.
 
