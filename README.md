@@ -1,6 +1,6 @@
 <img 
 	src="./risotto.png"
-	style="display:inline; float:left; width: 24px; height: 24px;">
+	style="width: 60px; height: 60px;">
 
 Risotto
 ==================================
@@ -37,4 +37,4 @@ yarn start
 ```
 
 ### Credits
-<div>Icon made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+Icon made by [Freepik](http://www.freepik.com) from [Flaticon](https://www.flaticon.com/) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
