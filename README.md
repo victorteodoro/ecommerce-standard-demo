@@ -1,3 +1,7 @@
+<img 
+	src="./risotto.png"
+	style="display:inline; float:left; width: 24px; height: 24px;">
+
 Risotto
 ==================================
 
