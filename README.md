@@ -1,9 +1,11 @@
+
+
 <img 
 	src="./risotto.png"
-	style="display:inline; float:left; width: 24px; height: 24px;">
-
-Risotto
-==================================
+	width="60" height="60"
+	align="left"> 
+	
+## Risotto
 
 This is the bundle of web demos of Stone Co.'s Solutions team. In them we simulate the websites of some our customers to show how our payment solutions can integrate better into their scenarios.
 
@@ -37,4 +39,4 @@ yarn start
 ```
 
 ### Credits
-<div>Icon made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+Icon made by [Freepik](http://www.freepik.com) from [Flaticon](https://www.flaticon.com/) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
