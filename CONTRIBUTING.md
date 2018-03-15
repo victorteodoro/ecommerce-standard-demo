@@ -54,7 +54,7 @@ One additional very nice facet of React is the choice of its developers to embra
 CSS is great. But Sass makes writing it even better. So we use it a lot. Get wind of it [here](https://sass-lang.com/guide).
 
 #### CSS Modules
-Sass still compiles to globally scoped CSS. With the help of CSS Modules, we can get local styling with all the benefits of regular CSS - pseudo-classes, transforms, animations, &c. Read more about on its [Github repo](https://github.com/css-modules/css-modules) or, for a more didatic tutorial of how to configure it with Webpack, see [here](https://medium.com/@kswanie21/css-modules-sass-in-create-react-app-37c3152de9).
+Sass still compiles to globally scoped CSS. With the help of CSS Modules, we can get local styling with all the benefits of regular CSS - pseudo-classes, transforms, animations, &c. Read more about it on its [Github repo](https://github.com/css-modules/css-modules). Or, for a more didatic tutorial of how to configure it with Webpack, look [here](https://medium.com/@kswanie21/css-modules-sass-in-create-react-app-37c3152de9).
 
 ### References
 Some good practices followed by this project are:
