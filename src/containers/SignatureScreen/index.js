@@ -3,17 +3,20 @@ import React from 'react';
 import {
   Header,
   Footer,
-  CartProducts,
-  PurchaseSummary
+  PlansArea,
 } from '../../components/';
+
+import CardsArea from '../CardsArea/';
 
 import styles from './styles.css';
 
 const SignatureScreen = () => (
+// const SignatureScreen = ({ planList }) => (
   <div className={styles.generalContainer}>
     <Header />
-    <CartProducts />
-    <PurchaseSummary />
+    {/* <PlansArea /> */}
+    <CardsArea />
+    {/* <PlansArea planList={planList}/> */}
     <Footer />
   </div>
 );

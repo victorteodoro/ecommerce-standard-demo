@@ -5,7 +5,7 @@ import {
   InventoryScreen,
   SignatureScreen
 } from './containers/';
-
+// import planList from '.....'
 
 const routes = [
   {
@@ -27,6 +27,7 @@ const routes = [
     exact: true,
     render: () => (
       <SignatureScreen />
+      // <SignatureScreen planList={planList}/>
     )
   },
   {
