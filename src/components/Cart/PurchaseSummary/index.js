@@ -1,9 +1,9 @@
 // General imports from libs
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Import styles
 import styles from './styles.css';
-console.log(styles);
 
 const PurchaseSummary = () => (
   <section className={styles.purchaseSummary}>
@@ -11,9 +11,11 @@ const PurchaseSummary = () => (
       <button className={`${styles.btn} ${styles.btnWhite}`}>
         Continuar compra
       </button>
-      <button className={`${styles.btn} ${styles.btnWhite}`}>
-        Finalizar compra
-      </button>
+      <Link to="/ecommerce/checkout">
+        <button className={`${styles.btn} ${styles.btnWhite}`}>
+          Finalizar compra
+        </button>
+      </Link>
     </div>
     <div className={styles.purchaseSummaryDetails}>
       <div className={styles.productCostDetail}>

@@ -1,20 +1,12 @@
+// General imports from libs
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import PaymentCard from 'react-payment-card-component';
-import lookupFunction from 'binlookup';
 
-import {
-  cond,
-  equals,
-  compose,
-  path,
-  curry,
-  applySpec,
-  prop,
-  toLower,
-  defaultTo,
-  split
-} from 'ramda';
+// Imports from internal helper funcs
+import handleChangeFromInput from '../../../helpers/updateStateFromInput';
+import flipPagarmeCard from '../../../helpers/flipPagarmeCard';
+import checkBinInfo from '../../../helpers/checkBinInfo';
 
 // Import components
 import CardForm from '../CardForm/';
@@ -22,17 +14,11 @@ import CardForm from '../CardForm/';
 // Import styles
 import style from './styles.css';
 
-const lookup = lookupFunction();
-
 class PaymentDetails extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.handleChange = this.handleChange.bind(this);
     this.getValidationState = this.getValidationState.bind(this);
-    this.updateState = this.updateState.bind(this);
-    this.checkBin = this.checkBin.bind(this);
-    this.updateStateFromBin = this.updateStateFromBin.bind(this);
 
     this.state = {
       cardNumber: '',
@@ -46,62 +32,24 @@ class PaymentDetails extends React.Component {
     };
   }
 
-  getValidationState() {
+  getValidationState = () => {
     const length = this.state.cardNumber.length;
     return length > 15 ? 'success' : null;
   }
 
-  checkInputType = (desiredType) => {    
-    return compose(
-      equals(desiredType),
-      path(['target', 'name'])
-    );
-  };
-
-  updateState = curry((desiredProperty, event) => {    
-    this.setState({
-      [desiredProperty]: event.target.value
-    });
-  });
-
-  handleChange = cond([
-    [this.checkInputType('cardNumber'), this.updateState('cardNumber')],
-    [this.checkInputType('holderName'), this.updateState('holderName')],
-    [this.checkInputType('expiryMonth'), this.updateState('expiryMonth')],
-    [this.checkInputType('expiryYear'), this.updateState('expiryYear')],
-    [this.checkInputType('cvv'), this.updateState('cvv')]
-  ]);
-
-  flipCard = () => {
-    this.setState({
-      flipped: !this.state.flipped
-    });
-  }
-
-  checkBin = ({target: { value }}) => {
-    if(value.length > 5)
-      lookup(value)
-      .then(data => console.log(data) && data)
-      .then(this.updateStateFromBin);
-  }
-
-  updateStateFromBin = compose(
-    (binData) =>  this.setState(binData),
-    applySpec({
-      cardBrand: compose(
-        toLower,
-        defaultTo(''),
-        prop('scheme')
-      ),
-      cardBank: compose(
-        toLower,
-        (splittedName) => splittedName[0],
-        split(' '),
-        defaultTo(''),
-        path(['bank', 'name'])
-      )
-    })
+  // Setup helper functions
+  handleChange = handleChangeFromInput(
+    this,
+    [
+      'cardNumber',
+      'holderName',
+      'expiryMonth',
+      'expiryYear',
+      'cvv'
+    ]
   );
+  flipCard = flipPagarmeCard(this);
+  checkBin = checkBinInfo(this);
   
   render() {    
     return(
