@@ -18,8 +18,6 @@ When selling, we need ways to materialize solutions to prospects. The idea behin
 
 
 ### Getting Started
----
-
 ```sh
 # Clone it
 git clone git@github.com:victorteodoro/risotto.git
@@ -28,13 +26,13 @@ cd risotto
 # Install dependencies with npm
 npm i
 
-# Install dependencies with yarn
+# OR install dependencies with yarn
 yarn install
 
 # Start development server
 npm start
 
-# or
+# OR
 yarn start
 ```
 
