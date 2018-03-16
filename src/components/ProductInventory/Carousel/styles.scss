@@ -1,9 +1,6 @@
 @import "../../../styles/colors";
-@import "../../../../node_modules/slick-carousel/slick/slick.css";
-@import "../../../../node_modules/slick-carousel/slick/slick-theme.css";
 
-.carrousel {
-  grid-area: carrousel;
+.carousel {
   grid-row: 2 / 3;
   grid-column: 2 / 6;
 
@@ -21,64 +18,8 @@
     width: 100%;
   }
 
-  @media screen and (min-width: 899px) {
+  @media screen and (min-width: 900px) {
     height: 36rem;
     width: 100%;
   }
-}
-
-.bolitas {
-  position: absolute;
-  bottom: 20px;
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-
-.bolita {
-  background-color: rgba(255, 255, 255, 0.4);
-  width: 12px;
-  height: 12px;
-  border-radius: 100%;
-  border: 2px solid transparent;
-  margin: 0 10px;
-}
-
-.bolita.activa {
-  border-color: $color-purple900;
-}
-
-.carrousel {
-  overflow: hidden;
-  position: relative;
-}
-
-.carrousel,
-.carrousel img {
-  height: 60rem;
-  width: 100%;
-}
-
-.carrousel-images {
-  display: flex;
-  transition: all 0.6s;
-}
-
-img {
-  object-fit: cover;
-}
-
-.carrousel button {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto auto;
-  height: 30px;
-}
-
-.carrousel button.prev {
-  left: 30px;
-}
-.carrousel button.next {
-  right: 30px;
 }

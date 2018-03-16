@@ -5,13 +5,15 @@ import {
   InventoryScreen
 } from './containers/';
 
+// Import resources
+import carouselImgs from './resources/InventoryScreen/carouselImgs';
 
 const routes = [
   {
     path: "/",
     exact: true,
     render: () => (
-      <InventoryScreen />
+      <InventoryScreen carouselImgs={carouselImgs} />
     )
   },
   {
