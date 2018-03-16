@@ -12,7 +12,7 @@ import CardsArea from '../CardsArea/';
 
 //Importing assets
 import inputs from '../../resources/SignatureScreen/inputs'
-import { FrontCard, BackCard } from '../../components/';
+import { FrontCard, BackCard, RotatingCard } from '../../components/';
 
 //Importing styles
 import styles from './styles.css';
@@ -20,7 +20,7 @@ import styles from './styles.css';
 const mapIndexed = addIndex(map);
 
 const populateCards = input => (
-    <FrontCard inputs={input}/>
+    <RotatingCard inputs={input}/>
 );
   
 const SignatureScreen = () => (

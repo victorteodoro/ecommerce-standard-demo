@@ -1,4 +1,5 @@
 import img from '../img/motorola_g5s.png'
+import imgSmall from '../img/motorola_g5s_small.png'
 
 const inputs = [
     {
@@ -11,7 +12,8 @@ const inputs = [
                         experiências incríveis.Com câmera traseira Dupla de 13MP, ele
                         registra todos os seus momentos com precisão e nitidez.Já a câmera
                         frontal de 8MP com ângulo aberto faz selfies perfeitas.`,
-        img: img
+        img: img,
+        imgSmall: imgSmall
     },
     {
         name: "Smartphone Motorola G5Saaaa",
@@ -23,7 +25,8 @@ const inputs = [
                         experiências incríveis.Com câmera traseira Dupla de 13MP, ele
                         registra todos os seus momentos com precisão e nitidez.Já a câmera
                         frontal de 8MP com ângulo aberto faz selfies perfeitas.`,
-        img: img
+        img: img,
+        imgSmall: imgSmall
     },
     {
         name: "Smartphone Motorola G5Sbbbbbbb",
@@ -35,7 +38,8 @@ const inputs = [
                         experiências incríveis.Com câmera traseira Dupla de 13MP, ele
                         registra todos os seus momentos com precisão e nitidez.Já a câmera
                         frontal de 8MP com ângulo aberto faz selfies perfeitas.`,
-        img: img
+        img: img,
+        imgSmall: imgSmall
     },
     {
         name: "Smartphone Motorola G5Scccccc",
@@ -47,7 +51,8 @@ const inputs = [
                         experiências incríveis.Com câmera traseira Dupla de 13MP, ele
                         registra todos os seus momentos com precisão e nitidez.Já a câmera
                         frontal de 8MP com ângulo aberto faz selfies perfeitas.`,
-        img: img
+        img: img,
+        imgSmall: imgSmall
     }
 ];
 

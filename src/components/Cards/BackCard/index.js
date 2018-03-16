@@ -9,7 +9,7 @@ const BackCard = props => (
     <div className={styles.simpleCard}>
             <div className={styles.simpleCardBack}>
                 <img
-                    src={props.inputs.img}
+                    src={props.inputs.imgSmall}
                     alt={props.inputs.name}
                     className={styles.imgSmall}
                 />
