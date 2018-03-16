@@ -41,7 +41,7 @@ src
 |--resources
 ```
 
-In the `components` folder we keep our presentational components, while in the `containers` folder we keep our container ones (read more about it on the References section bellow.
+In the `components` folder we keep our presentational components, while in the `containers` folder we keep our container ones (read more about it on the <a href="#refrences">References</a> section bellow.
 
 In the `helpers` folder we keep the utilitary functions to make network requests, update the state based on forms, &c.
 
