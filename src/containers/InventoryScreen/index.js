@@ -9,7 +9,7 @@ import {
 
 import styles from './styles.css';
 
-const InventoryScreen = (props) => (
+const InventoryScreen = props => (
   <div className={styles.generalContainer}>
     <Header />
     <Carousel slides={props.carouselImgs} />

@@ -2,16 +2,16 @@ import React from 'react';
 
 import styles from './styles.css';
 
-const CarouselIndicator = (props) => (
+const CarouselIndicator = props => (
   <li>
-    <a 
+    <a
        className={
          props.index === props.activeIndex
            ? `${styles.indicator} ${styles.indicatorActive}`
            : styles.indicator
        }
        onClick={props.onClick}
-       >{""}</a>
+       >{''}</a>
   </li>
 );
 

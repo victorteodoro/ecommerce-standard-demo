@@ -30,14 +30,14 @@ class Carousel extends React.Component {
     e.preventDefault();
 
     let index = this.state.activeIndex;
-    let { slides } = this.props;
-    let slidesLength = slides.length;
+    const { slides } = this.props;
+    const slidesLength = slides.length;
 
     if (index < 1) {
       index = slidesLength;
     }
 
-    --index;
+    index -= 1;
 
     this.setState({
       activeIndex: index
@@ -47,15 +47,15 @@ class Carousel extends React.Component {
   goToNextSlide(e) {
     e.preventDefault();
 
-    let index = this.state.activeIndex;
-    let { slides } = this.props;
-    let slidesLength = slides.length - 1;
+    let { activeIndex: index } = this.state;
+    const { slides } = this.props;
+    const slidesLength = slides.length - 1;
 
     if (index === slidesLength) {
       index = -1;
     }
 
-    ++index;
+    index += 1;
 
     this.setState({
       activeIndex: index
@@ -65,33 +65,31 @@ class Carousel extends React.Component {
   render() {
     return (
       <div className={styles.carousel}>
-      <CarouselLeftArrow onClick={e => this.goToPrevSlide(e)} />
+        <CarouselLeftArrow onClick={e => this.goToPrevSlide(e)} />
 
-      <ul className={styles.carouselSlides}>
-      {this.props.slides.map((slide, index) =>
-        <CarouselSlide
-        key={index}
-        index={index}
-        activeIndex={this.state.activeIndex}
-        color={slide.color}
-        />
-      )}
+<ul className={styles.carouselSlides}>
+  {this.props.slides.map((slide, index) =>
+                         <CarouselSlide
+                              key={index}
+                              index={index}
+                              activeIndex={this.state.activeIndex}
+                              color={slide.color}
+                            />)}
       </ul>
 
-      <CarouselRightArrow onClick={e => this.goToNextSlide(e)} />
+        <CarouselRightArrow onClick={e => this.goToNextSlide(e)} />
 
-      <ul className={styles.carouselIndicators}>
-      {this.props.slides.map((slide, index) =>
-        <CarouselIndicator
-        key={index}
-        index={index}
-        activeIndex={this.state.activeIndex}
-        isActive={this.state.activeIndex===index}
-        onClick={e => this.goToSlide(index)}
-        />
-      )}
+        <ul className={styles.carouselIndicators}>
+        {this.props.slides.map((slide, index) =>
+                               <CarouselIndicator
+                               key={index}
+                               index={index}
+                               activeIndex={this.state.activeIndex}
+                               isActive={this.state.activeIndex === index}
+                               onClick={() => this.goToSlide(index)}
+                               />)}
       </ul>
-      </div>
+        </div>
     );
   }
 }

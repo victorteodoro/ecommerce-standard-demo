@@ -2,13 +2,13 @@ import React from 'react';
 
 import styles from './styles.css';
 
-const CarouselLeftArrow = (props) => (
+const CarouselLeftArrow = props => (
   <a
-     href="/"
+     href='/'
      className={`${styles.arrow} ${styles.arrowLeft}`}
      onClick={props.onClick}
      >
-    <span className="fa fa-2x fa-angle-left" />
+    <span className='fa fa-2x fa-angle-left' />
   </a>
 );
 

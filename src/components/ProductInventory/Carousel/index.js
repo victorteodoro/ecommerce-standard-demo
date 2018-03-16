@@ -5,7 +5,7 @@ import { Carousel } from 'react-responsive-carousel';
 // Import styles
 import styles from './styles.css';
 
-const RisottoCarousel = (props) => (
+const RisottoCarousel = props => (
   <div className={styles.carousel}>
     <Carousel>
       {props.imgSrcs.map((color, index) => (
@@ -15,8 +15,8 @@ const RisottoCarousel = (props) => (
            key={color}
            />
       ))}
-  </Carousel>
-    </div>
+    </Carousel>
+  </div>
 );
 
 export default RisottoCarousel;

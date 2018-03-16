@@ -19,6 +19,20 @@ class PaymentDetails extends React.Component {
     super(props, context);
 
     this.getValidationState = this.getValidationState.bind(this);
+    // Setup helper functions
+    this.handleChange = handleChangeFromInput(
+      this,
+      [
+        'cardNumber',
+        'holderName',
+        'expiryMonth',
+        'expiryYear',
+        'cvv'
+      ]
+    );
+
+    this.flipCard = flipPagarmeCard(this);
+    this.checkBin = checkBinInfo(this);
 
     this.state = {
       cardNumber: '',
@@ -32,39 +46,25 @@ class PaymentDetails extends React.Component {
     };
   }
 
-  getValidationState = () => {
-    const length = this.state.cardNumber.length;
+  getValidationState() {
+    const { length } = this.state.cardNumber;
     return length > 15 ? 'success' : null;
   }
 
-  // Setup helper functions
-  handleChange = handleChangeFromInput(
-    this,
-    [
-      'cardNumber',
-      'holderName',
-      'expiryMonth',
-      'expiryYear',
-      'cvv'
-    ]
-  );
-  flipCard = flipPagarmeCard(this);
-  checkBin = checkBinInfo(this);
-  
-  render() {    
-    return(
+  render() {
+    return (
       <Tabs className={style.paymentDetailsTabs}>
         <TabList className={style.paymentMethodTabList}>
           <Tab className={style.credit}>
-            <i className="far fa-credit-card fa-3x"></i>
+            <i className='far fa-credit-card fa-3x'></i>
             Crédito
           </Tab>
           <Tab className={style.boleto}>
-            <i className="fa fa-barcode fa-3x"></i>
+            <i className='fa fa-barcode fa-3x'></i>
             Boleto
           </Tab>
           <Tab className={style.debit}>
-            <i className="fas fa-credit-card fa-3x"></i>
+            <i className='fas fa-credit-card fa-3x'></i>
             Débito
           </Tab>
         </TabList>
@@ -73,9 +73,9 @@ class PaymentDetails extends React.Component {
           <div className={style.paymentCard}>
             &nbsp;
             <PaymentCard
-               bank={this.state.cardBrand || "santander"}
-               model="normal"
-               type="black"
+               bank={this.state.cardBrand || 'santander'}
+               model='normal'
+               type='black'
                brand={this.state.cardBrand}
                number={this.state.cardNumber}
                cvv={this.state.cvv}
@@ -85,7 +85,7 @@ class PaymentDetails extends React.Component {
                />
 
             <br />
-            
+
             <CardForm
                validationState={this.getValidationState}
                cardNumber={this.state.cardNumber}

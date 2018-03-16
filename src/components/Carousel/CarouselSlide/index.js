@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './styles.css';
 
-const CarouselSlide = (props) => (
+const CarouselSlide = props => (
   <li>
     <img
        alt={`Produto ${props.index}`}

@@ -1,4 +1,4 @@
-import ProductArea from  './ProductArea/';
+import ProductArea from './ProductArea/';
 import Carousel from './Carousel/';
 
 export {

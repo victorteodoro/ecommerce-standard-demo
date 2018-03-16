@@ -13,13 +13,13 @@ const CardForm = props => (
     <FormGroup validationState={props.validationState()}>
       <ControlLabel>Número do cartão</ControlLabel>
       <FormControl
-         type="text"
-         name="cardNumber"
+         type='text'
+         name='cardNumber'
          value={props.cardNumber}
-         placeholder="Número do cartão"
+         placeholder='Número do cartão'
          onChange={props.changeHandler}
          onBlur={props.checkBin}
-         maxLength="16"
+         maxLength='16'
          />
       <FormControl.Feedback />
     </FormGroup>
@@ -29,12 +29,12 @@ const CardForm = props => (
        >
       <ControlLabel>Nome do titular</ControlLabel>
       <FormControl
-         type="text"
-         name="holderName"
+         type='text'
+         name='holderName'
          value={props.holderName}
-         placeholder="Nome escrito no cartão"
+         placeholder='Nome escrito no cartão'
          onChange={props.changeHandler}
-         maxLength="40"
+         maxLength='40'
          />
       <FormControl.Feedback />
     </FormGroup>
@@ -45,12 +45,12 @@ const CardForm = props => (
        >
       <ControlLabel>Mês</ControlLabel>
       <FormControl
-         type="text"
-         name="expiryMonth"
+         type='text'
+         name='expiryMonth'
          value={props.expiryMonth}
-         placeholder="mm"
+         placeholder='mm'
          onChange={props.changeHandler}
-         maxLength="2"
+         maxLength='2'
          />
       <FormControl.Feedback />
     </FormGroup>
@@ -61,12 +61,12 @@ const CardForm = props => (
        >
       <ControlLabel>Ano</ControlLabel>
       <FormControl
-         type="text"
-         name="expiryYear"
+         type='text'
+         name='expiryYear'
          value={props.expiryYear}
-         placeholder="aa"
+         placeholder='aa'
          onChange={props.changeHandler}
-         maxLength="2"
+         maxLength='2'
          />
       <FormControl.Feedback />
     </FormGroup>
@@ -77,14 +77,14 @@ const CardForm = props => (
        >
       <ControlLabel>CVV</ControlLabel>
       <FormControl
-         type="text"
-         name="cvv"
+         type='text'
+         name='cvv'
          value={props.cvv}
-         placeholder="cvv"
+         placeholder='cvv'
          onChange={props.changeHandler}
          onFocus={props.flipCard}
          onBlur={props.flipCard}
-         maxLength="4"
+         maxLength='4'
          />
       <FormControl.Feedback />
     </FormGroup>

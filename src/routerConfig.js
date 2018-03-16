@@ -10,21 +10,21 @@ import carouselImgs from './resources/InventoryScreen/carouselImgs';
 
 const routes = [
   {
-    path: "/",
+    path: '/',
     exact: true,
     render: () => (
       <InventoryScreen carouselImgs={carouselImgs} />
     )
   },
   {
-    path: "/ecommerce/cart",
+    path: '/ecommerce/cart',
     exact: true,
     render: () => (
       <CartScreen />
     )
   },
   {
-    path: "/ecommerce/checkout",
+    path: '/ecommerce/checkout',
     exact: true,
     render: () => (
       <CheckoutScreen />
