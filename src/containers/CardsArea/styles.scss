@@ -3,6 +3,7 @@
 .cardArea {
   grid-row: 3 / 4;
   grid-column: 2 / 6;
+  grid-row-gap: 2rem;
 
   @media screen and (max-width: 600px) {
     grid-row: 3 / 4;

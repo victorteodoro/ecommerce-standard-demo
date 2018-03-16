@@ -6,17 +6,19 @@ import {
   PlansArea,
 } from '../../components/';
 
+// Importing components
 import CardsArea from '../CardsArea/';
 
+//Importing assets
+import inputs from '../../resources/SignatureScreen/inputs'
+
+//Importing styles
 import styles from './styles.css';
 
 const SignatureScreen = () => (
-// const SignatureScreen = ({ planList }) => (
   <div className={styles.generalContainer}>
     <Header />
-    {/* <PlansArea /> */}
-    <CardsArea />
-    {/* <PlansArea planList={planList}/> */}
+    <CardsArea inputs={inputs}/>
     <Footer />
   </div>
 );

@@ -1,29 +1,27 @@
 // General imports from libs
 import React from "react";
+import { map } from 'ramda';
 
 // Import styles
 import styles from './styles.css';
 
 // Import components
-import { FrontCard } from '../../components/';
+import { FrontCard, BackCard } from '../../components/';
 
-// Para tornar a card area mais dinamica, implementar funcoes abaixo
+// Function to create cards accordingly to the input file
+const populateCards = props => {
+    const list = props.inputs
+    return list.map(input=> (
+        <FrontCard key={input._id} inputs={input} />
+        // <BackCard key={input._id} inputs={input} />
+    ))
 
-// import { map } from 'ramda';
-// const buildCards = (card) => (
-//   <Card name={card.name} description={card.description} />
-// );
+};
 
-/* {map(buildCards, planList)}
-aaa
-*/
-
-const CardsArea = () => (
-    // const PlansArea = ({ planList }) => (
+//Actual rendering of the cards area
+const CardsArea = props => (
     <section className={styles.cardArea}>
-        <FrontCard />
-        <FrontCard />
-        <FrontCard />
+        {populateCards(props)}
     </section>
 );
 

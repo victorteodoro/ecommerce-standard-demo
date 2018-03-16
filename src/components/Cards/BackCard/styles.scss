@@ -15,8 +15,8 @@
 
   position: relative;
 
-  &Front {
-    // Defines the style of front cards
+  &Back {
+      // Defines the style of back cards
     @include centerElement();
 
     height: 100%;
@@ -29,23 +29,23 @@
     overflow: hidden;
 
     transition: all 0.4s ease;
-
+    
     display: grid;
-    grid-template-rows: 2fr 1fr;
+    grid-template-rows: 1fr 4fr;
     align-items: center;
     justify-items: center;
 
+    transform: translate(-50%, -50%) rotateY(0deg);
     border: 2px solid $color-red700;
   }
-  
-  &FrontDescription {
-    align-self: center;
+
+  &BackDescription {
+    align-self: baseline;
     text-align: center;
 
-    border-top: 2px solid $color-red700;
-    height: 20rem;
+    height: 50rem;
     width: 100%;
-    padding: 1rem;
+    color: $color-red700;
 
     /* background-image: linear-gradient( */
     /*   to right bottom, */
@@ -55,19 +55,40 @@
 
     background-color: $color-cream;
 
-    .name {
-      font-size: 1.7rem;
+    .backName {
+      font-size: 2rem;
       font-weight: 700;
     }
 
-    .shortSpecs {
-      font-size: 1.2rem;
-      font-weight: 300;
+    .longSpecs {
+      font-size: 1.3rem;
+      font-weight: 500;
+      text-align: center;
+      padding: 0.2rem 1rem;
     }
 
-    .priceBig {
+    .backPriceBig {
       font-size: 2.1rem;
       font-weight: 700;
     }
+
+    .backPriceInstallments {
+      
+    }
+  }
+
+  .imgSmall {
+    height: 10rem;
+    // width: 100%;
+    padding: 1rem;
+
+    justify-self: center;
+  }
+
+  .buyBtns {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(2, 1fr);
   }
 }

@@ -1,5 +1,5 @@
 import Header from './Header/';
-import { FrontCard } from './Cards/';
+import { FrontCard, BackCard } from './Cards/';
 import Footer from './Footer/';
 import { ProductArea } from './ProductInventory/';
 import { PlansArea } from './PlansInventory/';
@@ -8,6 +8,7 @@ import { PurchaseAndShippingSummary, PaymentDetails } from './Checkout/';
 
 export {
   FrontCard,
+  BackCard,
   Header,
   Footer,
   ProductArea,
