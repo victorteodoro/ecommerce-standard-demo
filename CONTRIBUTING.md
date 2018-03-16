@@ -14,6 +14,7 @@ Where the types can be:
 - **feature:** to add new features (screens, payment types, etc)
 - **doc:** to add documentation of any kind
 - **fix:** to add bug fixes
+- **chore:** to add things like linters, configs, genral cleaning up, &c
 
 ### Commit naming scheme
 When commiting, don't use the commit message option
