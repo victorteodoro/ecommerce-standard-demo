@@ -18,6 +18,7 @@
     "react"
   ],
   "rules": {
+    "linebreak-style": 0,
     "semi": ["error", "always"],
     "comma-dangle": ["error", "never"],
     "function-paren-newline": ["error", "consistent"],
@@ -35,6 +36,6 @@
     "react/jsx-no-undef": "error",
     "react/jsx-tag-spacing": ["error", { "beforeSelfClosing": "always" }],
     "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error",
+    "react/jsx-uses-vars": "error"
   }
 }
