@@ -11,7 +11,7 @@ const PurchaseSummary = () => (
       <button className={`${styles.btn} ${styles.btnWhite}`}>
         Continuar compra
       </button>
-      <Link to="/ecommerce/checkout">
+      <Link to='/ecommerce/checkout'>
         <button className={`${styles.btn} ${styles.btnWhite}`}>
           Finalizar compra
         </button>

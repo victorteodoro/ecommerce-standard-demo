@@ -2,7 +2,7 @@ import Header from './Header/';
 import { FrontCard, BackCard, RotatingCard } from './Cards/';
 import Footer from './Footer/';
 import { ProductArea } from './ProductInventory/';
-import { PlansArea } from './PlansInventory/';
+import Carousel from './Carousel/';
 import { CartProducts, PurchaseSummary } from './Cart/';
 import { PurchaseAndShippingSummary, PaymentDetails } from './Checkout/';
 
@@ -12,8 +12,8 @@ export {
   BackCard,
   Header,
   Footer,
+  Carousel,
   ProductArea,
-  PlansArea,
   CartProducts,
   PurchaseSummary,
   PurchaseAndShippingSummary,

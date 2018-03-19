@@ -5,18 +5,20 @@ import {
   InventoryScreen,
   SignatureScreen
 } from './containers/';
-// import planList from '.....'
+
+// Import resources
+import carouselImgs from './resources/InventoryScreen/carouselImgs';
 
 const routes = [
   {
-    path: "/",
+    path: '/',
     exact: true,
     render: () => (
-      <InventoryScreen />
+      <InventoryScreen carouselImgs={carouselImgs} />
     )
   },
   {
-    path: "/ecommerce/cart",
+    path: '/ecommerce/cart',
     exact: true,
     render: () => (
       <CartScreen />
@@ -31,7 +33,7 @@ const routes = [
     )
   },
   {
-    path: "/ecommerce/checkout",
+    path: '/ecommerce/checkout',
     exact: true,
     render: () => (
       <CheckoutScreen />

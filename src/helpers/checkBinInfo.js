@@ -12,9 +12,9 @@ import {
 
 const lookUp = lookUpFunc();
 
-const updateStateFromBin = (componentThis) => (
+const updateStateFromBin = componentThis => (
   compose(
-    (binData) =>  componentThis.setState(binData),
+    binData => componentThis.setState(binData),
     applySpec({
       cardBrand: compose(
         toLower,
@@ -23,7 +23,7 @@ const updateStateFromBin = (componentThis) => (
       ),
       cardBank: compose(
         toLower,
-        (splittedName) => splittedName[0],
+        splittedName => splittedName[0],
         split(' '),
         defaultTo(''),
         path(['bank', 'name'])
@@ -32,10 +32,11 @@ const updateStateFromBin = (componentThis) => (
   )
 );
 
-const checkBinInfo = curry((componentThis, {target: { value }}) => {
-  if(value.length > 5)
+const checkBinInfo = curry((componentThis, { target: { value } }) => {
+  if (value.length > 5) {
     lookUp(value)
-    .then(updateStateFromBin(componentThis));
+      .then(updateStateFromBin(componentThis));
+  }
 });
 
 export default checkBinInfo;

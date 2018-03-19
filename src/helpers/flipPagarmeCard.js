@@ -1,4 +1,4 @@
-const flipPagarmeCard = (componentThis) => (
+const flipPagarmeCard = componentThis => (
   () => (
     componentThis.setState({
       flipped: !componentThis.state.flipped

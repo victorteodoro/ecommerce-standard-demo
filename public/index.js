@@ -1,33 +1,33 @@
 $(document).ready(() => {
-  var carrousel = document.querySelector("#carrousel");
-  var carrito = document.querySelector("#carrousel-images");
-  var bolitas = document.querySelector("#bolitas");
+  const carrousel = document.querySelector('#carrousel');
+  const carrito = document.querySelector('#carrousel-images');
+  const bolitas = document.querySelector('#bolitas');
 
-  var imagenActual = 0;
+  let imagenActual = 0;
 
-  var cantidadImagenes = document.querySelectorAll(".carrousel img").length;
+  const cantidadImagenes = document.querySelectorAll('.carrousel img').length;
 
-  document.querySelector("button.prev").addEventListener("click", function() {
+  document.querySelector('button.prev').addEventListener('click', () => {
     if (imagenActual > 0) {
       imagenActual--;
     } else {
       imagenActual = cantidadImagenes - 1;
     }
     carrito.style.transform =
-      "translateX(" + -carrousel.offsetWidth * imagenActual + "px)";
+      `translateX(${-carrousel.offsetWidth * imagenActual}px)`;
   });
 
-  document.querySelector("button.next").addEventListener("click", function() {
+  document.querySelector('button.next').addEventListener('click', () => {
     if (imagenActual < cantidadImagenes - 1) {
       imagenActual++;
     } else {
       imagenActual = 0;
     }
     carrito.style.transform =
-      "translateX(" + -carrousel.offsetWidth * imagenActual + "px)";
+      `translateX(${-carrousel.offsetWidth * imagenActual}px)`;
   });
 
-  carrito.addEventListener("transitionend", function() {
-    console.log("fin de la transition");
+  carrito.addEventListener('transitionend', () => {
+    console.log('fin de la transition');
   });
 });

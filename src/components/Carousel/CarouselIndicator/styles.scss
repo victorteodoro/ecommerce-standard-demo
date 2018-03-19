@@ -1,0 +1,19 @@
+.indicator {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background-color: #111;
+  cursor: pointer;
+  opacity: .15;
+  transition: opacity .15s cubic-bezier(.4, 0, 1, 1);
+
+  &:hover {
+    opacity: .5;
+  }
+
+  &Active {
+    &:hover {
+      opacity: .75;
+    }
+  }
+}

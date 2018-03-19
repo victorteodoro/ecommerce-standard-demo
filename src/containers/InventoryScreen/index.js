@@ -4,15 +4,15 @@ import {
   Header,
   Footer,
   ProductArea,
-  PurchaseAndShippingSummary
+  Carousel
 } from '../../components/';
 
 import styles from './styles.css';
 
-const InventoryScreen = () => (
+const InventoryScreen = props => (
   <div className={styles.generalContainer}>
     <Header />
-    <PurchaseAndShippingSummary />
+    <Carousel slides={props.carouselImgs} />
     <ProductArea />
     <Footer />
   </div>

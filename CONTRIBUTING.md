@@ -14,6 +14,7 @@ Where the types can be:
 - **feature:** to add new features (screens, payment types, etc)
 - **doc:** to add documentation of any kind
 - **fix:** to add bug fixes
+- **chore:** to add things like linters, configs, genral cleaning up, &c
 
 ### Commit naming scheme
 When commiting, don't use the commit message option
@@ -37,7 +38,15 @@ The folder structure follows
 src
 |--components
 |--containers
+|--helpers
+|--resources
 ```
+
+In the `components` folder we keep our presentational components, while in the `containers` folder we keep our container ones (read more about it on the <a href="#refrences">References</a> section bellow.
+
+In the `helpers` folder we keep the utilitary functions to make network requests, update the state based on forms, &c.
+
+Finally, in the `resources` folder we keep all the mock data we need to make these demos realistic - products, API JSONs &c.
 
 ### Tech stack
 One of the central ideas behind this project is to stabilize the development efforts inside the Solutions team around a certain very modern and versatile stack. Under this aegis we chose the bellow stack.
@@ -56,7 +65,7 @@ CSS is great. But Sass makes writing it even better. So we use it a lot. Get win
 #### CSS Modules
 Sass still compiles to globally scoped CSS. With the help of CSS Modules, we can get local styling with all the benefits of regular CSS - pseudo-classes, transforms, animations, &c. Read more about it on its [Github repo](https://github.com/css-modules/css-modules). Or, for a more didatic tutorial of how to configure it with Webpack, look [here](https://medium.com/@kswanie21/css-modules-sass-in-create-react-app-37c3152de9).
 
-### References
+### [References](#references)
 Some good practices followed by this project are:
 
 - [Presentational vs Container Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
