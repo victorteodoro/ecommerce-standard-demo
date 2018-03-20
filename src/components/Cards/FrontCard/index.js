@@ -1,5 +1,5 @@
 // General imports from libs
-import React from "react";
+import React from 'react';
 
 // Import styles
 import styles from './styles.css';

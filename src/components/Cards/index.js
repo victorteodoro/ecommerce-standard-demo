@@ -3,7 +3,7 @@ import BackCard from './BackCard/';
 import RotatingCard from './RotatingCard';
 
 export {
-    RotatingCard,
-    FrontCard,
-    BackCard
+  RotatingCard,
+  FrontCard,
+  BackCard
 };

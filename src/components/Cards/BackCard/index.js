@@ -1,5 +1,5 @@
 // General imports from libs
-import React from "react";
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Import styles
@@ -20,12 +20,12 @@ const BackCard = props => (
                     <p className={styles.backPriceBig}>{props.inputs.priceBig}</p>
                     <p className={styles.backPriceInstallments}>{props.inputs.priceInstallments}</p>
                     <div className={styles.buyBtns}>
-                        <Link to="/ecommerce/cart">
-                            <button className={styles.btn + ' ' + styles.btnWhite}>
+                        <Link to='/ecommerce/cart'>
+                        <button className={`${styles.btn} ${styles.btnWhite}`}>
                                 Adicionar ao carrinho
                             </button>
                         </Link>
-                        <button className={styles.btn + ' ' + styles.btnGrey}>Compra com 1-click</button>
+                    <button className={`${styles.btn} ${styles.btnGrey}`}>Compra com 1-click</button>
                     </div>
                 </div>
             </div>
@@ -33,3 +33,5 @@ const BackCard = props => (
 );
 
 export default BackCard;
+
+// <button className={styles.btn + ' ' + styles.btnGrey}>Compra com 1-click</button>
