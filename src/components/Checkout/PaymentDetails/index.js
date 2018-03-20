@@ -58,6 +58,7 @@ class PaymentDetails extends React.Component {
           <Tab className={style.credit}>
             <i className='far fa-credit-card fa-3x'></i>
             Crédito
+            {/* <p className='testeTexto'>Crédito</p> */}
           </Tab>
           <Tab className={style.boleto}>
             <i className='fa fa-barcode fa-3x'></i>

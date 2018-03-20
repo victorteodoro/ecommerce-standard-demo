@@ -53,7 +53,6 @@
       font-weight: 700;
       text-align: center;
 
-      
       border-bottom: 3px solid transparent;
       
       // Trasition when clicked
@@ -63,20 +62,28 @@
 
     & > li[aria-selected=true] {
       color: $color-red700;
-      
       border-color: $color-red700;
     }
 
     .credit {
-      
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
     }
-
+    
     .boleto {
-      
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
     }
-
+    
     .debit {
-      
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
     }
   }
 
