@@ -46,10 +46,8 @@ class PaymentDetails extends React.Component {
         'cvv'
       ]
     );
-
     this.flipCard = flipPagarmeCard(this);
     this.checkBin = checkBinInfo(this);
-
     this.state = {
       cardNumber: '',
       holderName: '',
