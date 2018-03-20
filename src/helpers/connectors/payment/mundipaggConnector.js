@@ -1,10 +1,7 @@
 import axios from 'axios';
+import Promise from 'bluebird';
 
 let URL = 'http://solutions-api.herokuapp.com/risotto/mundipagg_';
-
-const call = (risotto) => {
-  axios.post(`${URL}`, { risotto }).then(resp => console.log(resp));
-};
 
 const mundipagg = (method, path, body) => {
   if (method === 'GET') {
@@ -22,7 +19,7 @@ const mundipagg = (method, path, body) => {
     path,
     body
   };
-  call(risotto);
+  return Promise.resolve(axios.post(`${URL}`, { risotto }));
 };
 
 export default mundipagg;

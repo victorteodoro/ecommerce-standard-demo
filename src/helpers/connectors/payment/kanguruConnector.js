@@ -1,10 +1,7 @@
 import axios from 'axios';
+import Promise from 'bluebird';
 
 let URL = 'http://solutions-api.herokuapp.com/risotto/kanguru_';
-
-const call = (risotto) => {
-  axios.post(`${URL}`, { risotto }).then(resp => console.log(resp));
-};
 
 const kanguru = (method, path, body) => {
   if (method === 'GET') {
@@ -24,7 +21,7 @@ const kanguru = (method, path, body) => {
     path,
     body
   };
-  call(risotto);
+  return Promise.resolve(axios.post(`${URL}`, { risotto }));
 };
 
 export default kanguru;

@@ -1,10 +1,7 @@
 import axios from 'axios';
+import Promise from 'bluebird';
 
 let URL = 'http://solutions-api.herokuapp.com/risotto/pagarme_';
-
-const call = (risotto) => {
-  axios.post(`${URL}`, { risotto }).then(resp => console.log(resp));
-};
 
 const pagarme = (method, path, body) => {
   if (method === 'GET') {
@@ -22,7 +19,7 @@ const pagarme = (method, path, body) => {
     path,
     body
   };
-  call(risotto);
+  return Promise.resolve(axios.post(`${URL}`, { risotto }));
 };
 
 export default pagarme;
