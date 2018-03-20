@@ -2,6 +2,7 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import PaymentCard from 'react-payment-card-component';
+import { map, addIndex } from 'ramda';
 
 // Imports from internal helper funcs
 import handleChangeFromInput from '../../../helpers/updateStateFromInput';
@@ -13,6 +14,21 @@ import CardForm from '../CardForm/';
 
 // Import styles
 import style from './styles.css';
+
+// Import inputs
+import inputs from '../../../resources/CheckoutScreen/inputs';
+
+// Import components
+// import TabItem from '../../TabItem/';
+
+const mapIndexed = addIndex(map);
+
+const populateTabList = (input, index) => (
+  <Tab key={index} className={style.credit}>
+    <i className={input.icon}></i>
+    {input.type}
+  </Tab>
+);
 
 class PaymentDetails extends React.Component {
   constructor(props, context) {
@@ -55,19 +71,9 @@ class PaymentDetails extends React.Component {
     return (
       <Tabs className={style.paymentDetailsTabs}>
         <TabList className={style.paymentMethodTabList}>
-          <Tab className={style.credit}>
-            <i className='far fa-credit-card fa-3x'></i>
-            Crédito
-            {/* <p className='testeTexto'>Crédito</p> */}
-          </Tab>
-          <Tab className={style.boleto}>
-            <i className='fa fa-barcode fa-3x'></i>
-            Boleto
-          </Tab>
-          <Tab className={style.debit}>
-            <i className='fas fa-credit-card fa-3x'></i>
-            Débito
-          </Tab>
+          {
+            mapIndexed(populateTabList, inputs)
+          }
         </TabList>
 
         <TabPanel className={style.credictCardForm}>

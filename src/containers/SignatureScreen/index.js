@@ -20,8 +20,8 @@ import styles from './styles.css';
 
 const mapIndexed = addIndex(map);
 
-const populateCards = input => (
-    <RotatingCard inputs={input} />
+const populateCards = (input, index) => (
+    <RotatingCard key={index} inputs={input} />
 );
 
 const SignatureScreen = () => (

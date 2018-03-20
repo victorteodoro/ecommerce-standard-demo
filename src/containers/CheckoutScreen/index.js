@@ -7,6 +7,8 @@ import {
   PaymentDetails
 } from '../../components/';
 
+// import inputs from '../../resources/CheckoutScreen/inputs/';
+
 import styles from './styles.css';
 
 const CheckoutScreen = () => (
