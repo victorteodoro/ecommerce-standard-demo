@@ -1,5 +1,5 @@
 import Header from './Header/';
-import { FrontCard, BackCard, RotatingCard } from './Cards/';
+import { FrontCard, BackCard, RotatingCard, UserCard } from './Cards/';
 import Footer from './Footer/';
 import { ProductArea } from './ProductInventory/';
 import Carousel from './Carousel/';
@@ -10,6 +10,7 @@ export {
   RotatingCard,
   FrontCard,
   BackCard,
+  UserCard,
   Header,
   Footer,
   Carousel,

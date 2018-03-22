@@ -4,9 +4,10 @@ import { map, addIndex } from 'ramda';
 import {
   Header,
   Footer,
-  // FrontCard,
+  UserCard
+  // FrontCard
   // BackCard,
-  RotatingCard
+  // RotatingCard
 } from '../../components/';
 
 // Importing components
@@ -21,13 +22,14 @@ import styles from './styles.css';
 const mapIndexed = addIndex(map);
 
 const populateCards = (input, index) => (
-    <RotatingCard key={index} inputs={input} />
+    <UserCard key={index} inputs={input} />
 );
 
 const SignatureScreen = () => (
   <div className={styles.generalContainer}>
+    <button className={styles.btnRed}>ola</button>
     <Header />
-    <CardsArea inputs={inputs}>
+    <CardsArea inputs={inputs} type='user'>
     {
       mapIndexed(populateCards, inputs)
     }
