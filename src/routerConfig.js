@@ -25,7 +25,7 @@ const routes = [
     )
   },
   {
-    path: '/signature/',
+    path: '/signature/adm/clients/',
     exact: true,
     render: () => (
       <SignatureScreen />
