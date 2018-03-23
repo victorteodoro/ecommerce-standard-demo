@@ -13,7 +13,7 @@ const Footer = () => (
   <footer className={styles.footer}>
     <div className={styles.footerStoneInfo}>
       <img src={stoneLogo} alt='Logo Stone' className={styles.footerStoneLogo} />
-      <p className={styles.footerStoneRC}>meajuda@stone.com.br</p>
+      <p className={styles.footerStoneRC}>meajudadigital@stone.com.br</p>
       <p className={styles.footerStoneFone}>3004-9680</p>
       <p className={styles.footerDocs}><a href='https://docs.stone.com.br'>Documentação</a></p>
     </div>

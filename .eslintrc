@@ -18,6 +18,7 @@
     "react"
   ],
   "rules": {
+    "camelcase": [1, {"properties": "never"}],
     "linebreak-style": 0,
     "semi": ["error", "always"],
     "comma-dangle": ["error", "never"],

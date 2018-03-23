@@ -2,13 +2,15 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import PaymentCard from 'react-payment-card-component';
-import { map, addIndex } from 'ramda';
+import { map, addIndex, merge } from 'ramda';
 
 // Imports from internal helper funcs
 import handleChangeFromInput from '../../../helpers/updateStateFromInput';
 import flipPagarmeCard from '../../../helpers/flipPagarmeCard';
 import checkBinInfo from '../../../helpers/checkBinInfo';
 
+import { charge } from '../../../helpers/payments/objects/mundiobjects';
+import { MundipaggConnector } from '../../../helpers/payments';
 // Import components
 import CardForm from '../CardForm/';
 
@@ -35,6 +37,7 @@ class PaymentDetails extends React.Component {
     super(props, context);
 
     this.getValidationState = this.getValidationState.bind(this);
+    this.paymentCard = this.paymentCard.bind(this);
     // Setup helper functions
     this.handleChange = handleChangeFromInput(
       this,
@@ -59,10 +62,30 @@ class PaymentDetails extends React.Component {
       cardBank: ''
     };
   }
-
+  paymentCard() {
+    const { payment } = charge;
+    const { credit_card: creditCard } = payment;
+    const { card } = creditCard;
+    card.number = this.state.cardNumber;
+    card.holder_name = this.state.holderName;
+    card.exp_month = this.state.expiryMonth;
+    card.exp_year = this.state.expiryYear;
+    card.cvv = this.state.cvv;
+    let chargeNew = charge;
+    chargeNew = merge(charge, { card });
+    MundipaggConnector('POST', 'charges', chargeNew).then(resp => (console.log(resp.data)));
+  }
+  /* eslint-disable */
+  /* eslint-enable */
   getValidationState() {
-    const { length } = this.state.cardNumber;
-    return length > 15 ? 'success' : null;
+    if (this.state.cardNumber.length > 15 &&
+      this.state.holderName.length > 3 &&
+      this.state.expiryMonth.length === 2 &&
+      this.state.expiryYear.length === 2 &&
+      this.state.cvv.length >= 3) {
+      return 'success';
+    }
+    return null;
   }
 
   render() {
@@ -78,7 +101,7 @@ class PaymentDetails extends React.Component {
           <div className={style.paymentCard}>
             &nbsp;
             <PaymentCard
-               bank={this.state.cardBrand || 'santander'}
+               bank={this.state.cardBrand || 'default'}
                model='normal'
                type='black'
                brand={this.state.cardBrand}
@@ -103,6 +126,9 @@ class PaymentDetails extends React.Component {
                checkBin={this.checkBin}
                />
           </div>
+          <button onClick={this.paymentCard} className={`${style.btn} ${style.btnWhite}`}>
+              Finalizar com Pagamento
+          </button>
         </TabPanel>
         <TabPanel className={style.boletoForm}>
           <div>Formulário do boleto</div>
