@@ -14,6 +14,7 @@ const RotatingCard = props => (
                 <p className={styles.shortSpecs}>
                     {props.inputs.shortSpecs}
                 </p>
+                <div className={styles.seller}>{props.inputs.seller}</div>
                 <p className={styles.priceBig}>{props.inputs.priceBig}</p>
                 <p className={styles.priceInstallments}>{props.inputs.priceInstallments}</p>
             </div>

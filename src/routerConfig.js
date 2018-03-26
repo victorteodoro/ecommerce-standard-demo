@@ -7,15 +7,12 @@ import {
   FinishScreen
 } from './containers/';
 
-// Import resources
-import carouselImgs from './resources/InventoryScreen/carouselImgs';
-
 const routes = [
   {
     path: '/',
     exact: true,
     render: () => (
-      <InventoryScreen carouselImgs={carouselImgs} />
+      <InventoryScreen type='ecommerce' />
     )
   },
   {
@@ -23,6 +20,13 @@ const routes = [
     exact: true,
     render: () => (
       <CartScreen />
+    )
+  },
+  {
+    path: '/marketplace',
+    exact: true,
+    render: () => (
+      <InventoryScreen type='marketplace' />
     )
   },
   {

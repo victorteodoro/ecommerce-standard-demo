@@ -13,7 +13,8 @@ import {
 import CardsArea from '../CardsArea/';
 
 // Importing assets
-import inputs from '../../resources/InventoryScreen/inputs';
+import inputEcommerce from '../../resources/InventoryScreen/inputs/indexEcommerce';
+import inputMarketplace from '../../resources/InventoryScreen/inputs/indexMarketplace';
 
 // Importing styles
 import styles from './styles.css';
@@ -24,12 +25,19 @@ const populateCards = (input, index) => (
   <RotatingCard key={index} inputs={input} />
 );
 
-const InventoryScreen = () => (
+const chooseInput = (type) => {
+  if (type === 'marketplace') {
+    return inputMarketplace;
+  }
+  return inputEcommerce;
+};
+
+const InventoryScreen = props => (
     <div className={styles.generalContainer}>
       <Header />
-      <CardsArea inputs={inputs}>
+      <CardsArea inputs={chooseInput(props.type)}>
       {
-        mapIndexed(populateCards, inputs)
+        mapIndexed(populateCards, chooseInput(props.type))
       }
       </CardsArea>
       <Footer />
