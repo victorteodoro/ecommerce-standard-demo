@@ -24,7 +24,7 @@ const charge = {
           street: 'Rua Frederico Abranches',
           number: '104',
           zip_code: '01225000',
-          neighborhood: 'Cento',
+          neighborhood: 'Centro',
           city: 'Sao Paulo',
           state: 'SP',
           country: 'BR'

@@ -11,11 +11,11 @@ import {
 
 import styles from './styles.css';
 
-const CheckoutScreen = () => (
+const CheckoutScreen = props => (
   <div className={styles.generalContainer}>
     <Header />
     <PurchaseAndShippingSummary />
-    <PaymentDetails />
+    <PaymentDetails type={props.type} />
     <Footer />
   </div>
 );

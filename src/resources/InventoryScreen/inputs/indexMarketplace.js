@@ -18,7 +18,8 @@ const inputs = [
                     frontal de 8MP com ângulo aberto faz selfies perfeitas.`,
     img: motorola,
     seller: 'Vendido e entregue por Stone Store',
-    imgSmall: motorolaSmall
+    imgSmall: motorolaSmall,
+    type: 'mkt'
   },
   {
     name: 'Notebook Dell Inspiron i15-5566-A30P',
@@ -32,7 +33,8 @@ const inputs = [
                     Vídeo Intel® HD Graphics 620.`,
     img: dell,
     seller: 'Vendido e entregue por Stone Store',
-    imgSmall: dellSmall
+    imgSmall: dellSmall,
+    type: 'mkt'
   },
   {
     name: 'LG Smart TV 55',
@@ -46,7 +48,8 @@ const inputs = [
                     de forma fácil com o controle`,
     img: lg,
     seller: 'Vendido e entregue por Stone Store',
-    imgSmall: lgSmall
+    imgSmall: lgSmall,
+    type: 'mkt'
   }
 ];
 

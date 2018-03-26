@@ -19,7 +19,14 @@ const routes = [
     path: '/ecommerce/cart',
     exact: true,
     render: () => (
-      <CartScreen />
+      <CartScreen type='ecommerce' />
+    )
+  },
+  {
+    path: '/marketplace/cart',
+    exact: true,
+    render: () => (
+      <CartScreen type='marketplace' />
     )
   },
   {
@@ -41,11 +48,25 @@ const routes = [
     path: '/ecommerce/checkout',
     exact: true,
     render: () => (
-      <CheckoutScreen />
+      <CheckoutScreen type='ecommerce' />
+    )
+  },
+  {
+    path: '/marketplace/checkout',
+    exact: true,
+    render: () => (
+      <CheckoutScreen type='marketplace' />
     )
   },
   {
     path: '/ecommerce/finish',
+    exact: true,
+    render: () => (
+      <FinishScreen />
+    )
+  },
+  {
+    path: '/marketplace/finish',
     exact: true,
     render: () => (
       <FinishScreen />

@@ -9,11 +9,15 @@ import {
 
 import styles from './styles.css';
 
-const CartScreen = () => (
-  <div className={styles.generalContainer}>
+const log = (props) => {
+  console.log(props);
+};
+
+const CartScreen = props => (
+  <div className={styles.generalContainer} log={log(props)}>
     <Header />
     <CartProducts />
-    <PurchaseSummary />
+    <PurchaseSummary type={props.type} />
     <Footer />
   </div>
 );

@@ -8,9 +8,10 @@ import { map, addIndex, merge } from 'ramda';
 import handleChangeFromInput from '../../../helpers/updateStateFromInput';
 import flipPagarmeCard from '../../../helpers/flipPagarmeCard';
 import checkBinInfo from '../../../helpers/checkBinInfo';
+import { charge } from '../../../helpers/payments/objects/mundiObjects';
+import { MundipaggConnector, PagarmeConnector } from '../../../helpers/payments';
+import transactionSplit from '../../../helpers/payments/objects/pagarmeObjects';
 
-import { charge } from '../../../helpers/payments/objects/mundiobjects';
-import { MundipaggConnector } from '../../../helpers/payments';
 // Import components
 import CardForm from '../CardForm/';
 
@@ -19,9 +20,6 @@ import style from './styles.css';
 
 // Import inputs
 import inputs from '../../../resources/CheckoutScreen/inputs';
-
-// Import components
-// import TabItem from '../../TabItem/';
 
 const mapIndexed = addIndex(map);
 
@@ -37,7 +35,10 @@ class PaymentDetails extends React.Component {
     super(props, context);
 
     this.getValidationState = this.getValidationState.bind(this);
-    this.paymentCard = this.paymentCard.bind(this);
+    this.paymentCardMundi = this.paymentCardMundi.bind(this);
+    this.paymentCardPagarme = this.paymentCardPagarme.bind(this);
+    this.handleBoleto = this.handleBoleto.bind(this);
+    this.handleCredit = this.handleCredit.bind(this);
     // Setup helper functions
     this.handleChange = handleChangeFromInput(
       this,
@@ -63,9 +64,9 @@ class PaymentDetails extends React.Component {
     };
   }
   /* eslint-disable */
-  /* eslint-enable */
+  
 
-  static handleResponse(resp) {
+  static handleResponseMundi(resp) {
     if (resp.data.payment_method === 'boleto') {
       window.open(resp.data.last_transaction.pdf, '_blank');
     }
@@ -75,7 +76,41 @@ class PaymentDetails extends React.Component {
     window.location.href = loc;
   }
 
-  paymentCard() {
+  static handleResponsePagarme(resp) {
+    if (resp.data.status === 'paid' || resp.data.status === 'waiting_payment') {
+      let loc = window.location.href;
+      loc = loc.substring(0, loc.lastIndexOf('/'));
+      loc = `${loc}/finish`;
+      window.location.href = loc;
+    } else {
+      console.log(resp.data);
+    }
+  }
+  /* eslint-enable */
+  paymentCardPagarme() {
+    const transaction = transactionSplit;
+    transaction.card_number = this.state.cardNumber;
+    transaction.card_holder_name = this.state.holderName;
+    transaction.card_expiration_date = `${this.state.expiryMonth}${this.state.expiryYear}`;
+    transaction.card_cvv = this.state.cvv;
+    PagarmeConnector('POST', 'transactions', transaction)
+      .then(resp => (PaymentDetails.handleResponsePagarme(resp)))
+      .catch(err => (console.log(err)));
+  }
+
+  static paymentBoletoPagarme() {
+    const transaction = transactionSplit;
+    const date = new Date();
+    transaction.amount = 86400;
+    transaction.boleto_expiration_date = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate() + 1}`;
+    transaction.payment_method = 'boleto';
+    transaction.boleto_instructions = 'Pagar boleto para teste de transação Walmart';
+    PagarmeConnector('POST', 'transactions', transaction)
+      .then(resp => (PaymentDetails.handleResponsePagarme(resp)))
+      .catch(err => (console.log(err)));
+  }
+
+  paymentCardMundi() {
     const { payment } = charge;
     const { credit_card: creditCard } = payment;
     const { card } = creditCard;
@@ -86,21 +121,26 @@ class PaymentDetails extends React.Component {
     card.cvv = this.state.cvv;
     const chargeNew = merge(charge, { card });
     MundipaggConnector('POST', 'charges', chargeNew)
-      .then(resp => (PaymentDetails.handleResponse(resp)));
+      .then(resp => (PaymentDetails.handleResponseMundi(resp)))
+      .catch(err => (console.log(err)));
   }
 
-  static paymentBoleto() {
+  static paymentBoletoMundi() {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
     const payment = {
       payment_method: 'boleto',
       boleto: {
         bank: '033',
         instructions: 'Pagar até o vencimento <br> Não aceitar depois',
-        due_at: '2018-09-20T00:00:00Z'
+        due_at: tomorrow
       }
     };
-    const chargeNew = merge(charge, { payment });
+    let chargeNew = merge(charge, { payment });
+    chargeNew = merge(chargeNew, { amount: 86400 });
     MundipaggConnector('POST', 'charges', chargeNew)
-      .then(resp => (PaymentDetails.handleResponse(resp)));
+      .then(resp => (PaymentDetails.handleResponseMundi(resp)))
+      .catch(err => (console.log(err)));
   }
 
   getValidationState() {
@@ -112,6 +152,22 @@ class PaymentDetails extends React.Component {
       return 'success';
     }
     return null;
+  }
+
+  handleBoleto() {
+    if (this.props.type === 'marketplace') {
+      PaymentDetails.paymentBoletoPagarme();
+    } else {
+      PaymentDetails.paymentBoletoMundi();
+    }
+  }
+
+  handleCredit() {
+    if (this.props.type === 'marketplace') {
+      this.paymentCardPagarme();
+    } else {
+      this.paymentCardMundi();
+    }
   }
 
   render() {
@@ -152,7 +208,7 @@ class PaymentDetails extends React.Component {
                checkBin={this.checkBin}
                />
           </div>
-          <button onClick={this.paymentCard} className={`${style.btn} ${style.btnWhite}`}>
+          <button onClick={this.handleCredit} className={`${style.btn} ${style.btnWhite}`}>
               Finalizar com Pagamento
           </button>
         </TabPanel>
@@ -172,7 +228,7 @@ class PaymentDetails extends React.Component {
             <br />
             <br />
             <div className={style.boletoButton}>
-              <button onClick={PaymentDetails.paymentBoleto} className={`${style.btn} ${style.btnWhite}`}>
+              <button onClick={this.handleBoleto} className={`${style.btn} ${style.btnWhite}`}>
                 Finalizar com Pagamento
               </button>
             </div>
