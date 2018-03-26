@@ -11,7 +11,9 @@ const Header = () => (
   <header className={styles.header}>
     <div className={styles.header_container}>
       <div className={styles.header_logoArea}>
+      <a href='/'>
         <img src={planetLogo} alt='Logo' className={styles.header_logoImg} />
+        </a>
       </div>
       <div className={styles.header_searchBar}>
         <form className={styles.header_searchForm}>
@@ -36,7 +38,7 @@ const Header = () => (
           </span>
         </div>
         <div className={styles.header_shoppingCart}>
-          <a href='/'>
+          <a href='/ecommerce/cart'>
             <i className='fas fa-shopping-cart fa-2x'></i>
           </a>
         </div>
