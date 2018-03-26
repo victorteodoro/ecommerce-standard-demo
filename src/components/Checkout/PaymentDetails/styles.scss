@@ -98,24 +98,46 @@
   }
 
   .boletoForm {
+    .paymentBoleto{
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+      align-items: center;   
+      padding: 1.5rem;
+      .boletoButton{
+        width: 60%;
+        padding: 1.5rem;
+      }
+      .boletoPayOptions{
+        text-align: center;
+      }
+      .notices{
+        .noticeTitle{
+          font-weight: bold;
+        }
+        .list{
+          font-size: 1.2rem;
+        }
+      }
+    }
   }
 
   .debitCardForm {
   }
+  .btn {
+    color: #00796b;
+    font-family: "Work Sans", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    padding: .5rem;
+    border: 1px solid #00796b;
+    border-radius: 1rem;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    transition: all .1s;
+    width: 80%; }
+    .btn:hover {
+      color: #f5f1e1;
+      background-color: #00796b; }
+    .btn:active {
+      transform: translateY(1px); }
 } 
-.btn {
-  color: #00796b;
-  font-family: "Work Sans", sans-serif;
-  font-size: 1.4rem;
-  font-weight: 400;
-  padding: .5rem;
-  border: 1px solid #00796b;
-  border-radius: 1rem;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-  transition: all .1s;
-  width: 80%; }
-  .btn:hover {
-    color: #f5f1e1;
-    background-color: #00796b; }
-  .btn:active {
-    transform: translateY(1px); }

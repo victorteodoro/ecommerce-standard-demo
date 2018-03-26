@@ -38,6 +38,8 @@ class PaymentDetails extends React.Component {
 
     this.getValidationState = this.getValidationState.bind(this);
     this.paymentCard = this.paymentCard.bind(this);
+    this.paymentBoleto = this.paymentBoleto.bind(this);
+    this.handleResponse = this.handleResponse.bind(this);
     // Setup helper functions
     this.handleChange = handleChangeFromInput(
       this,
@@ -62,6 +64,8 @@ class PaymentDetails extends React.Component {
       cardBank: ''
     };
   }
+  /* eslint-disable */
+  /* eslint-enable */
   paymentCard() {
     const { payment } = charge;
     const { credit_card: creditCard } = payment;
@@ -71,12 +75,36 @@ class PaymentDetails extends React.Component {
     card.exp_month = this.state.expiryMonth;
     card.exp_year = this.state.expiryYear;
     card.cvv = this.state.cvv;
-    let chargeNew = charge;
-    chargeNew = merge(charge, { card });
-    MundipaggConnector('POST', 'charges', chargeNew).then(resp => (console.log(resp.data)));
+    const chargeNew = merge(charge, { card });
+    MundipaggConnector('POST', 'charges', chargeNew).then(resp => (this.handleResponse(resp)));
   }
-  /* eslint-disable */
-  /* eslint-enable */
+
+  paymentBoleto() {
+    console.log(this.cardNumber);
+    const payment = {
+      payment_method: 'boleto',
+      boleto: {
+        bank: '033',
+        instructions: 'Pagar até o vencimento <br> Não aceitar depois',
+        due_at: '2018-09-20T00:00:00Z'
+      }
+    };
+    console.log(payment);
+    const chargeNew = merge(charge, { payment });
+    MundipaggConnector('POST', 'charges', chargeNew).then(resp => (this.handleResponse(resp)));
+  }
+
+  handleResponse(resp) {
+    console.log(this.cardNumber);
+    if (resp.data.payment_method === 'boleto') {
+      window.open(resp.data.last_transaction.pdf, '_blank');
+    }
+    let loc = window.location.href;
+    loc = loc.substring(0, loc.lastIndexOf('/'));
+    loc = `${loc}/finish`;
+    window.location.href = loc;
+  }
+
   getValidationState() {
     if (this.state.cardNumber.length > 15 &&
       this.state.holderName.length > 3 &&
@@ -131,7 +159,42 @@ class PaymentDetails extends React.Component {
           </button>
         </TabPanel>
         <TabPanel className={style.boletoForm}>
-          <div>Formulário do boleto</div>
+          <div className={style.paymentBoleto}>
+            Pague no boleto com <b> 10% de desconto.</b>
+            <br />
+            <div className={style.boletoPayOptions}>
+            Imprima o boleto e pague no banco
+            <br />
+            ou
+            <br />
+            pague pela internet utilizando o código de barras do boleto.
+            <br />
+            O prazo de validade do boleto é de 1 dia útil.
+            </div>
+            <br />
+            <br />
+            <div className={style.boletoButton}>
+              <button onClick={this.paymentBoleto} className={`${style.btn} ${style.btnWhite}`}>
+                Finalizar com Pagamento
+              </button>
+            </div>
+            <div className={style.notices}>
+              <div className={style.noticeTitle}>Importante</div>
+              <ul className={style.list}>
+                <li>Caso o seu computador tenha um programa anti pop-up,
+                  será preciso desativá-lo antes de finalizar sua compra e imprimir o
+                  boleto ou pagar pelo internet banking;</li>
+                <li>Não faça depósito ou transferência entre contas.
+                  O boleto não é enviado pelos Correios.
+                  Imprima-o e pague-o no banco ou pela internet;</li>
+                <li>Se o boleto não for pago até a data de vencimento,
+                  o pedido será automaticamente cancelado;</li>
+                <li>O prazo de entrega dos pedidos pagos com boleto bancário começa
+                  a contar três dias depois do pagamento do boleto,
+                  tempo necessário para que a instituição bancária confirme o pagamento.</li>
+              </ul>
+            </div>
+          </div>
         </TabPanel>
         <TabPanel className={style.debitCardForm}>
           <div>Formulário do cartão de débito</div>
