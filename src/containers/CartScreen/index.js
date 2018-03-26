@@ -9,12 +9,8 @@ import {
 
 import styles from './styles.css';
 
-const log = (props) => {
-  console.log(props);
-};
-
 const CartScreen = props => (
-  <div className={styles.generalContainer} log={log(props)}>
+  <div className={styles.generalContainer} >
     <Header />
     <CartProducts />
     <PurchaseSummary type={props.type} />
