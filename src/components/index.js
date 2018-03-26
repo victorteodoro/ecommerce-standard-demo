@@ -4,6 +4,7 @@ import Footer from './Footer/';
 import { ProductArea } from './ProductInventory/';
 import Carousel from './Carousel/';
 import { CartProducts, PurchaseSummary } from './Cart/';
+import { CartProductsNew, PurchaseSummaryNew } from './Finish/';
 import { PurchaseAndShippingSummary, PaymentDetails } from './Checkout/';
 
 export {
@@ -17,5 +18,7 @@ export {
   CartProducts,
   PurchaseSummary,
   PurchaseAndShippingSummary,
-  PaymentDetails
+  PaymentDetails,
+  CartProductsNew,
+  PurchaseSummaryNew
 };

@@ -3,7 +3,8 @@ import {
   CheckoutScreen,
   CartScreen,
   InventoryScreen,
-  SignatureScreen
+  SignatureScreen,
+  FinishScreen
 } from './containers/';
 
 // Import resources
@@ -37,6 +38,13 @@ const routes = [
     exact: true,
     render: () => (
       <CheckoutScreen />
+    )
+  },
+  {
+    path: '/ecommerce/finish',
+    exact: true,
+    render: () => (
+      <FinishScreen />
     )
   }
 ];

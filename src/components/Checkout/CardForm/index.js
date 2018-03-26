@@ -21,7 +21,6 @@ const CardForm = props => (
          onBlur={props.checkBin}
          maxLength='16'
          />
-      <FormControl.Feedback />
     </FormGroup>
 
     <FormGroup
@@ -36,7 +35,6 @@ const CardForm = props => (
          onChange={props.changeHandler}
          maxLength='40'
          />
-      <FormControl.Feedback />
     </FormGroup>
 
     <FormGroup
@@ -52,7 +50,6 @@ const CardForm = props => (
          onChange={props.changeHandler}
          maxLength='2'
          />
-      <FormControl.Feedback />
     </FormGroup>
 
     <FormGroup
@@ -68,7 +65,6 @@ const CardForm = props => (
          onChange={props.changeHandler}
          maxLength='2'
          />
-      <FormControl.Feedback />
     </FormGroup>
 
     <FormGroup
@@ -86,7 +82,6 @@ const CardForm = props => (
          onBlur={props.flipCard}
          maxLength='4'
          />
-      <FormControl.Feedback />
     </FormGroup>
   </form>
 );
