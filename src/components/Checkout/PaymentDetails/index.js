@@ -38,8 +38,6 @@ class PaymentDetails extends React.Component {
 
     this.getValidationState = this.getValidationState.bind(this);
     this.paymentCard = this.paymentCard.bind(this);
-    this.paymentBoleto = this.paymentBoleto.bind(this);
-    this.handleResponse = this.handleResponse.bind(this);
     // Setup helper functions
     this.handleChange = handleChangeFromInput(
       this,
@@ -66,6 +64,17 @@ class PaymentDetails extends React.Component {
   }
   /* eslint-disable */
   /* eslint-enable */
+
+  static handleResponse(resp) {
+    if (resp.data.payment_method === 'boleto') {
+      window.open(resp.data.last_transaction.pdf, '_blank');
+    }
+    let loc = window.location.href;
+    loc = loc.substring(0, loc.lastIndexOf('/'));
+    loc = `${loc}/finish`;
+    window.location.href = loc;
+  }
+
   paymentCard() {
     const { payment } = charge;
     const { credit_card: creditCard } = payment;
@@ -76,11 +85,11 @@ class PaymentDetails extends React.Component {
     card.exp_year = this.state.expiryYear;
     card.cvv = this.state.cvv;
     const chargeNew = merge(charge, { card });
-    MundipaggConnector('POST', 'charges', chargeNew).then(resp => (this.handleResponse(resp)));
+    MundipaggConnector('POST', 'charges', chargeNew)
+      .then(resp => (PaymentDetails.handleResponse(resp)));
   }
 
-  paymentBoleto() {
-    console.log(this.cardNumber);
+  static paymentBoleto() {
     const payment = {
       payment_method: 'boleto',
       boleto: {
@@ -89,20 +98,9 @@ class PaymentDetails extends React.Component {
         due_at: '2018-09-20T00:00:00Z'
       }
     };
-    console.log(payment);
     const chargeNew = merge(charge, { payment });
-    MundipaggConnector('POST', 'charges', chargeNew).then(resp => (this.handleResponse(resp)));
-  }
-
-  handleResponse(resp) {
-    console.log(this.cardNumber);
-    if (resp.data.payment_method === 'boleto') {
-      window.open(resp.data.last_transaction.pdf, '_blank');
-    }
-    let loc = window.location.href;
-    loc = loc.substring(0, loc.lastIndexOf('/'));
-    loc = `${loc}/finish`;
-    window.location.href = loc;
+    MundipaggConnector('POST', 'charges', chargeNew)
+      .then(resp => (PaymentDetails.handleResponse(resp)));
   }
 
   getValidationState() {
@@ -174,7 +172,7 @@ class PaymentDetails extends React.Component {
             <br />
             <br />
             <div className={style.boletoButton}>
-              <button onClick={this.paymentBoleto} className={`${style.btn} ${style.btnWhite}`}>
+              <button onClick={PaymentDetails.paymentBoleto} className={`${style.btn} ${style.btnWhite}`}>
                 Finalizar com Pagamento
               </button>
             </div>
@@ -195,9 +193,6 @@ class PaymentDetails extends React.Component {
               </ul>
             </div>
           </div>
-        </TabPanel>
-        <TabPanel className={style.debitCardForm}>
-          <div>Formulário do cartão de débito</div>
         </TabPanel>
       </Tabs>
     );
