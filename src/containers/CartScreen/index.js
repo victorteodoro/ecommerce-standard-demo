@@ -10,7 +10,7 @@ import {
 import styles from './styles.css';
 
 const CartScreen = props => (
-  <div className={styles.generalContainer}>
+  <div className={styles.generalContainer} >
     <Header />
     <CartProducts />
     <PurchaseSummary type={props.type} />

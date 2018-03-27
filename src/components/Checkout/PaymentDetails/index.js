@@ -64,7 +64,7 @@ class PaymentDetails extends React.Component {
     };
   }
   /* eslint-disable */
-  
+  /* eslint-enable */
 
   static handleResponseMundi(resp) {
     if (resp.data.payment_method === 'boleto') {
@@ -86,7 +86,7 @@ class PaymentDetails extends React.Component {
       console.log(resp.data);
     }
   }
-  /* eslint-enable */
+
   paymentCardPagarme() {
     const transaction = transactionSplit;
     transaction.card_number = this.state.cardNumber;
