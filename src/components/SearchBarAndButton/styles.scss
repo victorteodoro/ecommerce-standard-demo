@@ -1,7 +1,7 @@
-@import "../../../../styles/baseGrid";
-@import "../../../../styles/buttons";
+@import "../../styles/baseGrid";
+@import "../../styles/buttons";
 
-.clientSearchAndButton {
+.searchAndButton {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: 1fr;
@@ -15,14 +15,18 @@
     margin-right: 2.5rem;
   }
   .searchInput{
+    color: black;
     width: 100%;
     height: 100%;
   }
-  .searchIcon {
+  .searchIconDiv {
     grid-column: 6 / 7;
     grid-row: 1 / 2;
     margin-left: 45%;
     margin-top: 5%;
+    .searchIcon {
+      color: $color-red700;
+    }
 } 
 .btn {
     grid-column: 7 / 9;

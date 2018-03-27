@@ -3,6 +3,7 @@ import { FrontCard, BackCard, RotatingCard, UserCard } from './Cards/';
 import Footer from './Footer/';
 import { ProductArea } from './ProductInventory/';
 import Carousel from './Carousel/';
+import SearchBarAndButton from './SearchBarAndButton';
 import { UserInfos, SignatureInfos, UserHeader } from './UserDetails/';
 import { CartProducts, PurchaseSummary } from './Cart/';
 import { CartProductsNew, PurchaseSummaryNew } from './Finish/';
@@ -15,6 +16,7 @@ export {
   UserCard,
   UserInfos,
   UserHeader,
+  SearchBarAndButton,
   SignatureInfos,
   Header,
   Footer,

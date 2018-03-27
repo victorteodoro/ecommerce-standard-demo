@@ -5,14 +5,16 @@ import { Link } from 'react-router-dom';
 import {
   Header,
   Footer,
-  UserCard
+  UserCard,
+  SearchBarAndButton
   // FrontCard
   // BackCard,
   // RotatingCard
 } from '../../../../components';
 
 // Importing components
-import CardsArea from '../../../CardsArea/';
+import UserCardsArea from '../../../UserCardsArea/';
+// import CardsArea from '../../../CardsArea/';
 
 // Importing assets
 import inputs from '../../../../resources/SignatureScreen/inputs';
@@ -33,12 +35,12 @@ const populateCards = (input, index) => (
 const AdmClientsScreen = () => (
   <div className={styles.generalContainer}>
     <Header />
-    <button className={styles.btn}>ola</button>
-    <CardsArea inputs={inputs} type='user'>
+    <SearchBarAndButton />
+    <UserCardsArea inputs={inputs} type='user'>
     {
       mapIndexed(populateCards, inputs)
     }
-    </CardsArea>
+    </UserCardsArea>
     <Footer />
   </div>
 );

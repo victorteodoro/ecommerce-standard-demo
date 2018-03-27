@@ -34,6 +34,13 @@ const routes = [
     )
   },
   {
+    path: '/signature/adm/clients/new',
+    exact: true,
+    render: () => (
+      <AdmClientsScreen />
+    )
+  },
+  {
     path: '/signature/adm/clients/:id',
     exact: true,
     render: props => (

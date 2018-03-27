@@ -46,6 +46,15 @@ const inputs = [
     largeSpecs: ``,
     img: obImg,
     imgSmall: obImgSmall
+  },
+  {
+    name: 'Cauê Camargo',
+    shortSpecs: 'ID: 11235818',
+    priceBig: 'Cadastro ativo',
+    priceInstallments: '',
+    largeSpecs: ``,
+    img: obImg,
+    imgSmall: obImgSmall
   }
 ];
 
