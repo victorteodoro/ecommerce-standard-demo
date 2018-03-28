@@ -5,6 +5,13 @@ import { Link } from 'react-router-dom';
 // Import styles
 import styles from './styles.css';
 
+const selectType = (type) => {
+  if (type === 'mkt') {
+    return '/marketplace/cart';
+  }
+  return '/ecommerce/cart';
+};
+
 const RotatingCard = props => (
     <div className={styles.simpleCard}>
         <div className={styles.simpleCardFront}>
@@ -14,6 +21,7 @@ const RotatingCard = props => (
                 <p className={styles.shortSpecs}>
                     {props.inputs.shortSpecs}
                 </p>
+                <div className={styles.seller}>{props.inputs.seller}</div>
                 <p className={styles.priceBig}>{props.inputs.priceBig}</p>
                 <p className={styles.priceInstallments}>{props.inputs.priceInstallments}</p>
             </div>
@@ -31,7 +39,7 @@ const RotatingCard = props => (
                 <p className={styles.backPriceBig}>{props.inputs.priceBig}</p>
                 <p className={styles.backPriceInstallments}>{props.inputs.priceInstallments}</p>
                 <div className={styles.buyBtns}>
-                    <Link to='/ecommerce/cart'>
+                    <Link to={selectType(props.inputs.type)}>
                         <button className={`${styles.btn} ${styles.btnWhite}`}>
                             Adicionar ao carrinho
                             </button>
