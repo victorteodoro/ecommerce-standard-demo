@@ -16,7 +16,9 @@ const SearchBarAndButton = () => (
                 <i className={`fas fa-search fa-2x ${styles.searchIcon}`}></i>
             </a>
         </div>
-        <button className={styles.btn}>Novo usuário</button>
+        <a href='/signature/adm/new/' className={styles.hyperLink} >
+            <button className={styles.btn}>Novo usuário</button>
+        </a>
     </div>
 );
 export default SearchBarAndButton;

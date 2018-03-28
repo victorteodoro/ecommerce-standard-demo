@@ -29,6 +29,10 @@
     }
 } 
 .btn {
+  width: 100%;
+  grid-row: 1 / 2;
+}
+.hyperLink {
     grid-column: 7 / 9;
     grid-row: 1 / 2;
     margin-left: 2.5rem;
