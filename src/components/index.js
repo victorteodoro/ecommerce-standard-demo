@@ -4,6 +4,7 @@ import Footer from './Footer/';
 import { ProductArea } from './ProductInventory/';
 import Carousel from './Carousel/';
 import SearchBarAndButton from './SearchBarAndButton';
+import NewSignatureMundiForm from './NewSignatureMundiForm';
 import { UserInfos, SignatureInfos, UserHeader } from './UserDetails/';
 import { CartProducts, PurchaseSummary } from './Cart/';
 import { CartProductsNew, PurchaseSummaryNew } from './Finish/';
@@ -17,6 +18,7 @@ export {
   UserInfos,
   UserHeader,
   SearchBarAndButton,
+  NewSignatureMundiForm,
   SignatureInfos,
   Header,
   Footer,

@@ -5,6 +5,7 @@ import {
   InventoryScreen,
   AdmClientsScreen,
   AdmClientsIdScreen,
+  NewClientScreen,
   FinishScreen
 } from './containers/';
 
@@ -34,10 +35,10 @@ const routes = [
     )
   },
   {
-    path: '/signature/adm/clients/new',
+    path: '/signature/adm/new/',
     exact: true,
     render: () => (
-      <AdmClientsScreen />
+      <NewClientScreen />
     )
   },
   {

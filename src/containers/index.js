@@ -1,7 +1,7 @@
 import CheckoutScreen from './CheckoutScreen/';
 import CartScreen from './CartScreen/';
 import InventoryScreen from './InventoryScreen/';
-import { AdmClientsScreen, AdmClientsIdScreen } from './SignatureScreen/';
+import { AdmClientsScreen, AdmClientsIdScreen, NewClientScreen } from './SignatureScreen/';
 import FinishScreen from './FinishScreen/';
 
 export {
@@ -10,5 +10,6 @@ export {
   InventoryScreen,
   FinishScreen,
   AdmClientsScreen,
-  AdmClientsIdScreen
+  AdmClientsIdScreen,
+  NewClientScreen
 };
