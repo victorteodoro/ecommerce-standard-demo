@@ -1,3 +1,4 @@
+/* eslint-disable */
 import axios from 'axios';
 import Promise from 'bluebird';
 
@@ -19,7 +20,9 @@ const mundipagg = (method, path, body) => {
     path,
     body
   };
+  // return console.log(risotto);
   return Promise.resolve(axios.post(`${URL}`, { risotto }));
 };
 
 export default mundipagg;
+/* eslint-enable */

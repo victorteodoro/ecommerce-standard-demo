@@ -10,7 +10,10 @@
   align-items: center;
   padding: 1.3rem;
   color: black;
-  background: purple;
+  background: $color-cream;
+  border-radius: 1rem;
+  border:solid;
+  border-color: $color-red800;
 
   @media screen and (min-width: 700px) {
     grid-row: 2 / 3;
@@ -29,20 +32,18 @@
   }
 
   .userName {
+    border-bottom: solid $color-red800;
     grid-row: 2 / 3;
     grid-column: 3 / 5;
-    background: red;
   }
 
   .userId {
     grid-row: 3 / 4;
     grid-column: 3 / 5;
-    background: yellow;
   }
   .userStatus {
     grid-row: 4 / 5;
     grid-column: 3 / 5;
-    background: blue;
   }
 
 }

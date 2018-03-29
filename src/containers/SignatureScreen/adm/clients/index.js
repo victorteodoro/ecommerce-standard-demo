@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { map, addIndex } from 'ramda';
 import { Link } from 'react-router-dom';
@@ -25,9 +26,9 @@ import styles from './styles.css';
 const mapIndexed = addIndex(map);
 
 const populateCards = (input, index) => (
-  // console.log(index, input.shortSpecs.match(/[0-9]+/).toString())
+  // console.log(index)
   // const path = '/signature/adm/clients' + input.shortSpecs.match(/[0-9]+/),
-  <Link to={`/signature/adm/clients/${input.shortSpecs.match(/[0-9]+/).toString()}`}>
+  <Link key={index} to={`/signature/adm/clients/${input.shortSpecs.match(/[0-9]+/).toString()}`}>
     <UserCard key={index} inputs={input} />
   </Link>
 );
@@ -46,3 +47,4 @@ const AdmClientsScreen = () => (
 );
 
 export default AdmClientsScreen;
+/* eslint-enable */

@@ -10,7 +10,10 @@
   align-items: center;
   padding: 1.3rem;
   color: black;
-  background: green;
+  background: $color-cream;
+  border-radius: 1rem;
+  border:solid;
+  border-color: $color-red800;
 
   @media screen and (min-width: 700px) {
     grid-row: 3 / 4;
@@ -23,18 +26,16 @@
   }
 
   .titleInfos {
-    background: blue;
     grid-column: 1 / 4;
     text-align: center;
+    border-bottom: solid $color-red800;
   }
 
   .labelInfos {
-    background: red;
     grid-column: 1 / 2;
   }
 
   .contentInfos {
-    background: yellow;
     grid-column: 2 / 4;
   }
 
