@@ -93,7 +93,7 @@ class SignatureInfos extends React.Component {
       return (
         <div className={styles.signatureInfos}>
         <div className={styles.row} ref='modalDiv'>
-          aa
+          aabbbbccc
         </div>
         <div className={styles.signatureListTitle}>Assinaturas</div>
         <div className={styles.plan}>Plano:</div>
