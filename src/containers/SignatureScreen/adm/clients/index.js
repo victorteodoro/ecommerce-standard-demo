@@ -8,9 +8,6 @@ import {
   Footer,
   UserCard,
   SearchBarAndButton
-  // FrontCard
-  // BackCard,
-  // RotatingCard
 } from '../../../../components';
 
 // Importing components
@@ -26,8 +23,7 @@ import styles from './styles.css';
 const mapIndexed = addIndex(map);
 
 const populateCards = (input, index) => (
-  // console.log(index)
-  // const path = '/signature/adm/clients' + input.shortSpecs.match(/[0-9]+/),
+
   <Link key={index} to={`/signature/adm/clients/${input.shortSpecs.match(/[0-9]+/).toString()}`}>
     <UserCard key={index} inputs={input} />
   </Link>
