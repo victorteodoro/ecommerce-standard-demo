@@ -15,7 +15,7 @@ import handleChangeFromInput from '../../helpers/updateStateFromInput';
 import flipPagarmeCard from '../../helpers/flipPagarmeCard';
 import checkBinInfo from '../../helpers/checkBinInfo';
 
-import { newSubscription } from '../../helpers/payments/objects/mundiobjects';
+import { newSubscription } from '../../helpers/payments/objects/mundiObjects';
 import { MundipaggConnector } from '../../helpers/payments';
 
 // Import card component

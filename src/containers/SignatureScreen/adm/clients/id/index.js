@@ -40,7 +40,6 @@ class AdmClientsIdScreen extends React.Component {
   }
 
   requestInfos() {
-    console.log('entrou na request infos customer');
     MundipaggConnector('GET', this.state.customer.localPath, { abobora: 'abobora' })
       .then(resp => (this.handleResponse(resp)));
   }
@@ -59,7 +58,6 @@ class AdmClientsIdScreen extends React.Component {
   // }
 
   handleResponse(resp) {
-    console.log('entrou na handle response');
     const customerInfo = resp.data.data[0];
     this.setState({
       customer: {
@@ -76,11 +74,6 @@ class AdmClientsIdScreen extends React.Component {
     });
   }
 
-  componentWillMount() {
-  // componentDidMount() {
-    console.log('onmount');
-    console.log(this.state.customer.localPath);
-  }
   render() {
     return (
       <div className={styles.generalContainer}>
