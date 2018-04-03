@@ -12,7 +12,6 @@ import {
 
 // Importing components
 import UserCardsArea from '../../../UserCardsArea/';
-// import CardsArea from '../../../CardsArea/';
 
 // Importing assets
 import inputs from '../../../../resources/SignatureScreen/inputs';
