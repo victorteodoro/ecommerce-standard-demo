@@ -71,8 +71,6 @@ class NewSignatureMundiForm extends React.Component {
     if (resp.data.payment_method === 'boleto') {
       window.open(resp.data.last_transaction.pdf, '_blank');
     }
-    console.log('>>>>>>>>>>>>Resposta da requisição');
-    console.log(resp);
     let loc = window.location.href;
     loc = loc.substring(0, loc.lastIndexOf('/'));
     loc = `/signature/adm/clients`;
@@ -80,7 +78,6 @@ class NewSignatureMundiForm extends React.Component {
   }
 
   fillJSON() {
-    console.log('entrou na função que prepara a requisição');
     this.setState({
       customer: {
         name: ReactDOM.findDOMNode(this.refs.name).value,
@@ -92,9 +89,6 @@ class NewSignatureMundiForm extends React.Component {
       },
       planId: ReactDOM.findDOMNode(this.refs.customerPlan).value
     }, () => {
-      console.log('entrou na no callback do setstate');
-      console.log('Name e Card Number');
-      console.log(this.state.customer);
       const { customer } = newSubscription;
       const { card } = newSubscription;
       newSubscription.plan_id = this.state.planId;
@@ -111,7 +105,6 @@ class NewSignatureMundiForm extends React.Component {
       card.cvv = this.state.cvv;
       const newSubscriptionCardMerged = merge(newSubscription, { card });
       const newSubscriptionCustomerMerged = merge(newSubscriptionCardMerged, { customer });
-      console.log(newSubscriptionCustomerMerged);
       MundipaggConnector('POST', 'subscriptions', newSubscriptionCustomerMerged)
         .then(resp => (NewSignatureMundiForm.handleResponse(resp)));
     });
