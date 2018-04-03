@@ -1,0 +1,40 @@
+@import "../../../styles/colors";
+@import "../../../styles/mixins";
+
+.userInfos {
+  //Set the inner grid.
+  display: grid;
+  grid-template-columns: repeat(3, minmax(min-content, 1fr));
+  grid-template-rows: repeat(6, min-content);
+  align-items: center;
+  padding: 1.3rem;
+  color: black;
+  background: $color-cream;
+  border-radius: 1rem;
+  border:solid;
+  border-color: $color-red800;
+
+  @media screen and (min-width: 700px) {
+    grid-row: 3 / 4;
+    grid-column: 4 / 6;
+  }
+  
+  @media screen and (max-width: 700px) {
+    grid-row: 3 / 4;
+    grid-column: 4 / 6;
+  }
+
+  .titleInfos {
+    grid-column: 1 / 4;
+    text-align: center;
+    border-bottom: solid $color-red800;
+  }
+
+  .labelInfos {
+    grid-column: 1 / 2;
+  }
+
+  .contentInfos {
+    grid-column: 2 / 4;
+  }
+}

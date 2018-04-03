@@ -1,3 +1,4 @@
+/* eslint-disable */
 import axios from 'axios';
 import Promise from 'bluebird';
 
@@ -23,3 +24,4 @@ const mundipagg = (method, path, body) => {
 };
 
 export default mundipagg;
+/* eslint-enable */

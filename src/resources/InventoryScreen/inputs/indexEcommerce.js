@@ -44,6 +44,19 @@ const inputs = [
                     de forma fácil com o controle`,
     img: lg,
     imgSmall: lgSmall
+  },
+  {
+    name: 'LG Smart TV 55 abobora',
+    shortSpecs: 'SUPER ULTRA HD 55SJ8000 Conversor Digital Wi-Fi integrado 3 USB 4 HDMI',
+    priceBig: 'R$ 4.399,99',
+    priceInstallments: '10x de R$ 439,99 s/ juros',
+    largeSpecs: `Fidelidade às cores. O Nano Cell™ absorve as interferências de luz
+                    e melhora a pureza das cores reproduzidas. - Elegância e qualidade.
+                    Seu design Ultra Slim, junto com o melhor da resolução 4K trará um
+                    toque especial ao seu lar. - Interatividade. Realize várias funções
+                    de forma fácil com o controle`,
+    img: lg,
+    imgSmall: lgSmall
   }
 ];
 

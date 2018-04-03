@@ -3,7 +3,9 @@ import {
   CheckoutScreen,
   CartScreen,
   InventoryScreen,
-  SignatureScreen,
+  AdmClientsScreen,
+  AdmClientsIdScreen,
+  NewClientScreen,
   FinishScreen
 } from './containers/';
 
@@ -37,11 +39,24 @@ const routes = [
     )
   },
   {
-    path: '/signature/',
+    path: '/signature/adm/clients/',
     exact: true,
     render: () => (
-      <SignatureScreen />
-      // <SignatureScreen planList={planList}/>
+      <AdmClientsScreen />
+    )
+  },
+  {
+    path: '/signature/adm/new/',
+    exact: true,
+    render: () => (
+      <NewClientScreen />
+    )
+  },
+  {
+    path: '/signature/adm/clients/:id',
+    exact: true,
+    render: props => (
+      <AdmClientsIdScreen id={props} />
     )
   },
   {
