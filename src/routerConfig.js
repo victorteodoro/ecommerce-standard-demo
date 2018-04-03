@@ -59,8 +59,6 @@ const routes = [
       <AdmClientsIdScreen id={props} />
     )
   },
-  // <Route exact path="/details/:id" render={(props) =>
-  // <DetailsPage globalStore={globalStore} {...props} />} />
   {
     path: '/ecommerce/checkout',
     exact: true,
