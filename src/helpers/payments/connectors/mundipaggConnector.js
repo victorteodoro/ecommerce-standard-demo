@@ -20,7 +20,6 @@ const mundipagg = (method, path, body) => {
     path,
     body
   };
-  // return console.log(risotto);
   return Promise.resolve(axios.post(`${URL}`, { risotto }));
 };
 
