@@ -3,7 +3,6 @@ import React from 'react';
 import {
   Header,
   Footer,
-  // PurchaseSummaryNew,
   UserInfos,
   UserHeader,
   SignatureInfos
@@ -24,7 +23,6 @@ class AdmClientsIdScreen extends React.Component {
         email: '',
         birthDate: '',
         document: '',
-        // phone: '',
         gender: '',
         userSince: '',
         userCode: '',
@@ -34,8 +32,6 @@ class AdmClientsIdScreen extends React.Component {
     };
     this.handleResponse = this.handleResponse.bind(this);
     this.requestInfos = this.requestInfos.bind(this);
-    // this.requestSubscriptionsInfos = this.requestSubscriptionsInfos.bind(this);
-    // this.handleResponseSubscription = this.handleResponseSubscription.bind(this);
     this.requestInfos();
   }
 
@@ -43,19 +39,6 @@ class AdmClientsIdScreen extends React.Component {
     MundipaggConnector('GET', this.state.customer.localPath, { abobora: 'abobora' })
       .then(resp => (this.handleResponse(resp)));
   }
-
-  // requestSubscriptionsInfos() {
-  //   console.log('entrou na request infos subs');
-  //   MundipaggConnector('GET', 'subscriptions?customer_id=cus_95xKqdlH7S9bJm4g',
-  // { abobora: 'abobora' })
-  //     .then(subsResp => (this.handleResponseSubscription(subsResp)));
-  // }
-
-  // handleResponseSubscription(respSubs) {
-  //   console.log('entrou na handle response subs');
-  //   console.log(this.state.customer.name);
-  //   console.log(respSubs);
-  // }
 
   handleResponse(resp) {
     const customerInfo = resp.data.data[0];
@@ -65,7 +48,6 @@ class AdmClientsIdScreen extends React.Component {
         email: customerInfo.email,
         birthDate: customerInfo.birthdate,
         document: customerInfo.document,
-        // phone: '',
         gender: customerInfo.gender,
         userSince: customerInfo.created_at,
         userCode: customerInfo.code,
