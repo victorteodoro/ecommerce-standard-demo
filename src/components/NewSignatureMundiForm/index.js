@@ -50,7 +50,6 @@ class NewSignatureMundiForm extends React.Component {
       customer: {
         name: '',
         document: '',
-        // phone: '',
         email: '',
         gender: '',
         birthDate: ''
@@ -82,7 +81,6 @@ class NewSignatureMundiForm extends React.Component {
       customer: {
         name: ReactDOM.findDOMNode(this.refs.name).value,
         document: ReactDOM.findDOMNode(this.refs.customerDoc).value,
-        // phone: ReactDOM.findDOMNode(this.refs.customerPhone).value,
         email: ReactDOM.findDOMNode(this.refs.customerEmail).value,
         gender: ReactDOM.findDOMNode(this.refs.customerGender).value,
         birthDate: ReactDOM.findDOMNode(this.refs.customerBirthDate).value
@@ -94,7 +92,6 @@ class NewSignatureMundiForm extends React.Component {
       newSubscription.plan_id = this.state.planId;
       customer.name = this.state.customer.name;
       customer.document = this.state.customer.document;
-      // customer.phone = this.state.customer.phone;
       customer.email = this.state.customer.email;
       customer.gender = this.state.customer.gender;
       customer.birthDate = this.state.customer.birthDate;
@@ -109,7 +106,6 @@ class NewSignatureMundiForm extends React.Component {
         .then(resp => (NewSignatureMundiForm.handleResponse(resp)));
     });
   }
-  // alert('entrou');
 
   getValidationState() {
     if (this.state.cardNumber.length > 15 &&
@@ -145,8 +141,6 @@ class NewSignatureMundiForm extends React.Component {
                   placeholder='Nome do cliente'
                   className={styles.largeInput}
                   onChange={this.changeHandler}
-                // onBlur={props.checkBin}
-                // maxLength='16'
                 />
               </FormGroup>
             </div>
@@ -160,9 +154,6 @@ class NewSignatureMundiForm extends React.Component {
                   name='customerDoc'
                   placeholder='CPF'
                   className={styles.largeInput}
-                // onChange={props.changeHandler}
-                // onBlur={props.checkBin}
-                // maxLength='16'
                 />
               </FormGroup>
             </div>
@@ -176,9 +167,6 @@ class NewSignatureMundiForm extends React.Component {
                   name='customerPhone'
                   placeholder='(11)91234-5678'
                   className={styles.largeInput}
-                // onChange={props.changeHandler}
-                // onBlur={props.checkBin}
-                // maxLength='16'
                 />
               </FormGroup>
             </div>
@@ -192,9 +180,6 @@ class NewSignatureMundiForm extends React.Component {
                   name='customerEmail'
                   placeholder='john.doe@world.com'
                   className={styles.largeInput}
-                // onChange={props.changeHandler}
-                // onBlur={props.checkBin}
-                // maxLength='16'
                 />
               </FormGroup>
             </div>
@@ -218,9 +203,6 @@ class NewSignatureMundiForm extends React.Component {
                   name='customerBirthDate'
                   placeholder='dd/mm/aaaa'
                   className={styles.smallInputRight}
-                // onChange={props.changeHandler}
-                // onBlur={props.checkBin}
-                // maxLength='16'
                 />
               </FormGroup>
             </div>
