@@ -44,7 +44,7 @@ const RotatingCard = props => (
                             Adicionar ao carrinho
                             </button>
                     </Link>
-                    <button className={`${styles.btn} ${styles.btnGrey}`}>Compra com 1-click</button>
+                    <button className={`${styles.btn} ${styles.btnGrey}`} disabled>Compra com 1-click</button>
                 </div>
             </div>
         </div>

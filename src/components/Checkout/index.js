@@ -1,7 +1,9 @@
 import PurchaseAndShippingSummary from './PurchaseAndShippingSummary/';
-import PaymentDetails from './PaymentDetails/';
+import PaymentDetailsEcommerce from './PaymentDetailsEcommerce/';
+import PaymentDetailsMarketplace from './PaymentDetailsMarketplace/';
 
 export {
   PurchaseAndShippingSummary,
-  PaymentDetails
+  PaymentDetailsEcommerce,
+  PaymentDetailsMarketplace
 };
