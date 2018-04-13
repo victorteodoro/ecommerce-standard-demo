@@ -9,7 +9,7 @@ import handleChangeFromInput from '../../../helpers/updateStateFromInput';
 import flipPagarmeCard from '../../../helpers/flipPagarmeCard';
 import checkBinInfo from '../../../helpers/checkBinInfo';
 import { charge, orderCheckout, safetyPay } from '../../../helpers/payments/objects/mundiObjects';
-import { MundipaggConnector } from '../../../helpers/payments';
+import { MundipaggConnector, MundipaggBoletoConnector } from '../../../helpers/payments';
 
 // Import components
 import CardForm from '../CardForm/';
@@ -147,7 +147,7 @@ class PaymentDetailsEcommerce extends React.Component {
     };
     let chargeNew = merge(charge, { payment });
     chargeNew = merge(chargeNew, { amount: 86400 });
-    MundipaggConnector('POST', 'charges', chargeNew)
+    MundipaggBoletoConnector('POST', 'charges', chargeNew)
       .then(resp => (PaymentDetailsEcommerce.handleResponseMundi(resp)))
       .catch(err => (console.log(err)));
   }
@@ -295,37 +295,7 @@ class PaymentDetailsEcommerce extends React.Component {
         </TabPanel>
         <TabPanel className={style.safetyPayForm}>
           <div className={style.paymentSafetyPay}>
-          Finalize seu pagamento com SafetyPay e realize em qualquer casa lotérica
-          ou transferência bancária.
-          <br />
-          <div className={style.form}>
-            <LinkForm className={style.form}
-               validationState={this.getValidationStateLink}
-               nameReceive={this.state.nameReceive}
-               telephone={this.state.telephone}
-               email={this.state.email}
-               changeHandler={this.handleChangeLink}
-               />
-          </div>
-          <br />
-            <br />
-            <div className={style.safetyPayButton}>
-              <button onClick={this.paymentSafetyPay} className={`${style.btn} ${style.btnWhite}`}>
-                Ir para SafetyPay
-              </button>
-            </div>
-            <div >
-              <div className={style.noticeTitle}>Importante</div>
-              <ul className={style.list}>
-                <li>Caso o pagamento não seja efetuado em até 4 horas (para transferência) ou
-                  7 dias (para lotérica), a compra será
-                  automaticamente cancelada;</li>
-                <li>O pedido somente poderá ser pago uma única vez;</li>
-                <li>Caso o seu computador tenha um programa anti pop-up,
-                  será preciso desativá-lo antes de finalizar sua compra e ser redirecionado
-                  para o ambiente SafetyPay;</li>
-              </ul>
-            </div>
+          Em breve: disponibilização do SafetyPay neste ecommerce.
           </div>
         </TabPanel>
         <TabPanel className={style.applePay}>
