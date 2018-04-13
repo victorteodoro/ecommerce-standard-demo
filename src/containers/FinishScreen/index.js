@@ -9,9 +9,9 @@ import {
 
 import styles from './styles.css';
 
-const FinishScreen = () => (
+const FinishScreen = props => (
   <div className={styles.generalContainer}>
-    <Header />
+    <Header type={props.type} />
     <CartProductsNew />
     <PurchaseSummaryNew />
     <Footer />

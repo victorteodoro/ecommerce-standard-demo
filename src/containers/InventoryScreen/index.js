@@ -4,9 +4,7 @@ import { map, addIndex } from 'ramda';
 import {
   Header,
   Footer,
-  // ProductArea
   RotatingCard
-  // Carousel
 } from '../../components/';
 
 // Importing components
@@ -34,7 +32,7 @@ const chooseInput = (type) => {
 
 const InventoryScreen = props => (
     <div className={styles.generalContainer}>
-      <Header />
+      <Header type={props.type} />
       <CardsArea inputs={chooseInput(props.type)}>
       {
         mapIndexed(populateCards, chooseInput(props.type))
