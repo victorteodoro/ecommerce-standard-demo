@@ -34,6 +34,7 @@ const CartProducts = () => (
       </div>
       <div className={styles.productQuantity}>
         <select name='quantity' id='quantitySelector'>
+          <option value='0' >0</option>
           <option value='1' selected>1</option>
           <option value='2'>2</option>
           <option value='3'>3</option>
@@ -54,7 +55,8 @@ const CartProducts = () => (
       </div>
       <div className={styles.productQuantity}>
         <select name='quantity' id='quantitySelector'>
-          <option value='1' selected>1</option>
+          <option value='0' selected>0</option>
+          <option value='1' >1</option>
           <option value='2'>2</option>
           <option value='3'>3</option>
         </select>
@@ -78,7 +80,8 @@ const CartProducts = () => (
       </div>
       <div className={styles.productQuantity}>
         <select name='quantity' id='quantitySelector'>
-          <option value='1' selected>1</option>
+          <option value='0' selected>0</option>
+          <option value='1' >1</option>
           <option value='2'>2</option>
           <option value='3'>3</option>
         </select>

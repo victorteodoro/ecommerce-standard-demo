@@ -13,6 +13,9 @@ const PurchaseSummary = () => (
       <div className={styles.productCostDetail}>
         Agradecemos a preferência.
       </div>
+      <div className={styles.id}>
+        Identificador da compra: ST-{(Math.random() * (99999999 - 11111111)).toFixed(0)}
+      </div>
     </div>
   </section>
 );
