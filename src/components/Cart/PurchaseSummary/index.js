@@ -5,22 +5,22 @@ import { Link } from 'react-router-dom';
 // Import styles
 import styles from './styles.css';
 
-const chooseType = (type) => {
+const decidePath = (type, end) => {
   if (type === 'marketplace') {
-    return '/marketplace/checkout';
+    return `/marketplace/${end}`;
   }
-  return '/ecommerce/checkout';
+  return `/ecommerce/${end}`;
 };
 
 const PurchaseSummary = props => (
   <section className={styles.purchaseSummary}>
     <div className={styles.purchaseSummaryActions}>
-      <Link to='/'>
+      <Link to={decidePath(props.type, '')}>
         <button className={`${styles.btn} ${styles.btnWhite}`}>
           Continuar compra
         </button>
       </Link>
-      <Link to={chooseType(props.type)}>
+      <Link to={decidePath(props.type, 'checkout')}>
         <button className={`${styles.btn} ${styles.btnWhite}`}>
           Finalizar compra
         </button>

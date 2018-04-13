@@ -22,7 +22,7 @@ const inputs = [
     type: 'mkt'
   },
   {
-    name: 'Notebook Dell Inspiron i15-5566-A30P',
+    name: 'Notebook Dell Inspiron',
     shortSpecs: 'Core i5 4GB 1TB Tela LED 15.6 Windows 10',
     priceBig: 'R$ 2.042,49',
     priceInstallments: '8x de R$ 268,74 s/ juros ',
@@ -32,7 +32,7 @@ const inputs = [
                     (1366 x 768) e a 7ª Geração de Processadores Intel Core i5, Placa de
                     Vídeo Intel® HD Graphics 620.`,
     img: dell,
-    seller: 'Vendido e entregue por Stone Store',
+    seller: 'Vendido e entregue por Mundipagg Store',
     imgSmall: dellSmall,
     type: 'mkt'
   },
@@ -47,7 +47,7 @@ const inputs = [
                     toque especial ao seu lar. - Interatividade. Realize várias funções
                     de forma fácil com o controle`,
     img: lg,
-    seller: 'Vendido e entregue por Stone Store',
+    seller: 'Vendido e entregue por Pagar.me Store',
     imgSmall: lgSmall,
     type: 'mkt'
   }

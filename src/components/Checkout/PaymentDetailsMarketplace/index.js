@@ -43,7 +43,8 @@ class PaymentDetailsMarketplace extends React.Component {
         'holderName',
         'expiryMonth',
         'expiryYear',
-        'cvv'
+        'cvv',
+        'installments'
       ]
     );
     this.flipCard = flipPagarmeCard(this);
@@ -54,6 +55,7 @@ class PaymentDetailsMarketplace extends React.Component {
       expiryMonth: '',
       expiryYear: '',
       cvv: '',
+      installments: '1',
       flipped: false,
       cardBrand: '',
       cardBank: ''
@@ -79,6 +81,7 @@ class PaymentDetailsMarketplace extends React.Component {
     transaction.card_holder_name = this.state.holderName;
     transaction.card_expiration_date = `${this.state.expiryMonth}${this.state.expiryYear}`;
     transaction.card_cvv = this.state.cvv;
+    transaction.installments = this.state.installments;
     PagarmeConnector('POST', 'transactions', transaction)
       .then(resp => (PaymentDetailsMarketplace.handleResponsePagarme(resp)))
       .catch(err => (console.log(err)));
@@ -138,6 +141,7 @@ class PaymentDetailsMarketplace extends React.Component {
                expiryMonth={this.state.expiryMonth}
                expiryYear={this.state.expiryYear}
                cvv={this.state.cvv}
+               installments={this.state.installments}
                changeHandler={this.handleChange}
                flipCard={this.flipCard}
                checkBin={this.checkBin}

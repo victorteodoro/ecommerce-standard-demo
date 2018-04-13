@@ -47,7 +47,8 @@ class PaymentDetailsEcommerce extends React.Component {
         'holderName',
         'expiryMonth',
         'expiryYear',
-        'cvv'
+        'cvv',
+        'installments'
       ]
     );
     this.handleChangeLink = handleChangeFromInput(
@@ -69,6 +70,7 @@ class PaymentDetailsEcommerce extends React.Component {
       flipped: false,
       cardBrand: '',
       cardBank: '',
+      installments: '1',
       email: '',
       telephone: '',
       nameReceive: ''
@@ -91,13 +93,16 @@ class PaymentDetailsEcommerce extends React.Component {
   paymentCardMundi() {
     const { payment } = charge;
     const { credit_card: creditCard } = payment;
+    creditCard.installments = this.state.installments;
     const { card } = creditCard;
     card.number = this.state.cardNumber;
     card.holder_name = this.state.holderName;
     card.exp_month = this.state.expiryMonth;
     card.exp_year = this.state.expiryYear;
     card.cvv = this.state.cvv;
-    const chargeNew = merge(charge, { card });
+    let chargeNew = merge(charge, { card });
+    chargeNew = merge(charge, { creditCard });
+    console.log(JSON.stringify(chargeNew));
     MundipaggConnector('POST', 'charges', chargeNew)
       .then(resp => (PaymentDetailsEcommerce.handleResponseMundi(resp)))
       .catch(err => (console.log(err)));
@@ -204,6 +209,7 @@ class PaymentDetailsEcommerce extends React.Component {
                holderName={this.state.holderName}
                expiryMonth={this.state.expiryMonth}
                expiryYear={this.state.expiryYear}
+               installments={this.state.installments}
                cvv={this.state.cvv}
                changeHandler={this.handleChange}
                flipCard={this.flipCard}

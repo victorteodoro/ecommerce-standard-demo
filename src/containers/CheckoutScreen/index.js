@@ -21,7 +21,7 @@ const typeSell = (props) => {
 
 const CheckoutScreen = props => (
   <div className={styles.generalContainer}>
-    <Header />
+    <Header type={props.type} />
     <PurchaseAndShippingSummary />
     {
       typeSell(props)

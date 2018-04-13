@@ -18,6 +18,13 @@ const routes = [
     )
   },
   {
+    path: '/ecommerce',
+    exact: true,
+    render: () => (
+      <InventoryScreen type='ecommerce' />
+    )
+  },
+  {
     path: '/ecommerce/cart',
     exact: true,
     render: () => (
@@ -77,14 +84,14 @@ const routes = [
     path: '/ecommerce/finish',
     exact: true,
     render: () => (
-      <FinishScreen />
+      <FinishScreen type='ecommerce' />
     )
   },
   {
     path: '/marketplace/finish',
     exact: true,
     render: () => (
-      <FinishScreen />
+      <FinishScreen type='marketplace' />
     )
   }
 ];
