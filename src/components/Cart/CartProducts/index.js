@@ -30,10 +30,14 @@ const CartProducts = () => (
              >
             Dual Chip Android 7.1.1 Nougat Tela 5.5' Snapdragon 625 32GB 4G 13MP Câmera
           </p>
+          <b>
+            Vendido e entregue por Stone Store
+          </b>
         </div>
       </div>
       <div className={styles.productQuantity}>
         <select name='quantity' id='quantitySelector'>
+          <option value='0' >0</option>
           <option value='1' selected>1</option>
           <option value='2'>2</option>
           <option value='3'>3</option>
@@ -50,11 +54,15 @@ const CartProducts = () => (
         <div className={styles.productDescription}>
           <h3 className={styles.productDescriptionShort}>Notebook Dell Inspiron i15-5566-A30P</h3>
           <p className={styles.productDescriptionLong}>Core i5 4GB 1TB Tela LED 15.6' Windows 10</p>
+          <b>
+            Vendido e entregue por Mundipagg Store
+          </b>
         </div>
       </div>
       <div className={styles.productQuantity}>
         <select name='quantity' id='quantitySelector'>
-          <option value='1' selected>1</option>
+          <option value='0' selected>0</option>
+          <option value='1' >1</option>
           <option value='2'>2</option>
           <option value='3'>3</option>
         </select>
@@ -74,11 +82,15 @@ const CartProducts = () => (
              >
             SUPER ULTRA HD 55SJ8000 Conversor Digital Wi-Fi integrado 3 USB 4 HDMI
           </p>
+          <b>
+            Vendido e entregue por Pagar.me Store
+          </b>
         </div>
       </div>
       <div className={styles.productQuantity}>
         <select name='quantity' id='quantitySelector'>
-          <option value='1' selected>1</option>
+          <option value='0' selected>0</option>
+          <option value='1' >1</option>
           <option value='2'>2</option>
           <option value='3'>3</option>
         </select>

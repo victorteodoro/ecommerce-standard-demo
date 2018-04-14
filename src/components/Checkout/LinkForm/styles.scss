@@ -1,0 +1,25 @@
+.cardForm {
+  .nameReceive {
+    & > input {
+      padding: 2px;
+      text-align: center;
+      width: 25rem;
+    }
+  }
+
+  .telephone {
+    & > input {
+      text-align: center;
+      padding: 2px;
+      width: 25rem;
+    }
+  }
+
+  .email {
+    & > input {
+      padding: 2px;
+      text-align: center;
+      width: 25rem;
+    }
+  }
+}

@@ -2,8 +2,8 @@ const order = {
   code: '1002999-2',
   items: [
     {
-      amount: 28000,
-      description: 'Moto G1 Xt 1033 16GB',
+      amount: 96000,
+      description: 'Moto G5S',
       quantity: 1
     }
   ],
@@ -11,12 +11,12 @@ const order = {
     name: 'Andre Cavalcante',
     email: 'andre13pmc@gmail.com',
     address: {
-      street: 'Rua XPTO',
-      number: '10880',
-      zip_code: '23010001',
-      neighborhood: 'Centro',
-      city: 'Rio de Janeiro',
-      state: 'RJ',
+      street: 'Rua Frederico Abranches',
+      number: '104',
+      zip_code: '01225000',
+      neighborhood: 'Vila Buarque',
+      city: 'São Paulo',
+      state: 'SP',
       country: 'BR'
     },
     phones: {
@@ -30,20 +30,20 @@ const order = {
   payments: [{
     payment_method: 'checkout',
     checkout: {
-      amount: 28000,
+      amount: 96000,
       default_payment_method: 'credit_card',
-      success_url: 'https://facebook.com',
+      success_url: 'https://mundipagg.com',
       accepted_payment_methods: [
         'boleto',
         'credit_card'
       ],
       billing_address: {
-        street: 'Rua XPTO',
-        number: '10880',
-        zip_code: '23010001',
-        neighborhood: 'Centro',
-        city: 'Rio de Janeiro',
-        state: 'RJ',
+        street: 'Rua Frederico Abranches',
+        number: '104',
+        zip_code: '01225000',
+        neighborhood: 'Vila Buarque',
+        city: 'São Paulo',
+        state: 'SP',
         country: 'BR'
       },
       credit_card: {
@@ -51,11 +51,27 @@ const order = {
         installments: [
           {
             number: 1,
-            total: 28000
+            total: 96000
           },
           {
             number: 2,
-            total: 28000
+            total: 96000
+          },
+          {
+            number: 3,
+            total: 96000
+          },
+          {
+            number: 4,
+            total: 96000
+          },
+          {
+            number: 5,
+            total: 96000
+          },
+          {
+            number: 6,
+            total: 96000
           }
         ]
       },

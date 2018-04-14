@@ -2,14 +2,13 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import PaymentCard from 'react-payment-card-component';
-import { map, addIndex, merge } from 'ramda';
+import { map, addIndex } from 'ramda';
 
 // Imports from internal helper funcs
 import handleChangeFromInput from '../../../helpers/updateStateFromInput';
 import flipPagarmeCard from '../../../helpers/flipPagarmeCard';
 import checkBinInfo from '../../../helpers/checkBinInfo';
-import { charge } from '../../../helpers/payments/objects/mundiObjects';
-import { MundipaggConnector, PagarmeConnector } from '../../../helpers/payments';
+import { PagarmeConnector } from '../../../helpers/payments';
 import transactionSplit from '../../../helpers/payments/objects/pagarmeObjects';
 
 // Import components
@@ -19,26 +18,23 @@ import CardForm from '../CardForm/';
 import style from './styles.css';
 
 // Import inputs
-import inputs from '../../../resources/CheckoutScreen/inputs';
+import paymentMethodsMarketplace from '../../../resources/CheckoutScreen/paymentMethods/paymentMethodsMarketplace';
 
 const mapIndexed = addIndex(map);
 
-const populateTabList = (input, index) => (
+const populateTabList = (paymentMethods, index) => (
   <Tab key={index} className={style.credit}>
-    <i className={input.icon}></i>
-    {input.type}
+    <i className={paymentMethods.icon}></i>
+    {paymentMethods.type}
   </Tab>
 );
 
-class PaymentDetails extends React.Component {
+class PaymentDetailsMarketplace extends React.Component {
   constructor(props, context) {
     super(props, context);
 
     this.getValidationState = this.getValidationState.bind(this);
-    this.paymentCardMundi = this.paymentCardMundi.bind(this);
     this.paymentCardPagarme = this.paymentCardPagarme.bind(this);
-    this.handleBoleto = this.handleBoleto.bind(this);
-    this.handleCredit = this.handleCredit.bind(this);
     // Setup helper functions
     this.handleChange = handleChangeFromInput(
       this,
@@ -47,7 +43,8 @@ class PaymentDetails extends React.Component {
         'holderName',
         'expiryMonth',
         'expiryYear',
-        'cvv'
+        'cvv',
+        'installments'
       ]
     );
     this.flipCard = flipPagarmeCard(this);
@@ -58,6 +55,7 @@ class PaymentDetails extends React.Component {
       expiryMonth: '',
       expiryYear: '',
       cvv: '',
+      installments: '1',
       flipped: false,
       cardBrand: '',
       cardBank: ''
@@ -65,16 +63,6 @@ class PaymentDetails extends React.Component {
   }
   /* eslint-disable */
   /* eslint-enable */
-
-  static handleResponseMundi(resp) {
-    if (resp.data.payment_method === 'boleto') {
-      window.open(resp.data.last_transaction.pdf, '_blank');
-    }
-    let loc = window.location.href;
-    loc = loc.substring(0, loc.lastIndexOf('/'));
-    loc = `${loc}/finish`;
-    window.location.href = loc;
-  }
 
   static handleResponsePagarme(resp) {
     if (resp.data.status === 'paid' || resp.data.status === 'waiting_payment') {
@@ -93,8 +81,9 @@ class PaymentDetails extends React.Component {
     transaction.card_holder_name = this.state.holderName;
     transaction.card_expiration_date = `${this.state.expiryMonth}${this.state.expiryYear}`;
     transaction.card_cvv = this.state.cvv;
+    transaction.installments = this.state.installments;
     PagarmeConnector('POST', 'transactions', transaction)
-      .then(resp => (PaymentDetails.handleResponsePagarme(resp)))
+      .then(resp => (PaymentDetailsMarketplace.handleResponsePagarme(resp)))
       .catch(err => (console.log(err)));
   }
 
@@ -106,40 +95,7 @@ class PaymentDetails extends React.Component {
     transaction.payment_method = 'boleto';
     transaction.boleto_instructions = 'Pagar boleto para teste de transação Walmart';
     PagarmeConnector('POST', 'transactions', transaction)
-      .then(resp => (PaymentDetails.handleResponsePagarme(resp)))
-      .catch(err => (console.log(err)));
-  }
-
-  paymentCardMundi() {
-    const { payment } = charge;
-    const { credit_card: creditCard } = payment;
-    const { card } = creditCard;
-    card.number = this.state.cardNumber;
-    card.holder_name = this.state.holderName;
-    card.exp_month = this.state.expiryMonth;
-    card.exp_year = this.state.expiryYear;
-    card.cvv = this.state.cvv;
-    const chargeNew = merge(charge, { card });
-    MundipaggConnector('POST', 'charges', chargeNew)
-      .then(resp => (PaymentDetails.handleResponseMundi(resp)))
-      .catch(err => (console.log(err)));
-  }
-
-  static paymentBoletoMundi() {
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    const payment = {
-      payment_method: 'boleto',
-      boleto: {
-        bank: '033',
-        instructions: 'Pagar até o vencimento <br> Não aceitar depois',
-        due_at: tomorrow
-      }
-    };
-    let chargeNew = merge(charge, { payment });
-    chargeNew = merge(chargeNew, { amount: 86400 });
-    MundipaggConnector('POST', 'charges', chargeNew)
-      .then(resp => (PaymentDetails.handleResponseMundi(resp)))
+      .then(resp => (PaymentDetailsMarketplace.handleResponsePagarme(resp)))
       .catch(err => (console.log(err)));
   }
 
@@ -154,28 +110,12 @@ class PaymentDetails extends React.Component {
     return null;
   }
 
-  handleBoleto() {
-    if (this.props.type === 'marketplace') {
-      PaymentDetails.paymentBoletoPagarme();
-    } else {
-      PaymentDetails.paymentBoletoMundi();
-    }
-  }
-
-  handleCredit() {
-    if (this.props.type === 'marketplace') {
-      this.paymentCardPagarme();
-    } else {
-      this.paymentCardMundi();
-    }
-  }
-
   render() {
     return (
       <Tabs className={style.paymentDetailsTabs}>
         <TabList className={style.paymentMethodTabList}>
           {
-            mapIndexed(populateTabList, inputs)
+            mapIndexed(populateTabList, paymentMethodsMarketplace)
           }
         </TabList>
 
@@ -193,9 +133,7 @@ class PaymentDetails extends React.Component {
                expiration={`${this.state.expiryMonth}/${this.state.expiryYear}`}
                flipped={this.state.flipped}
                />
-
             <br />
-
             <CardForm
                validationState={this.getValidationState}
                cardNumber={this.state.cardNumber}
@@ -203,18 +141,21 @@ class PaymentDetails extends React.Component {
                expiryMonth={this.state.expiryMonth}
                expiryYear={this.state.expiryYear}
                cvv={this.state.cvv}
+               installments={this.state.installments}
                changeHandler={this.handleChange}
                flipCard={this.flipCard}
                checkBin={this.checkBin}
                />
+            <div className={style.creditButton}>
+              <button onClick={this.paymentCardPagarme} className={`${style.btn}`}>
+                  Finalizar com Pagamento
+              </button>
+            </div>
           </div>
-          <button onClick={this.handleCredit} className={`${style.btn} ${style.btnWhite}`}>
-              Finalizar com Pagamento
-          </button>
         </TabPanel>
         <TabPanel className={style.boletoForm}>
           <div className={style.paymentBoleto}>
-            Pague no boleto com <b> 10% de desconto.</b>
+            Pague no boleto com 10% de desconto.
             <br />
             <div className={style.boletoPayOptions}>
             Imprima o boleto e pague no banco
@@ -228,8 +169,8 @@ class PaymentDetails extends React.Component {
             <br />
             <br />
             <div className={style.boletoButton}>
-              <button onClick={this.handleBoleto} className={`${style.btn} ${style.btnWhite}`}>
-                Finalizar com Pagamento
+              <button onClick={PaymentDetailsMarketplace.paymentBoletoPagarme} className={`${style.btn} ${style.btnWhite}`}>
+                Gerar Boleto para Pagamento
               </button>
             </div>
             <div className={style.notices}>
@@ -255,4 +196,4 @@ class PaymentDetails extends React.Component {
   }
 }
 
-export default PaymentDetails;
+export default PaymentDetailsMarketplace;

@@ -8,7 +8,7 @@ import NewSignatureMundiForm from './NewSignatureMundiForm';
 import { UserInfos, SignatureInfos, UserHeader } from './UserDetails/';
 import { CartProducts, PurchaseSummary } from './Cart/';
 import { CartProductsNew, PurchaseSummaryNew } from './Finish/';
-import { PurchaseAndShippingSummary, PaymentDetails } from './Checkout/';
+import { PurchaseAndShippingSummary, PaymentDetailsEcommerce, PaymentDetailsMarketplace } from './Checkout/';
 
 export {
   RotatingCard,
@@ -27,7 +27,8 @@ export {
   CartProducts,
   PurchaseSummary,
   PurchaseAndShippingSummary,
-  PaymentDetails,
+  PaymentDetailsEcommerce,
+  PaymentDetailsMarketplace,
   CartProductsNew,
   PurchaseSummaryNew
 };
