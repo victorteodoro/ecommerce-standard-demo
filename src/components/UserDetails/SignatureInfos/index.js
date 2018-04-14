@@ -10,6 +10,7 @@ import styles from './styles.css';
 
 // Importing assets
 import subsLucas from '../../../resources/SignatureScreen/inputs/subsLucas';
+import MundipaggRecurrencyConnector from '../../../helpers/recurrency';
 
 const mapIndexed = addIndex(map);
 
@@ -17,12 +18,135 @@ class Modal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalOpened: this.props.isModalOpen
+      modalOpened: this.props.isModalOpen,
+      formDiscounts: false,
+      formItens: false,
+      discountsValue:'discountsvalue1',
+      discountsType:'flat',
+      discountsCycles:'1',
+      itensName:'itensname',
+      itensDescription:'itensdescription',
+      itensValue:'itensvalue',
+      itensCycles:'1'
     };
     this.modalToggle = this.modalToggle.bind(this);
+    this.openFormDiscounts = this.openFormDiscounts.bind(this);
+    this.openFormItens = this.openFormItens.bind(this);
+    this.addItem = this.addItem.bind(this);
+    this.addDiscounts = this.addDiscounts.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(event) {
+    let field = event.target.name;
+    this.setState({
+      [field]: event.target.value
+    });
+  }
+  
+  itemObj(itens, index) {
+    let itemName;
+    let itemValue;
+    let itemQuantity;
+
+    itemValue = 'R$' + itens.pricingScheme.price / 100;
+
+    return (
+      <div className={styles.itemRow} key={index} >
+        <div>
+          Nome: {itens.description}
+        </div>
+        <div>
+          Valor: {itemValue}
+        </div>
+        <div>
+          Quantidade: {itens.quantity}
+        </div>
+      </div>
+    )
+  }
+
+  discountObj(discount, index) {
+    let discountType;
+    let discountStatus;
+    let discountAmount;
+
+    discountAmount = discount.value;
+
+    if (discount.discount_type == 'flat') {
+      discountType = 'Reais'
+      discountAmount = 'R$' + discount.value / 100;
+    } else {
+      discountType = 'Percentual'
+    }
+    
+    if (discount.status == 'active') {
+      discountStatus = 'Ativo'
+    } else {
+      discountStatus = 'Inativo'
+    }
+
+    return (
+      <div className={styles.discountRow} key={index} >
+        <div>
+          Valor: {discountAmount}
+      </div>
+        <div>
+          Tipo: {discountType}
+      </div>
+        <div>
+          Status: {discountStatus}
+      </div>
+      </div>
+    )
+  }
+
+  listDiscounts(discounts) {
+    let i = 0;
+    let discountsList = ``;
+    for (i=0; i<discounts.length; i++) {
+      discountsList = discountsList + 
+      `Desconto ${i}
+      id: ${ discounts[i].id },
+       value: ${discounts[i].value},
+       discount_type: ${discounts[i].discount_type},
+       cycles: ${discounts[i].cycles},
+       status: ${discounts[i].status},
+       createdAt: ${discounts[i].createdAt}
+      `;
+    }
+    console.log('discountsList ->', discountsList);
+    return discountsList;
+  }
+  listItens(itens) {
+    let i = 0;
+    let itensList = '';
+    for (i=0; i<itens.length; i++) {
+      itensList = itensList + 
+      `Item ${i}
+       Descrição: ${ itens[i].description },
+       Quantidade: ${itens[i].quantity},
+       Valor: ${itens[i].pricingScheme.price}
+      `;
+    }
+    return itensList;
   }
   modalToggle() {
     this.setState({ modalOpened: !this.state.modalOpened })
+  }
+  openFormDiscounts() {
+    this.setState({ formDiscounts: !this.state.formDiscounts }, _ => {
+    })
+  }
+  addItem() {
+    console.log('this.state (add itens) ->', this.state);
+  }
+  addDiscounts() {
+    console.log('this.state (add discounts) ->', this.state);
+    console.log('this.state (add discounts) aa ->', 'aaaa');
+  }
+  openFormItens() {
+    this.setState({ formItens: !this.state.formItens }, _ => {
+    })
   }
   render() {
     if(this.state.modalOpened==false) {
@@ -34,6 +158,10 @@ class Modal extends React.Component {
       const coverClass = this.props.isModalOpen ? styles.modalCoverActive : styles.modalCover;
       const containerClass = this.props.isModalOpen ?
       styles.modalContainerActive : styles.modalContainer;
+      const divTextDiscounts = this.state.formDiscounts ? styles.modalDiscountsTextFalse : styles.modalDiscountsTextTrue
+      const divFormDiscounts = this.state.formDiscounts ? styles.modalDiscountsFormTrue : styles.modalDiscountsFormFalse
+      const divTextItens = this.state.formItens ? styles.modalItensTextFalse : styles.modalItensTextTrue
+      const divFormItens = this.state.formItens ? styles.modalItensFormTrue : styles.modalItensFormFalse
       return (
         <div>
           <div className={containerClass}>
@@ -69,10 +197,61 @@ class Modal extends React.Component {
               </div>
               <div className={styles.modalDiscountsDiv}>
                 <div className={styles.modalDiscountsTitle}>
-                  Discounts
+                  Descontos
                 </div>
                 <div className={styles.modalBtn1} >
-                  <button className={styles.btn} >Adicionar</button>
+                  <button className={styles.btn} onClick={this.openFormDiscounts}>Add</button>
+                </div>
+                <div className={divTextDiscounts}>
+                  {
+                    mapIndexed(this.discountObj, this.props.input[this.props.inputIndex].discounts)
+                  }
+                </div>
+                <div className={divFormDiscounts}>
+                  <div>Valor (centavos):</div>
+                  <div>
+                    <form>
+                      <input
+                        type='text'
+                        name='discountsValue'
+                        onChange={this.handleChange}
+                        className={styles.modalInput40}/>
+                    </form>
+                  </div>
+                  <div>Tipo do desconto:</div>
+                  <div>
+                    <form>
+                      <select
+                        className={styles.modalSelectInput}
+                        name='discountsType'
+                        onChange={this.handleChange}
+                        defaultValue='flat'>
+                        <option value="flat">Reais</option>
+                        <option value="percentage">Porcentagem</option>
+                      </select>
+                    </form>
+                  </div>
+                  <div>Ciclos de cobrança:</div>
+                  <div>
+                    <form>
+                      <select
+                        className={styles.modalSelectInput}
+                        name='discountsCycles'
+                        onChange={this.handleChange}
+                        defaultValue='1'>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="99">99</option>
+                      </select>
+                    </form>
+                  </div>
+                  <div className={styles.modalFormDiscountsBtn}>
+                    <button className={styles.btn} onClick={this.addDiscounts} >Adicionar desconto</button>
+                  </div>
                 </div>
               </div>
               <div className={styles.modalItensDiv}>
@@ -80,7 +259,70 @@ class Modal extends React.Component {
                   Itens
                 </div>
                 <div className={styles.modalBtn1} >
-                  <button className={styles.btn} >Adicionar</button>
+                  <button className={styles.btn} onClick={this.openFormItens} >Add</button>
+                </div>
+
+                {/* //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */}
+                {/* //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */}
+                {/* //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */}
+
+                <div className={divTextItens}>
+                  {
+                    mapIndexed(this.itemObj, this.props.input[this.props.inputIndex].itens)
+                  }
+                </div>
+                <div className={divFormItens}>
+                  <div>Nome:</div>
+                  <div>
+                    <form>
+                      <input
+                        type='text'
+                        name='itensName'
+                        onChange={this.handleChange}
+                        className={styles.modalInput80}/>
+                    </form>
+                  </div>
+                  <div>Descrição:</div>
+                  <div>
+                    <form>
+                      <input
+                        type='text'
+                        name='itensDescription'
+                        onChange={this.handleChange}
+                        className={styles.modalInput80}/>
+                    </form>
+                  </div>
+                  <div>Valor (centavos):</div>
+                  <div>
+                    <form>
+                      <input
+                        type='text'
+                        name='itensValue'
+                        onChange={this.handleChange}
+                        className={styles.modalInput40} />
+                    </form>
+                  </div>
+                  <div>Ciclos de cobrança:</div>
+                  <div>
+                    <form>
+                      <select
+                        className={styles.modalSelectInput}
+                        name='itensCycles'
+                        onChange={this.handleChange}
+                        defaultValue='1'>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="99">99</option>
+                      </select>
+                    </form>
+                  </div>
+                  <div className={styles.modalFormItensBtn}>
+                    <button className={styles.btn} onClick={this.addItem} >Adicionar item</button>
+                  </div>
                 </div>
               </div>
               <div className={styles.modalMetadata}>
@@ -164,7 +406,6 @@ class SignatureInfos extends React.Component {
         <div className={styles.signatureInfos}>
           <div className={styles.row} ref='modalDiv'>
               {(this.state.isModalOpen ? <Modal amount={this.state.amount} inputIndex={this.state.subscriptionIndex} input={subsLucas} isModalOpen={this.state.isModalOpen} /> : null)}
-              {console.log('THIS STATE TESTE', this.state.teste)}
           </div>
           <div className={styles.signatureListTitle} onClick={this.modalToggle2} >Assinaturas</div>
           <div className={styles.plan}>Plano:</div>

@@ -94,7 +94,7 @@
   border-radius: 6px;
   background: white;
   width: 80%;
-  min-height: 300px;
+  min-height: 100px;
   left: 50%;
   top: 20%;
   margin-left: -300px;
@@ -103,16 +103,15 @@
 
 .modalGrid {
   display: grid;
-  grid-template-rows: repeat(2, 1fr);
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, min-content);
+  grid-template-columns: repeat(2, minmax(min-content, 1fr));
 }
 
 .modalHeader {
   display: grid;
   grid-row: 1 / 2;
   grid-column: 1 / 3;
-  grid-template-rows: repeat(3, min-content);
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(min-content, 1fr));
 }
 
 .modalPlanName {
@@ -157,7 +156,55 @@
   grid-column: 1 / 6;
   grid-row: 1 / 2;
 }
-
+.modalDiscountsFormTrue {
+  display: grid;
+  grid-column: 1 / 6;
+  grid-row: 2 / 3;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(2, minmax(min-content, 1fr));
+}
+.modalDiscountsFormFalse {
+  display: none;
+}
+.modalDiscountsTextTrue {
+  display: grid;
+  grid-column: 1 / 6;
+  grid-row: 2 / 3;
+}
+.modalDiscountsTextFalse {
+  display: none;
+}
+.modalItensTextTrue {
+  grid-column: 1 / 6;
+  grid-row: 2 / 3;
+}
+.modalItensTextFalse {
+  display: none;
+}
+.modalItensFormTrue {
+  display: grid;
+  grid-column: 1 / 6;
+  grid-row: 2 / 3;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(2, minmax(min-content, 1fr));
+}
+.modalItensFormFalse {
+  display: none;
+}
+.modalInput40 {
+  margin-right: 0px;
+  width: 40%;
+  color: black;
+}
+.modalInput80 {
+  width: 80%;
+  color: black;
+}
+.modalSelectInput {
+  width: 40%;
+  color: black;
+  font-size: 12px;
+}
 .modalItensTitle {
   grid-column: 1 / 6;
   grid-row: 1 / 2;
@@ -167,22 +214,29 @@
   grid-column: 5 / 6;
   grid-row: 1 / 2;
 }
+.modalFormItensBtn {
+  grid-column: 1 / 3;
+  grid-row: 5 / 6;
+}
+.modalFormDiscountsBtn {
+  grid-column: 1 / 3;
+  grid-row: 5 / 6;
+}
 
 .modalMetadata {
-  display: grid;
   grid-row: 3 / 4;
   grid-column: 1 / 3;
   text-align: center;
   border: 2px solid $color-cream;
 }
-  
+
 .modalContainerActive {
   z-index: 1050;
   position: fixed;
   border: 3px solid $color-cream;
   border-radius: 2rem;
   width: 72%;
-  min-height: 300px;
+  min-height: 200px;
   top: 20%;
   align-self: center;
   display: block;
@@ -191,7 +245,16 @@
   background-image: linear-gradient(to right bottom, $color-red400, $color-red900);
   color: $color-cream; 
 }
-
+.discountRow {
+  font-size: 12px;
+  display:grid;
+  grid-template-columns: 5fr 6fr 5fr;
+}
+.itemRow {
+  font-size: 12px;
+  display:grid;
+  grid-template-columns: 7fr 6fr 5fr;
+}
 .btn {
   color: $color-red700;
   font-family: $font-display;

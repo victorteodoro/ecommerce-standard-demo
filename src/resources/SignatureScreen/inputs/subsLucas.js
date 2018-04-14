@@ -30,10 +30,18 @@ const subsLucas = [
     discounts: [
       {
         id: 'dis_Zl5gk8xH1pUKkBVW',
-        value: '10',
-        discount_type: 'percentage',
+        value: '1030',
+        discount_type: 'flat',
         cycles: '3',
         status: 'active',
+        createdAt: '2018-03-29T15:31:11Z'
+      },
+      {
+        id: 'bbbbbbbbbbbbb',
+        value: '10',
+        discount_type: 'percentage11111',
+        cycles: '332321',
+        status: 'active23123',
         createdAt: '2018-03-29T15:31:11Z'
       }
     ],
