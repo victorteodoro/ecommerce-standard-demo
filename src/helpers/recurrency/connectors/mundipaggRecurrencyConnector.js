@@ -1,9 +1,9 @@
 import axios from 'axios';
 import Promise from 'bluebird';
 
-let URL = 'http://solutions-api.herokuapp.com/risotto/mundipagg_';
 
 const mundipagg = (method, path, body) => {
+  let URL = 'http://solutions-api.herokuapp.com/risotto/mundipagg_';
   if (method === 'GET') {
     URL += 'get';
   } else if (method === 'POST') {

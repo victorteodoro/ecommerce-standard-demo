@@ -1,7 +1,7 @@
 const subsLucas = [
   {
     id: 'sub_P4R8mwwcpUpYr7LJ',
-    startDate: '2018-03-29T00:00:00Z',
+    start_at: '2018-03-29T00:00:00Z',
     interval: 'month',
     intervalCount: '1',
     billingType: `prepaid`,
@@ -45,14 +45,14 @@ const subsLucas = [
         createdAt: '2018-03-29T15:31:11Z'
       }
     ],
-    itens: [
+    items: [
       {
         id: 'si_z7VR6lpGuzij6rM3',
         name: 'Plano B',
         description: 'Plano B',
         quantity: '1',
         status: 'active',
-        pricingScheme: {
+        pricing_scheme: {
           price: '19800',
           schemeTyme: 'unit'
         }
@@ -62,7 +62,7 @@ const subsLucas = [
         description: 'Musculação',
         quantity: '1',
         status: 'active',
-        pricingScheme: {
+        pricing_scheme: {
           price: '18990',
           schemeTyme: 'unit'
         }
@@ -72,7 +72,7 @@ const subsLucas = [
         description: 'Matrícula',
         quantity: '1',
         status: 'active',
-        pricingScheme: {
+        pricing_scheme: {
           price: '5990',
           schemeTyme: 'unit'
         }
@@ -84,7 +84,7 @@ const subsLucas = [
   },
   {
     id: 'sub_P4R8mwwcpUpYr7LJ',
-    startDate: '2018-03-29T00:00:00Z',
+    start_at: '2018-03-29T00:00:00Z',
     interval: 'month',
     intervalCount: '1',
     billingType: `prepaid`,
@@ -120,14 +120,14 @@ const subsLucas = [
         createdAt: '2018-03-29T15:31:11Z'
       }
     ],
-    itens: [
+    items: [
       {
         id: 'si_A2ZnjOnNInUwB01Q',
         name: 'Plano C',
         description: 'Plano C',
         quantity: '1',
         status: 'active',
-        pricingScheme: {
+        pricing_scheme: {
           price: '24800',
           schemeTyme: 'unit'
         }
@@ -137,7 +137,7 @@ const subsLucas = [
         description: 'Musculação',
         quantity: '1',
         status: 'active',
-        pricingScheme: {
+        pricing_scheme: {
           price: '18990',
           schemeTyme: 'unit'
         }
@@ -147,7 +147,7 @@ const subsLucas = [
         description: 'Matrícula',
         quantity: '1',
         status: 'active',
-        pricingScheme: {
+        pricing_scheme: {
           price: '5990',
           schemeTyme: 'unit'
         }

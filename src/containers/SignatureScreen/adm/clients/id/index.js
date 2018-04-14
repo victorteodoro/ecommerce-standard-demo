@@ -28,8 +28,6 @@ class AdmClientsIdScreen extends React.Component {
         userCode: '',
         userId: '',
         cusId: this.props.id.match.params.id
-        // localPath: `customers?code=${window.location.href.substring
-        // (window.location.href.lastIndexOf('/') + 1)}`
       }
     };
     this.handleResponse = this.handleResponse.bind(this);
@@ -64,7 +62,7 @@ class AdmClientsIdScreen extends React.Component {
         <Header />
         <UserHeader customerInfos={this.state.customer} />
         <UserInfos customerInfos={this.state.customer} />
-        <SignatureInfos />
+        <SignatureInfos customerInfos={this.state.customer} />
         <Footer />
       </div>
     );
