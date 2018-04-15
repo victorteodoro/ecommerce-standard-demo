@@ -76,7 +76,7 @@ class PaymentDetailsEcommerce extends React.Component {
       email: '',
       telephone: '',
       nameReceive: '',
-      toFinish = false
+      toFinish: false
     };
   }
   
