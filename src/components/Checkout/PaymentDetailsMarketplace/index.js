@@ -3,6 +3,7 @@ import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import PaymentCard from 'react-payment-card-component';
 import { map, addIndex } from 'ramda';
+import { Redirect } from 'react-router-dom';
 
 // Imports from internal helper funcs
 import handleChangeFromInput from '../../../helpers/updateStateFromInput';
@@ -35,6 +36,8 @@ class PaymentDetailsMarketplace extends React.Component {
 
     this.getValidationState = this.getValidationState.bind(this);
     this.paymentCardPagarme = this.paymentCardPagarme.bind(this);
+    this.paymentBoletoPagarme = this.paymentBoletoPagarme.bind(this);
+    this.handleResponsePagarme = this.handleResponsePagarme.bind(this);
     // Setup helper functions
     this.handleChange = handleChangeFromInput(
       this,
@@ -58,18 +61,17 @@ class PaymentDetailsMarketplace extends React.Component {
       installments: '1',
       flipped: false,
       cardBrand: '',
-      cardBank: ''
+      cardBank: '',
+      toFinish: false
     };
   }
   /* eslint-disable */
   /* eslint-enable */
 
-  static handleResponsePagarme(resp) {
+  
+  handleResponsePagarme(resp) {
     if (resp.data.status === 'paid' || resp.data.status === 'waiting_payment') {
-      let loc = window.location.href;
-      loc = loc.substring(0, loc.lastIndexOf('/'));
-      loc = `${loc}/finish`;
-      window.location.href = loc;
+      this.setState({toFinish: true})
     } else {
       console.log(resp.data);
     }
@@ -83,11 +85,11 @@ class PaymentDetailsMarketplace extends React.Component {
     transaction.card_cvv = this.state.cvv;
     transaction.installments = this.state.installments;
     PagarmeConnector('POST', 'transactions', transaction)
-      .then(resp => (PaymentDetailsMarketplace.handleResponsePagarme(resp)))
+      .then(resp => (this.handleResponsePagarme(resp)))
       .catch(err => (console.log(err)));
   }
 
-  static paymentBoletoPagarme() {
+  paymentBoletoPagarme() {
     const transaction = transactionSplit;
     const date = new Date();
     transaction.amount = 86400;
@@ -95,7 +97,7 @@ class PaymentDetailsMarketplace extends React.Component {
     transaction.payment_method = 'boleto';
     transaction.boleto_instructions = 'Pagar boleto para teste de transação Walmart';
     PagarmeConnector('POST', 'transactions', transaction)
-      .then(resp => (PaymentDetailsMarketplace.handleResponsePagarme(resp)))
+      .then(resp => (this.handleResponsePagarme(resp)))
       .catch(err => (console.log(err)));
   }
 
@@ -111,6 +113,10 @@ class PaymentDetailsMarketplace extends React.Component {
   }
 
   render() {
+    if (this.state.toFinish === true) {
+      return <Redirect to='/marketplace/finish' />;
+    }
+
     return (
       <Tabs className={style.paymentDetailsTabs}>
         <TabList className={style.paymentMethodTabList}>
@@ -169,7 +175,7 @@ class PaymentDetailsMarketplace extends React.Component {
             <br />
             <br />
             <div className={style.boletoButton}>
-              <button onClick={PaymentDetailsMarketplace.paymentBoletoPagarme} className={`${style.btn} ${style.btnWhite}`}>
+              <button onClick={this.paymentBoletoPagarme} className={`${style.btn} ${style.btnWhite}`}>
                 Gerar Boleto para Pagamento
               </button>
             </div>

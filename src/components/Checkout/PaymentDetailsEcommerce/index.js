@@ -4,7 +4,7 @@ import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import PaymentCard from 'react-payment-card-component';
 import { map, addIndex, merge } from 'ramda';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 // Imports from internal helper funcs
 import handleChangeFromInput from '../../../helpers/updateStateFromInput';
@@ -88,9 +88,6 @@ class PaymentDetailsEcommerce extends React.Component {
     if (resp.data.payment_method === 'boleto') {
       window.open(resp.data.last_transaction.pdf, '_blank');
     }
-    let loc = window.location.href;
-    loc = loc.substring(0, loc.lastIndexOf('/'));
-    loc = `${loc}/finish`;
     this.setState({toFinish: true})
     // window.location.href = loc;
   }
@@ -183,10 +180,7 @@ class PaymentDetailsEcommerce extends React.Component {
   }
 
   render() {
-    console.log('this.state.toFinish: ', this.state.toFinish);
-    console.log(this.state);
     if (this.state.toFinish === true) {
-      console.log('Entrei aqui no finish');
       return <Redirect to='/ecommerce/finish' />;
     }
 
