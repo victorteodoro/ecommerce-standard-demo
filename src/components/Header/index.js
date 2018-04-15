@@ -19,7 +19,7 @@ const Header = props => (
   <header className={styles.header}>
     <div className={styles.header_container}>
       <div className={styles.header_logoArea}>
-      <Link to={decidePath(props.type, '')}>
+      <Link to={'/'}>
         <img src={planetLogo} alt='Logo' className={styles.header_logoImg} />
       </Link>
       </div>

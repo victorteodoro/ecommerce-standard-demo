@@ -6,6 +6,7 @@ import styles from './styles.css';
 
 const FrontCard = props => (
     <div className={styles.simpleCard}>
+    {console.log('props frontcard ->', props)}
         <div className={styles.simpleCardFront}>
             <img src={props.inputs.img} alt={props.inputs.name} />
             <div className={styles.simpleCardFrontDescription}>
