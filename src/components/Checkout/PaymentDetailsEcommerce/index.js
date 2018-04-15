@@ -85,13 +85,13 @@ class PaymentDetailsEcommerce extends React.Component {
   
 
   handleResponseMundi(resp) {
-    console.log(JSON.stringify(resp, null, 4));
     if (resp.data.payment_method === 'boleto') {
       window.open(resp.data.last_transaction.pdf, '_blank');
     }
     let loc = window.location.href;
     loc = loc.substring(0, loc.lastIndexOf('/'));
     loc = `${loc}/finish`;
+    console.log(this.state.toFinish);
     this.setState(() => { toFinish: true; })
     // window.location.href = loc;
   }
@@ -185,6 +185,7 @@ class PaymentDetailsEcommerce extends React.Component {
 
   render() {
     if (this.state.toFinish) {
+      console.log('Entrei aqui no finish');
       return <Link to='/finish' />;
     }
 
