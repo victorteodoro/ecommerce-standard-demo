@@ -91,8 +91,9 @@ class PaymentDetailsEcommerce extends React.Component {
     let loc = window.location.href;
     loc = loc.substring(0, loc.lastIndexOf('/'));
     loc = `${loc}/finish`;
-    console.log(this.state.toFinish);
-    this.setState(() => { toFinish: true; })
+    console.log('Before', this.state.toFinish);
+    this.setState({toFinish: true})
+    console.log('After', this.state.toFinish);
     // window.location.href = loc;
   }
   /* eslint-enable */
