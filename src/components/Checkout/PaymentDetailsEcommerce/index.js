@@ -248,7 +248,7 @@ class PaymentDetailsEcommerce extends React.Component {
             <br />
             <br />
             <div className={style.boletoButton}>
-              <button onClick={PaymentDetailsEcommerce.paymentBoletoMundi} className={`${style.btn} ${style.btnWhite}`}>
+              <button onClick={this.paymentBoletoMundi} className={`${style.btn} ${style.btnWhite}`}>
                 Gerar Boleto para Pagamento
               </button>
             </div>
