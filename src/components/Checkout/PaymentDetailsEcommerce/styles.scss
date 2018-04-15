@@ -1,0 +1,216 @@
+@import "../../../styles/colors";
+
+.paymentDetailsTabs {
+  grid-column: 2 / 6;
+  grid-row: 3 / 4;
+
+  @media screen and (max-width: 600px) {
+    grid-row: 3 / 4;
+    grid-column: 1 / 5;
+  }
+
+  // Set the inner flex-box
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  
+  // For prototyping
+  color: $color-red700;
+  font-weight: 400;
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: 2px solid $color-red700;
+  border-radius: 2rem;
+  box-shadow: 0 2px 2px rgba($color-black, 0.3);
+  width: 100%;
+
+  .paymentMethodTabList {
+    // Config inner grid
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media screen and (min-width: 800px) {
+      width: 55%;
+    }
+
+    @media screen and (max-width: 800px) {
+      width: 70%;
+    }
+    
+    @media screen and (max-width: 600px) {
+      width: 90%;
+    }
+
+    list-style: none;
+
+    & > li {
+      // Text styling
+      color: $color-red200;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-align: center;
+
+      border-bottom: 3px solid transparent;
+      
+      // Trasition when clicked
+      transition: all .2s ease-in-out;
+      //background-color: #555;
+    }
+
+    & > li[aria-selected=true] {
+      color: $color-red700;
+      border-color: $color-red700;
+    }
+
+    .credit {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .boleto {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .debit {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .creditCardForm {
+    .paymentCard {
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+      align-items: center;   
+      padding: 1.5rem;
+      .creditButton{
+        width: 60%;
+        padding: 1.5rem;
+        padding-left: 12rem;
+      }
+    }
+  }
+
+  .boletoForm {
+    .paymentBoleto{
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+      align-items: center;   
+      padding: 1.5rem;
+      .boletoButton{
+        width: 60%;
+        padding: 1.5rem;
+        padding-left: 4rem;
+      }
+      .boletoPayOptions{
+        text-align: center;
+      }
+      .notices{
+        .noticeTitle{
+          font-weight: bold;
+        }
+        .list{
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  .linkForm {
+    .paymentLink{
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+      align-items: center;   
+      padding: 1.5rem;
+      .form{        
+        padding-top: 1.5rem;
+      }
+      .linkButton{
+        width: 60%;
+        padding: 1.5rem;
+        padding-left: 10rem;
+      }
+      .notices{
+        .noticeTitle{
+          font-weight: bold;
+        }
+        .list{
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }  
+  .safetyPayForm {
+    .paymentSafetyPay{
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+      align-items: center;   
+      padding: 1.5rem;
+      .form{        
+        padding-top: 1.5rem;
+      }
+      .safetyPayButton{
+        width: 60%;
+        padding: 1.5rem;
+        padding-left: 10rem;
+      }
+      .notices{
+        .noticeTitle{
+          font-weight: bold;
+        }
+        .list{
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+  .applePay {
+    .paymentApple{
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+      align-items: center;   
+      padding: 1.5rem;
+      .notices{
+        .noticeTitle{
+          font-weight: bold;
+        }
+        .list{
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+  .btn {
+    color: #00796b;
+    font-family: "Work Sans", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    padding: .5rem;
+    border: 1px solid #00796b;
+    border-radius: 1rem;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    transition: all .1s;
+    align-content: center;
+    position: relative;
+    width: 100%; }
+    .btn:hover {
+      color: #f5f1e1;
+      background-color: #00796b; }
+    .btn:active {
+      transform: translateY(1px); }
+} 

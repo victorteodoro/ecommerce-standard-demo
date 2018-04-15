@@ -3,25 +3,67 @@ import {
   CheckoutScreen,
   CartScreen,
   InventoryScreen,
-  SignatureScreen
+  AdmClientsScreen,
+  AdmClientsIdScreen,
+  NewClientScreen,
+  FinishScreen
 } from './containers/';
-
-// Import resources
-import carouselImgs from './resources/InventoryScreen/carouselImgs';
 
 const routes = [
   {
     path: '/',
     exact: true,
     render: () => (
-      <InventoryScreen carouselImgs={carouselImgs} />
+      <InventoryScreen type='ecommerce' />
+    )
+  },
+  {
+    path: '/ecommerce',
+    exact: true,
+    render: () => (
+      <InventoryScreen type='ecommerce' />
     )
   },
   {
     path: '/ecommerce/cart',
     exact: true,
     render: () => (
-      <CartScreen />
+      <CartScreen type='ecommerce' />
+    )
+  },
+  {
+    path: '/marketplace/cart',
+    exact: true,
+    render: () => (
+      <CartScreen type='marketplace' />
+    )
+  },
+  {
+    path: '/marketplace',
+    exact: true,
+    render: () => (
+      <InventoryScreen type='marketplace' />
+    )
+  },
+  {
+    path: '/signature/adm/clients/',
+    exact: true,
+    render: () => (
+      <AdmClientsScreen />
+    )
+  },
+  {
+    path: '/signature/adm/new/',
+    exact: true,
+    render: () => (
+      <NewClientScreen />
+    )
+  },
+  {
+    path: '/signature/adm/clients/:id',
+    exact: true,
+    render: props => (
+      <AdmClientsIdScreen id={props} />
     )
   },
   {
@@ -36,7 +78,28 @@ const routes = [
     path: '/ecommerce/checkout',
     exact: true,
     render: () => (
-      <CheckoutScreen />
+      <CheckoutScreen type='ecommerce' />
+    )
+  },
+  {
+    path: '/marketplace/checkout',
+    exact: true,
+    render: () => (
+      <CheckoutScreen type='marketplace' />
+    )
+  },
+  {
+    path: '/ecommerce/finish',
+    exact: true,
+    render: () => (
+      <FinishScreen type='ecommerce' />
+    )
+  },
+  {
+    path: '/marketplace/finish',
+    exact: true,
+    render: () => (
+      <FinishScreen type='marketplace' />
     )
   }
 ];

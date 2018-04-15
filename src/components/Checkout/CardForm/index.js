@@ -21,7 +21,6 @@ const CardForm = props => (
          onBlur={props.checkBin}
          maxLength='16'
          />
-      <FormControl.Feedback />
     </FormGroup>
 
     <FormGroup
@@ -36,7 +35,6 @@ const CardForm = props => (
          onChange={props.changeHandler}
          maxLength='40'
          />
-      <FormControl.Feedback />
     </FormGroup>
 
     <FormGroup
@@ -52,7 +50,6 @@ const CardForm = props => (
          onChange={props.changeHandler}
          maxLength='2'
          />
-      <FormControl.Feedback />
     </FormGroup>
 
     <FormGroup
@@ -68,7 +65,6 @@ const CardForm = props => (
          onChange={props.changeHandler}
          maxLength='2'
          />
-      <FormControl.Feedback />
     </FormGroup>
 
     <FormGroup
@@ -86,7 +82,26 @@ const CardForm = props => (
          onBlur={props.flipCard}
          maxLength='4'
          />
-      <FormControl.Feedback />
+    </FormGroup>
+    <FormGroup controlId='formControlsSelect'>
+      <ControlLabel>Parcelamento Emissor</ControlLabel>
+      <FormControl componentClass='select'
+        name='installments'
+        value={props.installments}
+        onChange={props.changeHandler}>
+        <option value='1'>1 x Sem Juros</option>
+        <option value='2'>2 x Sem Juros</option>
+        <option value='3'>3 x Sem Juros</option>
+        <option value='4'>4 x Sem Juros</option>
+        <option value='5'>5 x Sem Juros</option>
+        <option value='6'>6 x Sem Juros</option>
+        <option value='7'>7 x Sem Juros</option>
+        <option value='8'>8 x Sem Juros</option>
+        <option value='9'>9 x Sem Juros</option>
+        <option value='10'>10 x Sem Juros</option>
+        <option value='11'>11 x Sem Juros</option>
+        <option value='12'>12 x Sem Juros</option>
+      </FormControl>
     </FormGroup>
   </form>
 );

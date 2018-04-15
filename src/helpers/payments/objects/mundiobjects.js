@@ -1,3 +1,11 @@
-import order from './mundipagg/order';
+import orderCheckout from './mundipagg/orderCheckout';
+import charge from './mundipagg/charge';
+import newSubscription from './mundipagg/newSubscription';
+import safetyPay from './mundipagg/chargeSafetyPay';
 
-export default order;
+export {
+  orderCheckout,
+  charge,
+  newSubscription,
+  safetyPay
+};

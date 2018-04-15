@@ -4,18 +4,28 @@ import {
   Header,
   Footer,
   PurchaseAndShippingSummary,
-  PaymentDetails
+  PaymentDetailsEcommerce,
+  PaymentDetailsMarketplace
 } from '../../components/';
 
 // import inputs from '../../resources/CheckoutScreen/inputs/';
 
 import styles from './styles.css';
 
-const CheckoutScreen = () => (
+const typeSell = (props) => {
+  if (props.type === 'marketplace') {
+    return <PaymentDetailsMarketplace type={props.type} />;
+  }
+  return <PaymentDetailsEcommerce type={props.type} />;
+};
+
+const CheckoutScreen = props => (
   <div className={styles.generalContainer}>
-    <Header />
+    <Header type={props.type} />
     <PurchaseAndShippingSummary />
-    <PaymentDetails />
+    {
+      typeSell(props)
+    }
     <Footer />
   </div>
 );
