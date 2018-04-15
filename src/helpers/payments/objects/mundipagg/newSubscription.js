@@ -40,18 +40,11 @@ const newSubscription = {
   ],
   items: [
     {
-      description: 'Musculação',
-      quantity: '1',
-      pricing_scheme: {
-        price: '18990'
-      }
-    },
-    {
       description: 'Matrícula',
       quantity: '1',
       cycles: '1',
       pricing_scheme: {
-        price: '5990'
+        price: '10000'
       }
     }
   ],

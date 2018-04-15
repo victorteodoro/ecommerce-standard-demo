@@ -1,6 +1,7 @@
 // General imports from libs
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Redirect } from 'react-router-dom';
 import {
   FormGroup,
   ControlLabel,
@@ -45,6 +46,7 @@ class NewSignatureMundiForm extends React.Component {
     this.flipCard = flipPagarmeCard(this);
     this.checkBin = checkBinInfo(this);
     this.state = {
+      finish: false,
       planId: '',
       paymentMethod: '',
       customer: {
@@ -65,15 +67,12 @@ class NewSignatureMundiForm extends React.Component {
     };
   }
 
-
-  static handleResponse(resp) {
+  handleResponse(resp) {
     if (resp.data.payment_method === 'boleto') {
       window.open(resp.data.last_transaction.pdf, '_blank');
     }
-    let loc = window.location.href;
-    loc = loc.substring(0, loc.lastIndexOf('/'));
-    loc = `/signature/adm/clients`;
-    window.location.href = loc;
+    console.log('resp ->', resp);
+    this.setState({ finish: true });
   }
 
   fillJSON() {
@@ -103,7 +102,7 @@ class NewSignatureMundiForm extends React.Component {
       const newSubscriptionCardMerged = merge(newSubscription, { card });
       const newSubscriptionCustomerMerged = merge(newSubscriptionCardMerged, { customer });
       MundipaggConnector('POST', 'subscriptions', newSubscriptionCustomerMerged)
-        .then(resp => (NewSignatureMundiForm.handleResponse(resp)));
+        .then(resp => (this.handleResponse(resp)));
     });
   }
 
@@ -119,6 +118,11 @@ class NewSignatureMundiForm extends React.Component {
   }
 
   render() {
+    if (this.state.finish === true) {
+      return (
+        <Redirect to='/signature/adm/clients' />
+      );
+    }
     return (
       <div className={styles.signatureForm}>
       <div className={styles.containerTitle}>
