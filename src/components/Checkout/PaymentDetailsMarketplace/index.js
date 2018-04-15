@@ -68,10 +68,10 @@ class PaymentDetailsMarketplace extends React.Component {
   /* eslint-disable */
   /* eslint-enable */
 
-  
+
   handleResponsePagarme(resp) {
     if (resp.data.status === 'paid' || resp.data.status === 'waiting_payment') {
-      this.setState({toFinish: true})
+      this.setState({ toFinish: true });
     } else {
       console.log(resp.data);
     }
