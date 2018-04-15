@@ -40,6 +40,8 @@ class PaymentDetailsEcommerce extends React.Component {
     this.getValidationStateLink = this.getValidationStateLink.bind(this);
     this.paymentCardMundi = this.paymentCardMundi.bind(this);
     this.paymentSafetyPay = this.paymentSafetyPay.bind(this);
+    this.paymentBoletoMundi = this.paymentBoletoMundi.bind(this);
+    this.handleResponseMundi = this.handleResponseMundi.bind(this);
     this.paymentLink = this.paymentLink.bind(this);
     // Setup helper functions
     this.handleChange = handleChangeFromInput(
@@ -108,7 +110,7 @@ class PaymentDetailsEcommerce extends React.Component {
     chargeNew = merge(charge, { creditCard });
     console.log(JSON.stringify(chargeNew));
     MundipaggConnector('POST', 'charges', chargeNew)
-      .then(resp => (PaymentDetailsEcommerce.handleResponseMundi(resp)))
+      .then(resp => (this.handleResponseMundi(resp)))
       .catch(err => (console.log(err)));
   }
 
@@ -118,7 +120,7 @@ class PaymentDetailsEcommerce extends React.Component {
     customer.email = this.state.email;
     const orderCheckoutNew = merge(safetyPay, { customer });
     MundipaggConnector('POST', 'charges', orderCheckoutNew)
-      .then(resp => (PaymentDetailsEcommerce.handleResponseMundi(resp)))
+      .then(resp => (this.handleResponseMundi(resp)))
       .catch(err => (console.log(err)));
   }
 
@@ -134,11 +136,11 @@ class PaymentDetailsEcommerce extends React.Component {
     orderCheckoutNew = merge(orderCheckoutNew, { mobilePhone });
     console.log(JSON.stringify(orderCheckoutNew, null, 4));
     MundipaggConnector('POST', 'orders', orderCheckoutNew)
-      .then(resp => (PaymentDetailsEcommerce.handleResponseMundi(resp)))
+      .then(resp => (this.handleResponseMundi(resp)))
       .catch(err => (console.log(err)));
   }
 
-  static paymentBoletoMundi() {
+  paymentBoletoMundi() {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     const payment = {
@@ -152,7 +154,7 @@ class PaymentDetailsEcommerce extends React.Component {
     let chargeNew = merge(charge, { payment });
     chargeNew = merge(chargeNew, { amount: 86400 });
     MundipaggBoletoConnector('POST', 'charges', chargeNew)
-      .then(resp => (PaymentDetailsEcommerce.handleResponseMundi(resp)))
+      .then(resp => (this.handleResponseMundi(resp)))
       .catch(err => (console.log(err)));
   }
 
