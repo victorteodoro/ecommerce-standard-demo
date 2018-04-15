@@ -84,7 +84,7 @@ const CardForm = props => (
          />
     </FormGroup>
     <FormGroup controlId='formControlsSelect'>
-      <ControlLabel>Parcelamento Emissor</ControlLabel>
+      <ControlLabel>Parcelamento</ControlLabel>
       <FormControl componentClass='select'
         name='installments'
         value={props.installments}

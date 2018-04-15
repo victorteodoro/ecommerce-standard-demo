@@ -10,7 +10,7 @@ import inspiron15 from './img/dell_inspiron15.png';
 import smartTV from './img/lg_smartTV_55.jpg';
 
 
-const CartProducts = () => (
+const CartProducts = props => (
   <section className={styles.cartProducts}>
     <div className={styles.cartProductsHeader}>
       <p className={styles.productNameLabel}>Produto(s)</p>
@@ -31,7 +31,7 @@ const CartProducts = () => (
             Dual Chip Android 7.1.1 Nougat Tela 5.5' Snapdragon 625 32GB 4G 13MP Câmera
           </p>
           <b>
-            Vendido e entregue por Stone Store
+            {props.inputs[0].seller}
           </b>
         </div>
       </div>
@@ -55,7 +55,7 @@ const CartProducts = () => (
           <h3 className={styles.productDescriptionShort}>Notebook Dell Inspiron i15-5566-A30P</h3>
           <p className={styles.productDescriptionLong}>Core i5 4GB 1TB Tela LED 15.6' Windows 10</p>
           <b>
-            Vendido e entregue por Mundipagg Store
+          {props.inputs[1].seller}
           </b>
         </div>
       </div>
@@ -83,7 +83,7 @@ const CartProducts = () => (
             SUPER ULTRA HD 55SJ8000 Conversor Digital Wi-Fi integrado 3 USB 4 HDMI
           </p>
           <b>
-            Vendido e entregue por Pagar.me Store
+          {props.inputs[2].seller}
           </b>
         </div>
       </div>

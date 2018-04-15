@@ -1,8 +1,10 @@
 // General imports from libs
+/* eslint-disable */
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import PaymentCard from 'react-payment-card-component';
 import { map, addIndex, merge } from 'ramda';
+import { Redirect } from 'react-router-dom';
 
 // Imports from internal helper funcs
 import handleChangeFromInput from '../../../helpers/updateStateFromInput';
@@ -38,6 +40,8 @@ class PaymentDetailsEcommerce extends React.Component {
     this.getValidationStateLink = this.getValidationStateLink.bind(this);
     this.paymentCardMundi = this.paymentCardMundi.bind(this);
     this.paymentSafetyPay = this.paymentSafetyPay.bind(this);
+    this.paymentBoletoMundi = this.paymentBoletoMundi.bind(this);
+    this.handleResponseMundi = this.handleResponseMundi.bind(this);
     this.paymentLink = this.paymentLink.bind(this);
     // Setup helper functions
     this.handleChange = handleChangeFromInput(
@@ -73,23 +77,21 @@ class PaymentDetailsEcommerce extends React.Component {
       installments: '1',
       email: '',
       telephone: '',
-      nameReceive: ''
+      nameReceive: '',
+      toFinish: false
     };
   }
-  /* eslint-disable */
-  /* eslint-enable */
+  
+  
 
-  static handleResponseMundi(resp) {
-    console.log(JSON.stringify(resp, null, 4));
+  handleResponseMundi(resp) {
     if (resp.data.payment_method === 'boleto') {
       window.open(resp.data.last_transaction.pdf, '_blank');
     }
-    let loc = window.location.href;
-    loc = loc.substring(0, loc.lastIndexOf('/'));
-    loc = `${loc}/finish`;
-    window.location.href = loc;
+    this.setState({toFinish: true})
+    // window.location.href = loc;
   }
-
+  /* eslint-enable */
   paymentCardMundi() {
     const { payment } = charge;
     const { credit_card: creditCard } = payment;
@@ -104,7 +106,7 @@ class PaymentDetailsEcommerce extends React.Component {
     chargeNew = merge(charge, { creditCard });
     console.log(JSON.stringify(chargeNew));
     MundipaggConnector('POST', 'charges', chargeNew)
-      .then(resp => (PaymentDetailsEcommerce.handleResponseMundi(resp)))
+      .then(resp => (this.handleResponseMundi(resp)))
       .catch(err => (console.log(err)));
   }
 
@@ -114,7 +116,7 @@ class PaymentDetailsEcommerce extends React.Component {
     customer.email = this.state.email;
     const orderCheckoutNew = merge(safetyPay, { customer });
     MundipaggConnector('POST', 'charges', orderCheckoutNew)
-      .then(resp => (PaymentDetailsEcommerce.handleResponseMundi(resp)))
+      .then(resp => (this.handleResponseMundi(resp)))
       .catch(err => (console.log(err)));
   }
 
@@ -130,11 +132,11 @@ class PaymentDetailsEcommerce extends React.Component {
     orderCheckoutNew = merge(orderCheckoutNew, { mobilePhone });
     console.log(JSON.stringify(orderCheckoutNew, null, 4));
     MundipaggConnector('POST', 'orders', orderCheckoutNew)
-      .then(resp => (PaymentDetailsEcommerce.handleResponseMundi(resp)))
+      .then(resp => (this.handleResponseMundi(resp)))
       .catch(err => (console.log(err)));
   }
 
-  static paymentBoletoMundi() {
+  paymentBoletoMundi() {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     const payment = {
@@ -148,7 +150,7 @@ class PaymentDetailsEcommerce extends React.Component {
     let chargeNew = merge(charge, { payment });
     chargeNew = merge(chargeNew, { amount: 86400 });
     MundipaggBoletoConnector('POST', 'charges', chargeNew)
-      .then(resp => (PaymentDetailsEcommerce.handleResponseMundi(resp)))
+      .then(resp => (this.handleResponseMundi(resp)))
       .catch(err => (console.log(err)));
   }
 
@@ -178,6 +180,10 @@ class PaymentDetailsEcommerce extends React.Component {
   }
 
   render() {
+    if (this.state.toFinish === true) {
+      return <Redirect to='/ecommerce/finish' />;
+    }
+
     return (
       <Tabs className={style.paymentDetailsTabs}>
         <TabList className={style.paymentMethodTabList}>
@@ -238,7 +244,7 @@ class PaymentDetailsEcommerce extends React.Component {
             <br />
             <br />
             <div className={style.boletoButton}>
-              <button onClick={PaymentDetailsEcommerce.paymentBoletoMundi} className={`${style.btn} ${style.btnWhite}`}>
+              <button onClick={this.paymentBoletoMundi} className={`${style.btn} ${style.btnWhite}`}>
                 Gerar Boleto para Pagamento
               </button>
             </div>

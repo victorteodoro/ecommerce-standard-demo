@@ -1,5 +1,6 @@
 // General imports from libs
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Import styles
 import styles from './styles.css';
@@ -18,9 +19,9 @@ const Header = props => (
   <header className={styles.header}>
     <div className={styles.header_container}>
       <div className={styles.header_logoArea}>
-      <a href={decidePath(props.type, '')}>
+      <Link to={decidePath(props.type, '')}>
         <img src={planetLogo} alt='Logo' className={styles.header_logoImg} />
-        </a>
+      </Link>
       </div>
       <div className={styles.header_searchBar}>
         <form className={styles.header_searchForm}>
@@ -28,9 +29,9 @@ const Header = props => (
              type='text'
              placeholder='O que você procura?'
              className={styles.header_searchInput} />
-          <a href={decidePath(props.type, '')}>
+          <Link to={decidePath(props.type, '')}>
             <i className={`fas fa-search fa-2x ${styles.header_searchIcon}`}></i>
-          </a>
+            </Link>
         </form>
       </div>
       <div className={styles.header_accountAndCart}>
@@ -38,16 +39,16 @@ const Header = props => (
           <i className={`far fa-user fa-2x ${styles.header_customerIcon}`}></i>
           <span className={styles.header_customerText}>
             <h3>Olá!</h3>
-            <a href={decidePath(props.type, '')}>
+            <Link to={decidePath(props.type, '')}>
               Minha conta
               <i className='fas fa-angle-down'></i>
-            </a>
+              </Link>
           </span>
         </div>
         <div className={styles.header_shoppingCart}>
-          <a href={decidePath(props.type, 'cart')}>
+        <Link to={decidePath(props.type, 'cart')}>
             <i className='fas fa-shopping-cart fa-2x'></i>
-          </a>
+            </Link>
         </div>
       </div>
     </div>
