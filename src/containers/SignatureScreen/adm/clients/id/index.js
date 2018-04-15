@@ -27,7 +27,7 @@ class AdmClientsIdScreen extends React.Component {
         userSince: '',
         userCode: '',
         userId: '',
-        localPath: `customers?code=${window.location.href.substring(window.location.href.lastIndexOf('/') + 1)}`
+        cusId: this.props.id.match.params.id
       }
     };
     this.handleResponse = this.handleResponse.bind(this);
@@ -36,12 +36,12 @@ class AdmClientsIdScreen extends React.Component {
   }
 
   requestInfos() {
-    MundipaggConnector('GET', this.state.customer.localPath, { abobora: 'abobora' })
+    MundipaggConnector('GET', `customers/${this.state.pageId}`, '')
       .then(resp => (this.handleResponse(resp)));
   }
 
   handleResponse(resp) {
-    const customerInfo = resp.data.data[0];
+    const customerInfo = resp.data;
     this.setState({
       customer: {
         name: customerInfo.name,
@@ -62,7 +62,7 @@ class AdmClientsIdScreen extends React.Component {
         <Header />
         <UserHeader customerInfos={this.state.customer} />
         <UserInfos customerInfos={this.state.customer} />
-        <SignatureInfos />
+        <SignatureInfos customerInfos={this.state.customer} />
         <Footer />
       </div>
     );

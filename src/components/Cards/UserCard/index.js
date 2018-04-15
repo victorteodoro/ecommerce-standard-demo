@@ -3,18 +3,19 @@ import React from 'react';
 
 // Import styles
 import styles from './styles.css';
+import cardImg from '../../../resources/SignatureScreen/img/genericUserPicture.png';
 
 const UserCard = props => (
     <div className={styles.simpleCard}>
         <div className={styles.simpleCardUser}>
-            <img src={props.inputs.img} alt={props.inputs.name} />
+            <img src={cardImg} alt={props.clients.name} />
             <div className={styles.simpleCardUserDescription}>
-                <p className={styles.name}>{props.inputs.name}</p>
+                <p className={styles.name}>{props.clients.name}</p>
                 <p className={styles.shortSpecs}>
-                    {props.inputs.shortSpecs}
+                    {props.clients.id}
                 </p>
-                <p className={styles.priceBig}>{props.inputs.priceBig}</p>
-                <p className={styles.priceInstallments}>{props.inputs.priceInstallments}</p>
+                <p className={styles.priceBig}>{props.clients.email}</p>
+                <p className={styles.priceInstallments}>' '</p>
             </div>
         </div>
     </div>

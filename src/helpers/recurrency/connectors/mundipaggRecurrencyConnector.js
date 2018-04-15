@@ -1,6 +1,6 @@
-/* eslint-disable */
 import axios from 'axios';
 import Promise from 'bluebird';
+
 
 const mundipagg = (method, path, body) => {
   let URL = 'http://solutions-api.herokuapp.com/risotto/mundipagg_';
@@ -19,13 +19,8 @@ const mundipagg = (method, path, body) => {
     path,
     body
   };
-  return Promise.resolve(
-    axios.post(`${URL}`, { risotto })
-      .catch(function (error) {
-        console.log('erro no connector ->', error.response);
-      })
-  );
+  return Promise.resolve(axios.post(`${URL}`, { risotto }));
 };
 
 export default mundipagg;
-/* eslint-enable */
+
