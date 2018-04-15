@@ -3,6 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { map, addIndex } from 'ramda';
 
 // Import styles
@@ -27,7 +28,8 @@ class Modal extends React.Component {
       itensName:'itensname',
       itensDescription:'itensdescription',
       itensValue:'itensvalue',
-      itensCycles:'1'
+      itensCycles:'1',
+      finish: false
     };
     this.modalToggle = this.modalToggle.bind(this);
     this.openFormDiscounts = this.openFormDiscounts.bind(this);
@@ -182,15 +184,22 @@ class Modal extends React.Component {
   addItem() {
     console.log('addItem ->>>>');
     this.addItemFunction();
+    this.setState({ finish: true });
   }
   addDiscounts() {
     this.addDiscountFunction();
     // this.addDiscountFunction();
     console.log('addDiscount');
+    this.setState({ finish: true });
   }
   render() {
     if(this.state.modalOpened==false) {
       return null;
+    }
+    if (this.state.finish === true) {
+      return (
+        <Redirect to='/signature/adm/clients' />
+      );
     }
     else{
       // Altea os valores das variáveis coverClass e containerClass, que dão estilo 'block' ou
