@@ -184,8 +184,8 @@ class PaymentDetailsEcommerce extends React.Component {
   }
 
   render() {
-    console.log('this.state.toFinish: ' + this.state.toFinish);
-    console.log(this.state)
+    console.log('this.state.toFinish: ', this.state.toFinish);
+    console.log(this.state);
     if (this.state.toFinish === true) {
       console.log('Entrei aqui no finish');
       return <Link to='/finish' />;
