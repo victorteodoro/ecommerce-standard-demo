@@ -187,7 +187,7 @@ class PaymentDetailsEcommerce extends React.Component {
     console.log(this.state);
     if (this.state.toFinish === true) {
       console.log('Entrei aqui no finish');
-      return <Redirect to='/finish' />;
+      return <Redirect to='/ecommerce/finish' />;
     }
 
     return (
