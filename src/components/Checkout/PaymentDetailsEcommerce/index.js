@@ -182,8 +182,8 @@ class PaymentDetailsEcommerce extends React.Component {
   }
 
   render() {
-    if(this.state.toFinish){
-      return <Link to='/finish' /> 
+    if (this.state.toFinish) {
+      return <Link to='/finish' />;
     }
 
     return (
