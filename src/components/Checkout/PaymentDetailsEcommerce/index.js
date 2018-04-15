@@ -4,8 +4,7 @@ import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import PaymentCard from 'react-payment-card-component';
 import { map, addIndex, merge } from 'ramda';
-import { Link } from 'react-router-dom';
-import { Redirect } from 'react-router';
+import { Link, Redirect } from 'react-router-dom';
 
 // Imports from internal helper funcs
 import handleChangeFromInput from '../../../helpers/updateStateFromInput';
