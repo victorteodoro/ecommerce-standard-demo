@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Importing styles
 import styles from './styles.css';
@@ -12,13 +13,13 @@ const SearchBarAndButton = () => (
                 className={styles.searchInput} />
         </form>
         <div className={styles.searchIconDiv}>
-            <a href='/'>
+            <Link to={`/`}>
                 <i className={`fas fa-search fa-2x ${styles.searchIcon}`}></i>
-            </a>
+            </Link>
         </div>
-        <a href='/signature/adm/new/' className={styles.hyperLink} >
+        <Link to={`/signature/adm/new/`} className={styles.hyperLink} >
             <button className={styles.btn}>Novo usuário</button>
-        </a>
+        </Link>
     </div>
 );
 export default SearchBarAndButton;
