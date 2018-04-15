@@ -67,14 +67,6 @@ const routes = [
     )
   },
   {
-    path: '/signature/',
-    exact: true,
-    render: () => (
-      <SignatureScreen />
-      // <SignatureScreen planList={planList}/>
-    )
-  },
-  {
     path: '/ecommerce/checkout',
     exact: true,
     render: () => (
