@@ -6,7 +6,8 @@ import {
   AdmClientsScreen,
   AdmClientsIdScreen,
   NewClientScreen,
-  FinishScreen
+  FinishScreen,
+  LandScreen
 } from './containers/';
 
 const routes = [
@@ -14,7 +15,7 @@ const routes = [
     path: '/',
     exact: true,
     render: () => (
-      <InventoryScreen type='ecommerce' />
+      <LandScreen />
     )
   },
   {
