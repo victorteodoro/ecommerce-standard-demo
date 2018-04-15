@@ -1,17 +1,17 @@
 import axios from 'axios';
 import Promise from 'bluebird';
 
-let URL = 'http://solutions-api.herokuapp.com/risotto/pagarme_';
+let URL = 'http://solutions-api.herokuapp.com/risotto/pagarme_post';
 
 const pagarme = (method, path, body) => {
   if (method === 'GET') {
-    URL += 'get';
+    URL = 'http://solutions-api.herokuapp.com/risotto/pagarme_get';
   } else if (method === 'POST') {
-    URL += 'post';
+    URL = 'http://solutions-api.herokuapp.com/risotto/pagarme_post';
   } else if (method === 'PUT') {
-    URL += 'put';
+    URL = 'http://solutions-api.herokuapp.com/risotto/pagarme_put';
   } else if (method === 'DELETE') {
-    URL += 'delete';
+    URL = 'http://solutions-api.herokuapp.com/risotto/pagarme_delete';
   } else {
     URL = 'http://solutions-api.herokuapp.com/risotto';
   }

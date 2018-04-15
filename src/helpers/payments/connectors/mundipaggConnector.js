@@ -2,17 +2,17 @@
 import axios from 'axios';
 import Promise from 'bluebird';
 
-let URL = 'http://solutions-api.herokuapp.com/risotto/mundipagg_';
+let URL = 'http://solutions-api.herokuapp.com/risotto/mundipagg_post';
 
 const mundipagg = (method, path, body) => {
   if (method === 'GET') {
-    URL += 'get';
+    URL = 'http://solutions-api.herokuapp.com/risotto/mundipagg_get';
   } else if (method === 'POST') {
-    URL += 'post';
+    URL = 'http://solutions-api.herokuapp.com/risotto/mundipagg_post';
   } else if (method === 'PATCH') {
-    URL += 'patch';
+    URL+= 'http://solutions-api.herokuapp.com/risotto/mundipagg_patch';
   } else if (method === 'DELETE') {
-    URL += 'delete';
+    URL = 'http://solutions-api.herokuapp.com/risotto/mundipagg_delete';
   } else {
     URL = 'http://solutions-api.herokuapp.com/risotto';
   }
