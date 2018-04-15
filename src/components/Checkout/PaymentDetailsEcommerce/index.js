@@ -1,9 +1,10 @@
 // General imports from libs
+/* eslint-disable */
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import PaymentCard from 'react-payment-card-component';
 import { map, addIndex, merge } from 'ramda';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 // Imports from internal helper funcs
 import handleChangeFromInput from '../../../helpers/updateStateFromInput';
@@ -77,8 +78,8 @@ class PaymentDetailsEcommerce extends React.Component {
       nameReceive: ''
     };
   }
-  /* eslint-disable */
-  /* eslint-enable */
+  
+  
 
   static handleResponseMundi(resp) {
     console.log(JSON.stringify(resp, null, 4));
@@ -88,10 +89,10 @@ class PaymentDetailsEcommerce extends React.Component {
     let loc = window.location.href;
     loc = loc.substring(0, loc.lastIndexOf('/'));
     loc = `${loc}/finish`;
-    <Link to="/finish" />
-    //window.location.href = loc;
+    <Redirect to='/finish' />;
+    // window.location.href = loc;
   }
-
+  /* eslint-enable */
   paymentCardMundi() {
     const { payment } = charge;
     const { credit_card: creditCard } = payment;
