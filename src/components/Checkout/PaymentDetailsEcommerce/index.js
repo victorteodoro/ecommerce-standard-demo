@@ -91,9 +91,7 @@ class PaymentDetailsEcommerce extends React.Component {
     let loc = window.location.href;
     loc = loc.substring(0, loc.lastIndexOf('/'));
     loc = `${loc}/finish`;
-    console.log('Before', this.state.toFinish);
     this.setState({toFinish: true})
-    console.log('After', this.state.toFinish);
     // window.location.href = loc;
   }
   /* eslint-enable */
@@ -189,7 +187,7 @@ class PaymentDetailsEcommerce extends React.Component {
     console.log(this.state);
     if (this.state.toFinish === true) {
       console.log('Entrei aqui no finish');
-      return <Link to='/finish' />;
+      return <Redirect to='/finish' />;
     }
 
     return (
