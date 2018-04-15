@@ -3,6 +3,7 @@ import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import PaymentCard from 'react-payment-card-component';
 import { map, addIndex, merge } from 'ramda';
+import { Link } from 'react-router-dom';
 
 // Imports from internal helper funcs
 import handleChangeFromInput from '../../../helpers/updateStateFromInput';
@@ -87,7 +88,8 @@ class PaymentDetailsEcommerce extends React.Component {
     let loc = window.location.href;
     loc = loc.substring(0, loc.lastIndexOf('/'));
     loc = `${loc}/finish`;
-    window.location.href = loc;
+    <Link to="/finish" />
+    //window.location.href = loc;
   }
 
   paymentCardMundi() {

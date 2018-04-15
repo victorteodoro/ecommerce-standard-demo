@@ -15,7 +15,6 @@ const decidePath = (type, end) => {
   return `/ecommerce/${end}`;
 };
 
-// <a href={decidePath(props.type, '')}> </a>
 const Header = props => (
   <header className={styles.header}>
     <div className={styles.header_container}>
