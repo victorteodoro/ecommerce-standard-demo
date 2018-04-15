@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import {
   Header,
-  Footer,
+  Footer
 } from '../../components/';
 
 import styles from './styles.css';
