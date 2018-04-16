@@ -18,7 +18,7 @@ const SearchBarAndButton = () => (
             </Link>
         </div>
         <Link to={`/signature/adm/new/`} className={styles.hyperLink} >
-            <button className={styles.btn}>Novo usuário</button>
+            <button className={styles.btn}>Nova assinatura</button>
         </Link>
     </div>
 );

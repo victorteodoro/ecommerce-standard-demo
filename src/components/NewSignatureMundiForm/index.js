@@ -217,9 +217,9 @@ class NewSignatureMundiForm extends React.Component {
                   ref='customerPlan'
                   componentClass='select'
                   className={styles.largeInput}>
-                    <option value='plan_VGz8EbHQETgpoav1'>Plano A</option>
-                    <option value='plan_NAGgpBFXkSko5Yx2'>Plano B</option>
-                    <option value='plan_867Om9Iv4HLnORr3'>Plano C</option>
+                  <option value='plan_VGz8EbHQETgpoav1'>Bacharelado em matemática</option>
+                  <option value='plan_NAGgpBFXkSko5Yx2'>Ciência da computação</option>
+                  <option value='plan_867Om9Iv4HLnORr3'>Engenharia de software</option>
                 </FormControl>
               </FormGroup>
             </div>
