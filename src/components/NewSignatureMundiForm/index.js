@@ -20,7 +20,7 @@ import { newSubscription } from '../../helpers/payments/objects/mundiObjects';
 import { MundipaggConnector } from '../../helpers/payments';
 
 // Import card component
-import CardForm from '../Checkout/CardForm';
+import CardFormRecurrency from '../Checkout/CardFormRecurrency';
 
 // Import styles
 import styles from './styles.css';
@@ -101,6 +101,7 @@ class NewSignatureMundiForm extends React.Component {
       card.cvv = this.state.cvv;
       const newSubscriptionCardMerged = merge(newSubscription, { card });
       const newSubscriptionCustomerMerged = merge(newSubscriptionCardMerged, { customer });
+      console.log('body', newSubscriptionCustomerMerged);
       MundipaggConnector('POST', 'subscriptions', newSubscriptionCustomerMerged)
         .then(resp => (this.handleResponse(resp)));
     });
@@ -242,7 +243,7 @@ class NewSignatureMundiForm extends React.Component {
             <br />
           </div>
           <div className={styles.rowCardForm}>
-            <CardForm
+            <CardFormRecurrency
               validationState={this.getValidationState}
               cardNumber={this.state.cardNumber}
               holderName={this.state.holderName}
